@@ -5,28 +5,30 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 
 import basemod.abstracts.CustomCard;
-import spyr.cards.SpyrCards;
 
 public class BeepBoop extends CustomCard {
 
 	public static final String ID = "BeepBoop";
 	public static final String IMG = "images/cards/blue/attack/beep_boop.png";
+	public static CardStrings BEEP_BOOP = CardCrawlGame.languagePack
+			.getCardStrings(ID);
 
 	private static final int COST = 3;
 	private static final int ATTACK_DMG = 14;
 	private static final int STAT_SCALING = 3;
 
 	public BeepBoop() {
-		super("BeepBoop", SpyrCards.BEEP_BOOP.NAME, IMG, COST,
-				SpyrCards.BEEP_BOOP.DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCard.CardColor.BLUE, AbstractCard.CardRarity.RARE,
-				AbstractCard.CardTarget.ALL_ENEMY);
+		super(ID, BEEP_BOOP.NAME, IMG, COST, BEEP_BOOP.DESCRIPTION,
+				AbstractCard.CardType.ATTACK, AbstractCard.CardColor.BLUE,
+				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY);
 
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = 3;

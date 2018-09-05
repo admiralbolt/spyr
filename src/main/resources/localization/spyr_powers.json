@@ -1,0 +1,9 @@
+{
+  "StaunchBleeding": {
+    "NAME": "StaunchBleeding",
+    "DESCRIPTIONS": [
+      "Upon losing HP from a card, gain #b",
+      " #yRegen."
+    ]
+  }
+}

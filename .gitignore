@@ -8,3 +8,4 @@ dependency-reduced-pom.xml
 .project
 /preferences/
 .DS_Store
+/.settings/

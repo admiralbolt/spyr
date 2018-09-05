@@ -5,15 +5,15 @@ import java.nio.charset.StandardCharsets;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
 import basemod.BaseMod;
-import basemod.helpers.RelicType;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
-import spyr.cards.blue.BeepBoop;
-import spyr.relics.AmericanSpirit;
+import spyr.cards.SpyrCards;
+import spyr.relics.SpyrRelics;
 
 @SpireInitializer
 public class Spyr implements EditCardsSubscriber, EditRelicsSubscriber,
@@ -34,12 +34,12 @@ public class Spyr implements EditCardsSubscriber, EditRelicsSubscriber,
 
 	@Override
 	public void receiveEditRelics() {
-		BaseMod.addRelic(new AmericanSpirit(), RelicType.SHARED);
+		SpyrRelics.addRelics();
 	}
 
 	@Override
 	public void receiveEditCards() {
-		BaseMod.addCard(new BeepBoop());
+		SpyrCards.addCards();
 	}
 
 	@Override
@@ -51,6 +51,10 @@ public class Spyr implements EditCardsSubscriber, EditRelicsSubscriber,
 		String cardStrings = Gdx.files.internal("localization/spyr_cards.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+
+		String powerStrings = Gdx.files.internal("localization/spyr_powers.json")
+				.readString(String.valueOf(StandardCharsets.UTF_8));
+		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 	}
 
 }

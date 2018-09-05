@@ -3,5 +3,19 @@
     "NAME": "Beep Boop",
     "DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times."
+  },
+  "Masochism": {
+    "NAME": "Masochism",
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage each time you lose HP in combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage each time you lose HP in combat."
+  },
+  "Revenge": {
+    "NAME": "Revenge",
+    "DESCRIPTION": "Deal damage equal to your missing HP.",
+    "UPGRADE_DESCRIPTION": " NL (Deals !D! damage.)"
+  },
+  "StaunchBleeding": {
+    "NAME": "Staunch Bleeding",
+    "DESCRIPTION": "Whenever you lose HP from a card, NL gain 1 Regen."
   }
 }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import basemod.helpers.RelicType;
 
 public class AmericanSpirit extends CustomRelic {
 
@@ -18,6 +19,8 @@ public class AmericanSpirit extends CustomRelic {
 
 	private static final int HP_PER_EXHAUST = 1;
 	private static final int STR_PER_EXHAUST = 1;
+	
+	public RelicType type = RelicType.SHARED;
 
 	public AmericanSpirit() {
 		super(ID, new Texture(Gdx.files.internal(IMG)),
