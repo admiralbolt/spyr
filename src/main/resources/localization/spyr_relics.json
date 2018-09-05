@@ -1,0 +1,11 @@
+{
+  "AmericanSpirit": {
+    "NAME": "American Spirit",
+    "FLAVOR": "Hurts so bad, tastes so good.",
+    "DESCRIPTIONS": [
+      "Everytime a card is exhausted gain #b",
+      " max hp and #b",
+      " strength."
+    ]
+  }
+}

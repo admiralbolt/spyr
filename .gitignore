@@ -1,0 +1,9 @@
+/.metadata/
+/bin/
+/target/
+/sendToDevs/
+info.displayconfig
+dependency-reduced-pom.xml
+.classpath
+.project
+/preferences/
