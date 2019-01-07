@@ -10,3 +10,7 @@ dependency-reduced-pom.xml
 .DS_Store
 /.settings/
 lib/*
+!lib/run.sh
+!lib/decompile.sh
+!lib/copy_latest.sh
+twitchconfig.txt
