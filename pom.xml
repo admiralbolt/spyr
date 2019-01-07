@@ -4,18 +4,24 @@
   <artifactId>spyr</artifactId>
   <name>spyr</name>
   <description>Content mod for Slay the Spire</description>
+  <version>1.0.0</version>
+
   <build>
     <finalName>${project.artifactId}</finalName>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.7.0</version>
-            <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
-            </configuration>
-            </plugin>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.4.2</version>
+            <executions>
+              <execution>
+              	<phase>package</phase>
+              	<goals>
+              	  <goal>shade</goal>
+              	</goals>
+              </execution>
+            </executions>
+          </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -26,9 +32,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <!-- Change to match your mods name.
-                                     This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/spyr.jar" tofile="../_ModTheSpire/mods/spyr.jar"/>
+                                <copy file="target/spyr.jar" tofile="lib/mods/spyr.jar" />
                             </target>
                         </configuration>
                         <goals>
@@ -39,30 +43,30 @@
             </plugin>
         </plugins>
   </build>
-  <version>1.0.0</version>
 
-  <!-- Jar files from the ../lib/ folder -->
+
+  <!-- Jar files from the lib/ folder -->
   <dependencies>
     <dependency>
       <groupId>com.megacrit.cardcrawl</groupId>
       <artifactId>slaythespire</artifactId>
       <version>017</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/../lib/desktop-1.0.jar</systemPath>
+      <systemPath>${project.basedir}/lib/desktop-1.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>ModTheSpire</artifactId>
       <version>3.1.1</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/../lib/ModTheSpire.jar</systemPath>
+      <systemPath>${project.basedir}/lib/ModTheSpire.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>BaseMod</artifactId>
       <version>3.1.1</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/../lib/BaseMod.jar</systemPath>
+      <systemPath>${project.basedir}/lib/mods/BaseMod.jar</systemPath>
     </dependency>
       <dependency>
         <groupId>org.javatuples</groupId>

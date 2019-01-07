@@ -9,3 +9,4 @@ dependency-reduced-pom.xml
 /preferences/
 .DS_Store
 /.settings/
+lib/*

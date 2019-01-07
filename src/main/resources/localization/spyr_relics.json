@@ -7,5 +7,12 @@
       " max hp and #b",
       " strength."
     ]
+  },
+  "Eco": {
+    "NAME": "Eco",
+    "FLAVOR": "It's a jak & daxter reference.",
+    "DESCRIPTIONS": [
+      "Start each combat in light mode."
+    ]
   }
 }

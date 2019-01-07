@@ -17,5 +17,9 @@
   "StaunchBleeding": {
     "NAME": "Staunch Bleeding",
     "DESCRIPTION": "Whenever you lose HP from a card, NL gain 1 Regen."
+  },
+  "StrikeFractured": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }

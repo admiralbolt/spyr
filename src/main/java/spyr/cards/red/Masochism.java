@@ -13,13 +13,12 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import spyr.Spyr;
+import spyr.cards.SpyrCard;
 
-public class Masochism extends CustomCard {
+public class Masochism extends SpyrCard {
 
 	public static final String ID = "Masochism";
-	public static final String IMG = "images/cards/red/attack/masochism.png";
-	public static CardStrings MASOCHISM = CardCrawlGame.languagePack
-			.getCardStrings(ID);
 
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 5;
@@ -29,8 +28,7 @@ public class Masochism extends CustomCard {
 
 	public Masochism() {
 
-		super(ID, MASOCHISM.NAME, IMG, COST, MASOCHISM.DESCRIPTION,
-				AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
+		super(ID, COST, AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
 				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 
 		this.damage = this.baseDamage = ATTACK_DMG;
@@ -51,18 +49,15 @@ public class Masochism extends CustomCard {
 	}
 
 	@Override
-	public void upgrade() {
-		if (!this.upgraded) {
-			this.upgradeName();
-			this.upgradeMagicNumber(UPGRADE_SCALING);
-			this.upgradeDamage(UPGRADE_ATTACK);
-		}
+	public void tookDamage() {
+		AbstractDungeon.actionManager
+				.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 	}
 
 	@Override
-	public void tookDamage() {
-		AbstractDungeon.actionManager
-				.addToBottom(new ModifyDamageAction(this, this.magicNumber));
+	public void doUpgrade() {
+		this.upgradeMagicNumber(UPGRADE_SCALING);
+		this.upgradeDamage(UPGRADE_ATTACK);
 	}
 
 }

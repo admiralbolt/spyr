@@ -1,30 +1,70 @@
 package spyr;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.javatuples.Pair;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardColor;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
 import basemod.BaseMod;
+import basemod.abstracts.CustomCard;
 import basemod.interfaces.EditCardsSubscriber;
+import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import spyr.cards.SpyrCards;
+import spyr.characters.TheFractured;
+import spyr.patches.CardEnum;
+import spyr.patches.CharacterEnum;
 import spyr.relics.SpyrRelics;
 
 @SpireInitializer
-public class Spyr implements EditCardsSubscriber, EditRelicsSubscriber,
-		EditStringsSubscriber {
+public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
+		EditRelicsSubscriber, EditStringsSubscriber {
 
 	private static final String MODNAME = "Spyr";
 	private static final String AUTHOR = "Avi Knecht";
 	private static final String DESCRIPTION = "Slay the spire mod.";
 
+	public static final String ATK = "images/cardui/512/bg_attack_fractured.png";
+	
+	@SuppressWarnings("serial")
+	public static HashMap<CardColor, String> COLOR_MAP = new HashMap<CardColor, String>() {
+		{
+			put(CardColor.RED, "red");
+			put(CardColor.BLUE, "blue");
+			put(CardColor.GREEN, "green");
+			put(CardEnum.FRACTURED, "gray");
+		}
+	};
+
 	public Spyr() {
 		BaseMod.subscribe(this);
+
+		BaseMod.addColor(CardEnum.FRACTURED, Color.LIGHT_GRAY,
+				get512("bg_attack_fractured.png"), get512("bg_skill_fractured.png"),
+				get512("bg_power_fractured.png"), get512("card_fractured_orb.png"),
+				get1024("bg_attack_fractured.png"), get1024("bg_skill_fractured.png"),
+				get1024("bg_power_fractured.png"), get1024("card_fractured_orb.png"),
+				get512("card_fractured_orb.png"));
+	}
+
+	public static String get512(String cardName) {
+		return "images/cardui/512/" + cardName;
+	}
+
+	public static String get1024(String cardName) {
+		return "images/cardui/1024/" + cardName;
 	}
 
 	// Used by SpireInitializer(), not really clear how though.
@@ -33,28 +73,44 @@ public class Spyr implements EditCardsSubscriber, EditRelicsSubscriber,
 	}
 
 	@Override
-	public void receiveEditRelics() {
-		SpyrRelics.addRelics();
-	}
-
-	@Override
 	public void receiveEditCards() {
 		SpyrCards.addCards();
 	}
 
 	@Override
-	public void receiveEditStrings() {
-		String relicStrings = Gdx.files.internal("localization/spyr_relics.json")
-				.readString(String.valueOf(StandardCharsets.UTF_8));
-		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+	public void receiveEditCharacters() {
+		System.out.println("[SPYR] Editting Characters");
+		BaseMod.addCharacter(new TheFractured(CardCrawlGame.playerName),
+				TheFractured.BUTTON, TheFractured.POTRAIT, CharacterEnum.FRACTURED);
+	}
 
+	@Override
+	public void receiveEditRelics() {
+		System.out.println("[SPYR] Editting Relics");
+		SpyrRelics.addRelics();
+	}
+
+	@Override
+	public void receiveEditStrings() {
+		System.out.println("[SPYR] Editting Strings");
 		String cardStrings = Gdx.files.internal("localization/spyr_cards.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
+		String characterStrings = Gdx.files
+				.internal("localization/spyr_characters.json")
+				.readString(String.valueOf(StandardCharsets.UTF_8));
+		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
+
 		String powerStrings = Gdx.files.internal("localization/spyr_powers.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+
+		String relicStrings = Gdx.files.internal("localization/spyr_relics.json")
+				.readString(String.valueOf(StandardCharsets.UTF_8));
+		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	}
+
+	
 
 }

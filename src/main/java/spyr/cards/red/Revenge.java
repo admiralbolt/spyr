@@ -11,12 +11,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCard;
+import spyr.cards.SpyrCard;
 
-public class Revenge extends CustomCard {
+public class Revenge extends SpyrCard {
 
 	public static final String ID = "Revenge";
-	public static final String IMG = "images/cards/red/attack/revenge.png";
 	public static CardStrings REVENGE = CardCrawlGame.languagePack
 			.getCardStrings(ID);
 
@@ -25,8 +24,7 @@ public class Revenge extends CustomCard {
 
 	public Revenge() {
 
-		super(ID, REVENGE.NAME, IMG, COST, REVENGE.DESCRIPTION,
-				AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
+		super(ID, COST, AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
 				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 
 		this.damage = this.baseDamage = 0;
@@ -60,11 +58,8 @@ public class Revenge extends CustomCard {
 	}
 
 	@Override
-	public void upgrade() {
-		if (!this.upgraded) {
-			this.upgradeName();
-			this.upgradeBaseCost(UPGRADED_COST);
-		}
+	public void doUpgrade() {
+		this.upgradeBaseCost(UPGRADED_COST);
 	}
 
 }

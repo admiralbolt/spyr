@@ -7,6 +7,7 @@ import org.javatuples.Triplet;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.helpers.RelicType;
+import spyr.patches.CardEnum;
 
 public class SpyrRelics {
 
@@ -15,8 +16,9 @@ public class SpyrRelics {
 		return new Triplet<CustomRelic, RelicType, Boolean>(relic, type, enabled);
 	}
 
-	// A list of all modded cards. They are created in pairs of card -> boolean,
-	// where the boolean represents if they are enabled or not.
+	// A list of all mod relics. They are created in triplets of (relic, type, boolean),
+	// where type represents which class they apply to, and the boolean represents whether
+	// or not the relic is enabled.
 	@SuppressWarnings("serial")
 	public static ArrayList<Triplet<CustomRelic, RelicType, Boolean>> RELICS = new ArrayList<Triplet<CustomRelic, RelicType, Boolean>>() {
 		{
@@ -33,6 +35,9 @@ public class SpyrRelics {
 				BaseMod.addRelic(relicTriplet.getValue0(), relicTriplet.getValue1());
 			}
 		}
+		
+		// Starter relics for custom classes.
+		BaseMod.addRelicToCustomPool(new Eco(), CardEnum.FRACTURED);
 	}
 
 }

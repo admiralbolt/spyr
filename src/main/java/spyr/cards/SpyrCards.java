@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import org.javatuples.Pair;
 
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import spyr.cards.blue.BeepBoop;
+import spyr.cards.gray.StrikeFractured;
 import spyr.cards.red.Masochism;
 import spyr.cards.red.Revenge;
 import spyr.cards.red.StaunchBleeding;
@@ -24,18 +27,19 @@ public class SpyrCards {
 	public static ArrayList<Pair<CustomCard, Boolean>> CARDS = new ArrayList<Pair<CustomCard, Boolean>>() {
 		{
 			// Keep these sorted so they are readable.
+			add(createPair(new BeepBoop(), false));
 			add(createPair(new Masochism(), true));
 			add(createPair(new Revenge(), true));
 			add(createPair(new StaunchBleeding(), true));
-
-			// Disabled cards.
-			add(createPair(new BeepBoop(), false));
+			add(createPair(new StrikeFractured(), true));
 		}
 	};
 
 	public static void addCards() {
 		for (Pair<CustomCard, Boolean> cardEnabledPair : CARDS) {
+			BaseMod.addCard(cardEnabledPair.getValue0());
 			if (cardEnabledPair.getValue1()) {
+				UnlockTracker.unlockCard(cardEnabledPair.getValue0().cardID);
 				BaseMod.addCard(cardEnabledPair.getValue0());
 			}
 		}

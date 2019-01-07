@@ -1,0 +1,11 @@
+{
+  "modid": "spyr",
+  "name": "spyr",
+  "author_list": ["Avi Knecht"],
+  "description": "Adds some new stuff.",
+  "dependencies": ["basemod"],
+  "credits": "None yet",
+  "version": "1.0.0",
+  "sts_version": "12-20-2018",
+  "mts_version": "3.6.3"
+}
