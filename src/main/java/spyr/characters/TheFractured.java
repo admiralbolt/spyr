@@ -164,7 +164,7 @@ public class TheFractured extends CustomPlayer {
 
 	@Override
 	public String getTitle(PlayerClass arg0) {
-		return "Fractured Title";
+		return "The Fractured";
 	}
 
 	@Override
