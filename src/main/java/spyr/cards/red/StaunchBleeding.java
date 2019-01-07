@@ -11,7 +11,7 @@ import spyr.powers.StaunchBleedingPower;
 
 public class StaunchBleeding extends SpyrCard {
 
-	public static final String ID = "StaunchBleeding";
+	public static final String ID = "spyr:staunch_bleeding";
 
 	private static final int COST = 2;
 	private static final int UPGRADED_COST = 1;

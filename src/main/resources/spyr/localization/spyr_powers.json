@@ -1,5 +1,5 @@
 {
-  "StaunchBleeding": {
+  "spyr:staunch_bleeding": {
     "NAME": "StaunchBleeding",
     "DESCRIPTIONS": [
       "Upon losing HP from a card, gain #b",

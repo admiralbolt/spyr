@@ -12,7 +12,7 @@ import spyr.Spyr;
  * 
  * The name and description are loaded from the card strings located in
  * src/main/resources/localization/spyr_cards.json. The image path is
- * auto-calculated as images/cards/[color]/[type]/[name].png.
+ * auto-calculated as spyr/images/cards/[color]/[type]/[name].png.
  */
 public abstract class SpyrCard extends CustomCard {
 
@@ -25,9 +25,8 @@ public abstract class SpyrCard extends CustomCard {
 	private SpyrCard(String id, CardStrings cardStrings, int cost, CardType type,
 			CardColor color, CardRarity rarity, CardTarget target) {
 		super(id, cardStrings.NAME,
-				String.format("images/cards/%s/%s/%s.png", Spyr.COLOR_MAP.get(color),
-						type.toString().toLowerCase(),
-						cardStrings.NAME.toLowerCase().replace(" ", "_")),
+				String.format("spyr/images/cards/%s/%s/%s.png", Spyr.COLOR_MAP.get(color),
+						type.toString().toLowerCase(), id.split(":")[1]),
 				cost, cardStrings.DESCRIPTION, type, color, rarity, target);
 	}
 

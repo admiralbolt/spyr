@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.RegenPower;
 
 public class StaunchBleedingPower
 extends AbstractPower {
-    public static final String POWER_ID = "StaunchBleeding";
+    public static final String POWER_ID = "spyr:staunch_bleeding";
     private static final PowerStrings STAUNCH_BLEEDING = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
     public StaunchBleedingPower(AbstractCreature owner, int strAmt) {
@@ -22,7 +22,7 @@ extends AbstractPower {
         this.amount = strAmt;
         this.updateDescription();
         this.isPostActionPower = true;
-        this.img = ImageMaster.loadImage("images/powers/staunch_bleeding.png");
+        this.img = ImageMaster.loadImage("spyr/images/powers/staunch_bleeding.png");
     }
 
     @Override

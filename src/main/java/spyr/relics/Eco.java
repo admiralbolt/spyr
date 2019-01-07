@@ -8,9 +8,9 @@ import basemod.abstracts.CustomRelic;
 
 public class Eco extends CustomRelic {
 
-	public static final String ID = "Eco";
-	private static final String IMG = "images/relics/eco.png";
-	private static final String OUTLINE = "images/relics/outlines/eco.png";
+	public static final String ID = "spyr:eco";
+	private static final String IMG = "spyr/images/relics/eco.png";
+	private static final String OUTLINE = "spyr/images/relics/outlines/eco.png";
 
 	public static final RelicTier TIER = RelicTier.STARTER;
 

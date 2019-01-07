@@ -17,7 +17,7 @@ import spyr.patches.CardEnum;
  */
 public class StrikeFractured extends SpyrCard {
 
-	public static final String ID = "StrikeFractured";
+	public static final String ID = "spyr:strike_fractured";
 
 	private static final int COST = 1;
 	private static final int POWER = 6;

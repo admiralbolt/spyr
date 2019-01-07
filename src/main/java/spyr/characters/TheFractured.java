@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import spyr.patches.CharacterEnum;
+import spyr.relics.Eco;
 import spyr.cards.gray.StrikeFractured;
 import spyr.patches.CardEnum;
 
@@ -28,36 +29,36 @@ public class TheFractured extends CustomPlayer {
 	// Resource strings are loaded from
 	// src/main/resources/localization/spyr_characters.json
 	private static final CharacterStrings FRACTURED = CardCrawlGame.languagePack
-			.getCharacterString("Fractured");
+			.getCharacterString("spyr:the_fractured");
 
 	public static final int ENERGY_PER_TURN = 3;
-	public static final String SHOULDER = "images/characters/the_fractured/shoulder.png";
-	public static final String SHOULDER2 = "images/characters/the_fractured/shoulder2.png";
-	public static final String CORPSE = "images/characters/the_fractured/corpse.png";
+	public static final String SHOULDER = "spyr/images/characters/the_fractured/shoulder.png";
+	public static final String SHOULDER2 = "spyr/images/characters/the_fractured/shoulder2.png";
+	public static final String CORPSE = "spyr/images/characters/the_fractured/corpse.png";
 
-	public static final String BUTTON = "images/characters/the_fractured/ui/button.png";
-	public static final String POTRAIT = "images/characters/the_fractured/ui/portrait.png";
+	public static final String BUTTON = "spyr/images/characters/the_fractured/ui/button.png";
+	public static final String POTRAIT = "spyr/images/characters/the_fractured/ui/portrait.png";
 	public static final Color COLOR = CardHelper.getColor(90.0f, 90.0f, 100.0f);
 
-	public static final String SKELETON_ATLAS = "images/characters/the_fractured/idle/skeleton.atlas";
-	public static final String SKELETON_JSON = "images/characters/the_fractured/idle/skeleton.json";
+	public static final String SKELETON_ATLAS = "spyr/images/characters/the_fractured/idle/skeleton.atlas";
+	public static final String SKELETON_JSON = "spyr/images/characters/the_fractured/idle/skeleton.json";
 
 	public static final String[] ORB_TEXTURES = {
-			"images/characters/the_fractured/orb/layer1.png",
-			"images/characters/the_fractured/orb/layer2.png",
-			"images/characters/the_fractured/orb/layer3.png",
-			"images/characters/the_fractured/orb/layer4.png",
-			"images/characters/the_fractured/orb/layer5.png",
-			"images/characters/the_fractured/orb/layer6.png",
-			"images/characters/the_fractured/orb/layer1d.png",
-			"images/characters/the_fractured/orb/layer2d.png",
-			"images/characters/the_fractured/orb/layer3d.png",
-			"images/characters/the_fractured/orb/layer4d.png",
-			"images/characters/the_fractured/orb/layer5d.png" };
+			"spyr/images/characters/the_fractured/orb/layer1.png",
+			"spyr/images/characters/the_fractured/orb/layer2.png",
+			"spyr/images/characters/the_fractured/orb/layer3.png",
+			"spyr/images/characters/the_fractured/orb/layer4.png",
+			"spyr/images/characters/the_fractured/orb/layer5.png",
+			"spyr/images/characters/the_fractured/orb/layer6.png",
+			"spyr/images/characters/the_fractured/orb/layer1d.png",
+			"spyr/images/characters/the_fractured/orb/layer2d.png",
+			"spyr/images/characters/the_fractured/orb/layer3d.png",
+			"spyr/images/characters/the_fractured/orb/layer4d.png",
+			"spyr/images/characters/the_fractured/orb/layer5d.png" };
 
-	public static final String ORB_VFX = "images/characters/the_fractured/orb/vfx.png";
+	public static final String ORB_VFX = "spyr/images/characters/the_fractured/orb/vfx.png";
 
-	public static final String IDLE_ANIMATION = "images/characters/the_fractured/spriter/the_fractured.scml";
+	public static final String IDLE_ANIMATION = "spyr/images/characters/the_fractured/spriter/the_fractured.scml";
 
 	public TheFractured(String name) {
 		super(name, CharacterEnum.FRACTURED, ORB_TEXTURES, ORB_VFX, null,
@@ -86,7 +87,7 @@ public class TheFractured extends CustomPlayer {
 	@Override
 	public ArrayList<String> getStartingRelics() {
 		ArrayList<String> relics = new ArrayList<String>();
-		relics.add("Eco");
+		relics.add(Eco.ID);
 		return relics;
 	}
 

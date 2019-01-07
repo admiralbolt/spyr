@@ -1,5 +1,5 @@
 {
-  "AmericanSpirit": {
+  "spyr:american_spirit": {
     "NAME": "American Spirit",
     "FLAVOR": "Hurts so bad, tastes so good.",
     "DESCRIPTIONS": [
@@ -8,7 +8,7 @@
       " strength."
     ]
   },
-  "Eco": {
+  "spyr:eco": {
     "NAME": "Eco",
     "FLAVOR": "It's a jak & daxter reference.",
     "DESCRIPTIONS": [

@@ -15,7 +15,7 @@ import spyr.cards.SpyrCard;
 
 public class Revenge extends SpyrCard {
 
-	public static final String ID = "Revenge";
+	public static final String ID = "spyr:revenge";
 	public static CardStrings REVENGE = CardCrawlGame.languagePack
 			.getCardStrings(ID);
 

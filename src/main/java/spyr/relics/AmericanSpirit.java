@@ -13,9 +13,9 @@ import basemod.helpers.RelicType;
 
 public class AmericanSpirit extends CustomRelic {
 
-	public static final String ID = "AmericanSpirit";
-	private static final String IMG = "images/relics/american_spirit.png";
-	private static final String OUTLINE = "images/relics/outlines/american_spirit.png";
+	public static final String ID = "spyr:american_spirit";
+	private static final String IMG = "spyr/images/relics/american_spirit.png";
+	private static final String OUTLINE = "spyr/images/relics/outlines/american_spirit.png";
 
 	private static final int HP_PER_EXHAUST = 1;
 	private static final int STR_PER_EXHAUST = 1;
