@@ -23,18 +23,15 @@ public abstract class SpyrCard extends CustomCard {
 			CardRarity rarity, CardTarget target) {
 		this(id, CardCrawlGame.languagePack.getCardStrings(id), cost, type, color,
 				rarity, target);
-		System.out.println("Instantiating id: [" + id + "], cardId: [" + this.cardID + "]");
-		System.out.println(CardCrawlGame.languagePack.getCardStrings(this.cardID).NAME);
 	}
 
 	private SpyrCard(String id, CardStrings cardStrings, int cost, CardType type,
 			CardColor color, CardRarity rarity, CardTarget target) {
 		super(id, cardStrings.NAME,
-				String.format("spyr/images/cards/%s/%s/%s.png", Spyr.COLOR_MAP.get(color),
-						type.toString().toLowerCase(), id.split(":")[1]),
+				String.format("spyr/images/cards/%s/%s/%s.png",
+						Spyr.COLOR_MAP.get(color), type.toString().toLowerCase(),
+						id.split(":")[1]),
 				cost, cardStrings.DESCRIPTION, type, color, rarity, target);
-		System.out.println("Instantiating id: [" + id + "], cardId: [" + this.cardID + "]");
-		System.out.println(cardStrings.NAME);
 	}
 
 	@Override
@@ -50,7 +47,7 @@ public abstract class SpyrCard extends CustomCard {
 	 * removing the need for a if not upgraded clause in each upgrade() function.
 	 */
 	public abstract void doUpgrade();
-	
+
 	/**
 	 * Dynamically constructs an instance of the current card.
 	 */
