@@ -24,6 +24,11 @@
     "DESCRIPTION": "Deal damage equal to your missing HP.",
     "UPGRADE_DESCRIPTION": " NL (Deals !D! damage.)"
   },
+  "spyr:shadow_slash": {
+    "NAME": "Shadow Slash",
+    "DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in dark form.",
+    "UPGRADE_DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in dark form."
+  },
   "spyr:staunch_bleeding": {
     "NAME": "Staunch Bleeding",
     "DESCRIPTION": "Whenever you lose HP from a card, NL gain 1 Regen."

@@ -18,6 +18,8 @@ import spyr.Spyr;
  * auto-calculated as spyr/images/cards/[color]/[type]/[name].png.
  */
 public abstract class SpyrCard extends CustomCard {
+	
+	public CardStrings cardStrings;
 
 	public SpyrCard(String id, int cost, CardType type, CardColor color,
 			CardRarity rarity, CardTarget target) {
@@ -32,6 +34,7 @@ public abstract class SpyrCard extends CustomCard {
 						Spyr.COLOR_MAP.get(color), type.toString().toLowerCase(),
 						id.split(":")[1]),
 				cost, cardStrings.DESCRIPTION, type, color, rarity, target);
+		this.cardStrings = cardStrings;
 	}
 
 	@Override

@@ -21,6 +21,7 @@ import basemod.interfaces.EditStringsSubscriber;
 import spyr.cards.blue.BeepBoop;
 import spyr.cards.gray.DefendFractured;
 import spyr.cards.gray.Invert;
+import spyr.cards.gray.ShadowSlash;
 import spyr.cards.gray.StrikeFractured;
 import spyr.cards.red.Masochism;
 import spyr.cards.red.Revenge;
@@ -89,6 +90,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	  // =========
 		BaseMod.addCard(new DefendFractured());
 		BaseMod.addCard(new Invert());
+		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
 		
 	}
