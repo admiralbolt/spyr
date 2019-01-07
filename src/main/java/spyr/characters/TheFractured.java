@@ -19,10 +19,12 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
-import spyr.patches.CharacterEnum;
-import spyr.relics.Eco;
+import spyr.cards.gray.DefendFractured;
+import spyr.cards.gray.Invert;
 import spyr.cards.gray.StrikeFractured;
 import spyr.patches.CardEnum;
+import spyr.patches.CharacterEnum;
+import spyr.relics.Eco;
 
 public class TheFractured extends CustomPlayer {
 
@@ -81,6 +83,8 @@ public class TheFractured extends CustomPlayer {
 		ArrayList<String> startingDeck = new ArrayList<String>();
 		startingDeck.add(StrikeFractured.ID);
 		startingDeck.add(StrikeFractured.ID);
+		startingDeck.add(DefendFractured.ID);
+		startingDeck.add(Invert.ID);
 		return startingDeck;
 	}
 

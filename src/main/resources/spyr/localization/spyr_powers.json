@@ -1,6 +1,18 @@
 {
+  "spyr:eco_dark": {
+    "NAME": "Dark Eco",
+    "DESCRIPTIONS": [
+      "Dark energy."
+    ]
+  },
+  "spyr:eco_light": {
+    "NAME": "Light Eco",
+    "DESCRIPTIONS": [
+      "Light energy."
+    ]
+  },
   "spyr:staunch_bleeding": {
-    "NAME": "StaunchBleeding",
+    "NAME": "Staunch Bleeding",
     "DESCRIPTIONS": [
       "Upon losing HP from a card, gain #b",
       " #yRegen."

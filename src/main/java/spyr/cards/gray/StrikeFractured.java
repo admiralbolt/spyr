@@ -37,10 +37,6 @@ public class StrikeFractured extends SpyrCard {
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
 	}
-
-	public AbstractCard makeCopy() {
-		return new StrikeFractured();
-	}
 	
 	@Override
 	public void doUpgrade() {

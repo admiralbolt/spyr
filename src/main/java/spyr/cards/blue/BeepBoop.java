@@ -37,11 +37,6 @@ public class BeepBoop extends SpyrCard {
 	}
 
 	@Override
-	public AbstractCard makeCopy() {
-		return new BeepBoop();
-	}
-
-	@Override
 	public void doUpgrade() {
 		this.upgradeMagicNumber(STAT_SCALING);
 	}

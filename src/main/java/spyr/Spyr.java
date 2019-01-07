@@ -18,7 +18,13 @@ import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
-import spyr.cards.SpyrCards;
+import spyr.cards.blue.BeepBoop;
+import spyr.cards.gray.DefendFractured;
+import spyr.cards.gray.Invert;
+import spyr.cards.gray.StrikeFractured;
+import spyr.cards.red.Masochism;
+import spyr.cards.red.Revenge;
+import spyr.cards.red.StaunchBleeding;
 import spyr.characters.TheFractured;
 import spyr.patches.CardEnum;
 import spyr.patches.CharacterEnum;
@@ -66,7 +72,25 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 
 	@Override
 	public void receiveEditCards() {
-		SpyrCards.addCards();
+		// Ironclad
+		// ========
+		
+		// BaseMod.addCard(new Masochism());
+		// BaseMod.addCard(new Revenge());
+		// BaseMod.addCard(new StaunchBleeding());
+		// Silent
+	  // ======
+		
+		// Defect
+	  // ======
+		// BaseMod.addCard(new BeepBoop());
+		
+		// Fractured
+	  // =========
+		BaseMod.addCard(new DefendFractured());
+		BaseMod.addCard(new Invert());
+		BaseMod.addCard(new StrikeFractured());
+		
 	}
 
 	@Override

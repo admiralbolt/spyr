@@ -53,11 +53,6 @@ public class Revenge extends SpyrCard {
 	}
 
 	@Override
-	public AbstractCard makeCopy() {
-		return new Revenge();
-	}
-
-	@Override
 	public void doUpgrade() {
 		this.upgradeBaseCost(UPGRADED_COST);
 	}

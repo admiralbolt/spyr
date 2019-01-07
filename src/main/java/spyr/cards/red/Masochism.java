@@ -40,11 +40,6 @@ public class Masochism extends SpyrCard {
 	}
 
 	@Override
-	public AbstractCard makeCopy() {
-		return new Masochism();
-	}
-
-	@Override
 	public void tookDamage() {
 		AbstractDungeon.actionManager
 				.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));

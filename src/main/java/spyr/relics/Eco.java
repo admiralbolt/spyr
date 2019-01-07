@@ -2,9 +2,13 @@ package spyr.relics;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
+import spyr.powers.LightEcoPower;
 
 public class Eco extends CustomRelic {
 
@@ -28,6 +32,16 @@ public class Eco extends CustomRelic {
 	@Override
 	public AbstractRelic makeCopy() {
 		return new Eco();
+	}
+
+	@Override
+	public void atBattleStart() {
+		this.flash();
+		AbstractDungeon.actionManager.addToTop(
+				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+						new LightEcoPower(AbstractDungeon.player, 1), 1));
+		AbstractDungeon.actionManager
+				.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 	}
 
 }
