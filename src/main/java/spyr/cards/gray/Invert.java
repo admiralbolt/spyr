@@ -27,9 +27,6 @@ public class Invert extends SpyrCard {
 				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
 	}
 
-	/**
-	 * NOTE: Powers must be removed by specifying their name instead of their ID.
-	 */
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
