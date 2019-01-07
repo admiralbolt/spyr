@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.helpers.BaseModCardTags;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
@@ -39,16 +38,6 @@ public class ShadowSlash extends SpyrCard {
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
 	}
-
-//	@Override
-//	public void applyPowers() {
-//		super.applyPowers();
-//		System.out.println("apply Powers is called darkeco");
-//		if (AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID)) {
-//			this.damage = this.baseDamage + this.magicNumber;
-//			System.out.println("New Damage: " + this.damage);
-//		}
-//	}
 
 	@Override
 	public float calculateModifiedCardDamage(AbstractPlayer player,
