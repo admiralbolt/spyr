@@ -18,11 +18,7 @@ import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
-import spyr.cards.gray.DefendFractured;
-import spyr.cards.gray.EnergyWave;
-import spyr.cards.gray.Invert;
-import spyr.cards.gray.ShadowSlash;
-import spyr.cards.gray.StrikeFractured;
+import spyr.cards.gray.*;
 import spyr.characters.TheFractured;
 import spyr.patches.CardEnum;
 import spyr.patches.CharacterEnum;
@@ -86,6 +82,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 		// Fractured
 		// =========
 		BaseMod.addCard(new DefendFractured());
+		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
 		BaseMod.addCard(new Invert());
 		BaseMod.addCard(new ShadowSlash());

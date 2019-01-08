@@ -9,13 +9,18 @@
     "DESCRIPTION": "Gain !B! block.",
     "UPGRADE_DESCRIPTION": "Gain !B! block."
   },
+  "spyr:dual_form": {
+    "NAME": "Dual Form",
+    "DESCRIPTION": "Activate dark & light forms.",
+    "UPGRADE_DESCRIPTION": "Activate dark & light forms."
+  },
   "spyr:energy_wave": {
     "NAME": "Energy Wave",
-    "DESCRIPTION": "NL Affected by Form. NL Exhaust",
-    "UPGRADE_DESCRIPTION": "NL Affected by Form. NL Exhaust",
+    "DESCRIPTION": "Affected by Form. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "Affected by Form. NL Exhaust",
     "EXTENDED_DESCRIPTION": [
-      "Deal !D! damage to ALL characters. ",
-      "Heal ALL characters !H!. "
+      "Deal !D! damage to ALL characters. NL",
+      "Heal ALL characters !H!. NL"
     ]
   },
   "spyr:invert": {

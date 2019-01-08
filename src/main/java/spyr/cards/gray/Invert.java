@@ -29,6 +29,10 @@ public class Invert extends SpyrCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		if (p.hasPower(LightEcoPower.POWER_ID)
+				&& p.hasPower(DarkEcoPower.POWER_ID)) {
+			return;
+		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, 1));
