@@ -19,6 +19,7 @@ import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import spyr.cards.gray.DefendFractured;
+import spyr.cards.gray.EnergyWave;
 import spyr.cards.gray.Invert;
 import spyr.cards.gray.ShadowSlash;
 import spyr.cards.gray.StrikeFractured;
@@ -71,24 +72,25 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	public void receiveEditCards() {
 		// Ironclad
 		// ========
-		
+
 		// BaseMod.addCard(new Masochism());
 		// BaseMod.addCard(new Revenge());
 		// BaseMod.addCard(new StaunchBleeding());
 		// Silent
-	  // ======
-		
+		// ======
+
 		// Defect
-	  // ======
+		// ======
 		// BaseMod.addCard(new BeepBoop());
-		
+
 		// Fractured
-	  // =========
+		// =========
 		BaseMod.addCard(new DefendFractured());
+		BaseMod.addCard(new EnergyWave());
 		BaseMod.addCard(new Invert());
 		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
-		
+
 	}
 
 	@Override
@@ -116,11 +118,13 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
 
-		String powerStrings = Gdx.files.internal("spyr/localization/spyr_powers.json")
+		String powerStrings = Gdx.files
+				.internal("spyr/localization/spyr_powers.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 
-		String relicStrings = Gdx.files.internal("spyr/localization/spyr_relics.json")
+		String relicStrings = Gdx.files
+				.internal("spyr/localization/spyr_relics.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 	}

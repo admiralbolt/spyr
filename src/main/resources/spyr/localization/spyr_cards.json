@@ -9,6 +9,15 @@
     "DESCRIPTION": "Gain !B! block.",
     "UPGRADE_DESCRIPTION": "Gain !B! block."
   },
+  "spyr:energy_wave": {
+    "NAME": "Energy Wave",
+    "DESCRIPTION": "NL Affected by Form. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "NL Affected by Form. NL Exhaust",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage to ALL characters. ",
+      "Heal ALL characters !H!. "
+    ]
+  },
   "spyr:invert": {
     "NAME": "Invert",
     "DESCRIPTION": "Switch between dark and light forms.",
