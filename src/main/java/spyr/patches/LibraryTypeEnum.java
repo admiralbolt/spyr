@@ -6,6 +6,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 public class LibraryTypeEnum {
 
 	@SpireEnum
-	public static CardLibrary.LibraryType FRACTURED;
+	public static CardLibrary.LibraryType FRACTURED_GRAY;
 
 }

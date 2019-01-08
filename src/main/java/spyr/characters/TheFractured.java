@@ -63,7 +63,7 @@ public class TheFractured extends CustomPlayer {
 	public static final String IDLE_ANIMATION = "spyr/images/characters/the_fractured/spriter/the_fractured.scml";
 
 	public TheFractured(String name) {
-		super(name, CharacterEnum.FRACTURED, ORB_TEXTURES, ORB_VFX, null,
+		super(name, CharacterEnum.FRACTURED_CLASS, ORB_TEXTURES, ORB_VFX, null,
 				new SpriterAnimation(IDLE_ANIMATION));
 
 		initializeClass(null, SHOULDER2, SHOULDER, CORPSE, getLoadout(), 0.0f, -20f,
@@ -107,7 +107,7 @@ public class TheFractured extends CustomPlayer {
 
 	@Override
 	public CardColor getCardColor() {
-		return CardEnum.FRACTURED;
+		return CardEnum.FRACTURED_GRAY;
 	}
 
 	@Override

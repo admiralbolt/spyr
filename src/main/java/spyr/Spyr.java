@@ -36,14 +36,14 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 			put(CardColor.RED, "red");
 			put(CardColor.BLUE, "blue");
 			put(CardColor.GREEN, "green");
-			put(CardEnum.FRACTURED, "gray");
+			put(CardEnum.FRACTURED_GRAY, "gray");
 		}
 	};
 
 	public Spyr() {
 		BaseMod.subscribe(this);
 
-		BaseMod.addColor(CardEnum.FRACTURED, Color.LIGHT_GRAY,
+		BaseMod.addColor(CardEnum.FRACTURED_GRAY, Color.LIGHT_GRAY,
 				get512("bg_attack_fractured.png"), get512("bg_skill_fractured.png"),
 				get512("bg_power_fractured.png"), get512("card_fractured_orb.png"),
 				get1024("bg_attack_fractured.png"), get1024("bg_skill_fractured.png"),
@@ -94,7 +94,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	public void receiveEditCharacters() {
 		System.out.println("[SPYR] Editting Characters");
 		BaseMod.addCharacter(new TheFractured(CardCrawlGame.playerName),
-				TheFractured.BUTTON, TheFractured.POTRAIT, CharacterEnum.FRACTURED);
+				TheFractured.BUTTON, TheFractured.POTRAIT, CharacterEnum.FRACTURED_CLASS);
 	}
 
 	@Override

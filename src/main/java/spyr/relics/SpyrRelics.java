@@ -37,7 +37,7 @@ public class SpyrRelics {
 		}
 		
 		// Starter relics for custom classes.
-		BaseMod.addRelicToCustomPool(new Eco(), CardEnum.FRACTURED);
+		BaseMod.addRelicToCustomPool(new Eco(), CardEnum.FRACTURED_GRAY);
 	}
 
 }

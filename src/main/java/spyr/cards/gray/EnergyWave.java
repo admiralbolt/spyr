@@ -28,7 +28,7 @@ public class EnergyWave extends SpyrCard {
 	private static final int UPGRADE_BONUS = 6;
 
 	public EnergyWave() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED,
+		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = POWER;

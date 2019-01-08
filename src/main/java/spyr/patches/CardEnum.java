@@ -6,6 +6,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 public class CardEnum {
 
 	@SpireEnum
-	public static AbstractCard.CardColor FRACTURED;
+	public static AbstractCard.CardColor FRACTURED_GRAY;
 
 }

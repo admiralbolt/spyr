@@ -23,7 +23,7 @@ public class Invert extends SpyrCard {
 	private static final int UPGRADED_COST = 0;
 
 	public Invert() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED,
+		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
 	}
 

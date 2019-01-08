@@ -19,7 +19,7 @@ public class DualForm extends SpyrCard {
 	private static final int UPGRADED_COST = 2;
 
 	public DualForm() {
-		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED,
+		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF);
 	}
 

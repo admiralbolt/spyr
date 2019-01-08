@@ -24,7 +24,7 @@ public class StrikeFractured extends SpyrCard {
 	private static final int UPGRADE_BONUS = 3;
 
 	public StrikeFractured() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED,
+		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = POWER;
 		this.tags.add(BaseModCardTags.BASIC_STRIKE);

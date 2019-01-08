@@ -22,7 +22,7 @@ public class DefendFractured extends SpyrCard {
 	private static final int UPGRADE_BONUS = 3;
 
 	public DefendFractured() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED,
+		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
 		this.block = this.baseBlock = BLOCK;
 		this.tags.add(BaseModCardTags.BASIC_DEFEND);

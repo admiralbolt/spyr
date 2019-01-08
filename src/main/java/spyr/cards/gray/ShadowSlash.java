@@ -26,7 +26,7 @@ public class ShadowSlash extends SpyrCard {
 	private static final int UPGRADE_SCALING = 3;
 
 	public ShadowSlash() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED,
+		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = DARK_FORM_SCALING;
