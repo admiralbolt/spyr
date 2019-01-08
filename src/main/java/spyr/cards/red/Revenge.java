@@ -44,7 +44,8 @@ public class Revenge extends SpyrCard {
 				- AbstractDungeon.player.currentHealth;
 		super.applyPowers();
 		this.rawDescription = this.cardStrings.DESCRIPTION;
-		this.rawDescription = this.rawDescription + this.cardStrings.UPGRADE_DESCRIPTION;
+		this.rawDescription = this.rawDescription
+				+ this.cardStrings.UPGRADE_DESCRIPTION;
 		this.initializeDescription();
 	}
 
