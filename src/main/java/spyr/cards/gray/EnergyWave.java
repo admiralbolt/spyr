@@ -17,7 +17,8 @@ import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
 
 /**
- * Basic defend card.
+ * Deals damage to all characters in dark form, heals all characters in light
+ * form.
  */
 public class EnergyWave extends SpyrCard {
 
@@ -60,7 +61,7 @@ public class EnergyWave extends SpyrCard {
 		this.upgradeMagicNumber(UPGRADE_BONUS);
 		this.upgradeDamage(UPGRADE_BONUS);
 	}
-	
+
 	@Override
 	public void applyPowers() {
 		super.applyPowers();

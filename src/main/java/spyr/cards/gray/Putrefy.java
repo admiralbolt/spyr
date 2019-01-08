@@ -13,12 +13,12 @@ import spyr.patches.CardEnum;
 import spyr.powers.LightEcoPower;
 
 /**
- * Basic defend card.
+ * Applies vulnerable to an enemy. Also applies weak when in light form.
  */
 public class Putrefy extends SpyrCard {
 
 	public static final String ID = "spyr:putrefy";
-	
+
 	private static final int COST = 1;
 	private static final int DURATION = 2;
 	private static final int UPGRADE_DURATION = 1;
@@ -30,12 +30,14 @@ public class Putrefy extends SpyrCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
+				new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
+					new WeakPower(m, this.magicNumber, false), this.magicNumber));
 		}
 	}
-	
+
 	@Override
 	public void doUpgrade() {
 		this.upgradeMagicNumber(UPGRADE_DURATION);

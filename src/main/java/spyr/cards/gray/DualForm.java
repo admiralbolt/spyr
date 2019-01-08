@@ -11,6 +11,10 @@ import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
 
+/**
+ * Adds both DarkEco & LightEco. This will trigger both effects on cards that
+ * gain bonuses from being in one form.
+ */
 public class DualForm extends SpyrCard {
 
 	public static final String ID = "spyr:dual_form";
