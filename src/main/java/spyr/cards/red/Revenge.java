@@ -16,8 +16,6 @@ import spyr.cards.SpyrCard;
 public class Revenge extends SpyrCard {
 
 	public static final String ID = "spyr:revenge";
-	public static CardStrings REVENGE = CardCrawlGame.languagePack
-			.getCardStrings(ID);
 
 	private static final int COST = 3;
 	private static final int UPGRADED_COST = 2;
@@ -38,7 +36,7 @@ public class Revenge extends SpyrCard {
 				.addToBottom(new DamageAction((AbstractCreature) m,
 						new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL),
 						AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-		this.rawDescription = REVENGE.DESCRIPTION;
+		this.rawDescription = this.cardStrings.DESCRIPTION;
 		this.initializeDescription();
 	}
 
@@ -47,8 +45,8 @@ public class Revenge extends SpyrCard {
 		this.baseDamage = AbstractDungeon.player.maxHealth
 				- AbstractDungeon.player.currentHealth;
 		super.applyPowers();
-		this.rawDescription = REVENGE.DESCRIPTION;
-		this.rawDescription = this.rawDescription + REVENGE.UPGRADE_DESCRIPTION;
+		this.rawDescription = this.cardStrings.DESCRIPTION;
+		this.rawDescription = this.rawDescription + this.cardStrings.UPGRADE_DESCRIPTION;
 		this.initializeDescription();
 	}
 
