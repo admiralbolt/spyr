@@ -25,18 +25,30 @@ public class IronSkin extends SpyrCard {
 	private static final int BLOCK_TIMES = 2;
 	private static final int UPGRADE_BLOCK_TIMES = 1;
 
+	/**
+	 * Damage is used to encode what the block is for dark form. We are switching
+	 * between block once and block X times which is difficult to do by itself.
+	 * Since Dual Form is a card, we need to be able to support the case where
+	 * both modes are run, which means we cannot just modify block directly. This
+	 * also means we manually apply powers to the values of the block.
+	 */
 	public IronSkin() {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 		this.block = this.baseBlock = BLOCK;
 		this.magicNumber = this.baseMagicNumber = BLOCK_TIMES;
+		this.damage = this.baseDamage = this.block * this.magicNumber;
+		this.rawDescription = String.format(
+				"Dark Form: Gain %d block. NL Light Form: Gain %d block %d times.",
+				this.block * this.magicNumber, this.block, this.magicNumber);
+		this.initializeDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		// Need to decide if we want to double the intraction with dual form or not.
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(
-					new GainBlockAction(p, p, this.block * this.magicNumber));
+			AbstractDungeon.actionManager
+					.addToBottom(new GainBlockAction(p, p, this.damage));
 		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
 			for (int i = 0; i < this.magicNumber; i++) {
@@ -48,17 +60,31 @@ public class IronSkin extends SpyrCard {
 
 	@Override
 	public void applyPowers() {
-		super.applyPowers();
+		this.damage = SpyrCard.applyBlock(this.baseDamage);
+		if (this.damage != this.baseDamage) {
+			// I hate this, but the text won't show up as modified unless this is set.
+			this.isDamageModified = true;
+		}
+		this.block = SpyrCard.applyBlock(this.baseBlock);
+		if (this.block != this.baseBlock) {
+			this.isBlockModified = true;
+		}
 		StringBuilder description = new StringBuilder();
 		if (AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID)) {
-			description.append(
-					String.format("Gain %d Block. NL ", this.block * this.magicNumber));
+			description.append(this.cardStrings.EXTENDED_DESCRIPTION[0]);
 		}
 		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
 			description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
 		}
 		this.rawDescription = description.toString();
 		this.initializeDescription();
+	}
+
+	@Override
+	public void calculateCardDamage(AbstractMonster mo) {
+		// Leaving this blank. No need to adjust card damage, because it doesn't
+		// deal damage. Another part of the hack to get this card to work as
+		// intended.
 	}
 
 	@Override

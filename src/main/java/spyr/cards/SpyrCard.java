@@ -2,9 +2,12 @@ package spyr.cards;
 
 import java.lang.reflect.InvocationTargetException;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
 import spyr.Spyr;
@@ -64,6 +67,20 @@ public abstract class SpyrCard extends CustomCard {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	/**
+	 * Helper function that applies powers to block values.
+	 */
+	public static int applyBlock(float baseBlock) {
+		float tmp = baseBlock;
+    for (AbstractPower p : AbstractDungeon.player.powers) {
+        tmp = p.modifyBlock(tmp);
+    }
+    if (tmp < 0.0f) {
+        tmp = 0.0f;
+    }
+		return MathUtils.floor(tmp);
 	}
 
 }
