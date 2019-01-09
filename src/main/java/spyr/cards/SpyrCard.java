@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
 import spyr.Spyr;
+import spyr.powers.DarkEcoPower;
+import spyr.powers.LightEcoPower;
 
 /**
  * Abstract base class for all cards. This provides little functionality except
@@ -81,6 +83,18 @@ public abstract class SpyrCard extends CustomCard {
         tmp = 0.0f;
     }
 		return MathUtils.floor(tmp);
+	}
+	
+	public void loadDualCardDescription() {
+		StringBuilder description = new StringBuilder();
+		if (AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID)) {
+			description.append(this.cardStrings.EXTENDED_DESCRIPTION[0]);
+		}
+		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
+			description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
+		}
+		this.rawDescription = description.toString();
+		this.initializeDescription();
 	}
 
 }

@@ -85,6 +85,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 		BaseMod.addCard(new DefendFractured());
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
+		BaseMod.addCard(new EnvelopingShadow());
 		BaseMod.addCard(new Invert());
 		BaseMod.addCard(new IronSkin());
 		BaseMod.addCard(new LightRay());

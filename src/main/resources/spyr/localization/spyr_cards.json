@@ -23,6 +23,14 @@
       "Heal ALL characters !M!. NL"
     ]
   },
+  "spyr:enveloping_shadow": {
+    "NAME": "Enveloping Shadow",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage 3 times. NL",
+      "Enemy loses !M! Strength. NL"
+    ]
+  },
   "spyr:invert": {
     "NAME": "Invert",
     "DESCRIPTION": "Switch between Shadow and Light forms.",
