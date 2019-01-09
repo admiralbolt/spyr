@@ -6,13 +6,13 @@
   },
   "spyr:defend_fractured": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! block.",
-    "UPGRADE_DESCRIPTION": "Gain !B! block."
+    "DESCRIPTION": "Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block."
   },
   "spyr:dual_form": {
     "NAME": "Dual Form",
-    "DESCRIPTION": "Activate dark & light forms.",
-    "UPGRADE_DESCRIPTION": "Activate dark & light forms."
+    "DESCRIPTION": "Activate both Shadow and Light form.",
+    "UPGRADE_DESCRIPTION": "Activate both Shadow and Light form."
   },
   "spyr:energy_wave": {
     "NAME": "Energy Wave",
@@ -20,18 +20,36 @@
     "UPGRADE_DESCRIPTION": "Affected by Form. NL Exhaust",
     "EXTENDED_DESCRIPTION": [
       "Deal !D! damage to ALL characters. NL",
-      "Heal ALL characters !H!. NL"
+      "Heal ALL characters !M!. NL"
     ]
   },
   "spyr:invert": {
     "NAME": "Invert",
-    "DESCRIPTION": "Switch between dark and light forms.",
-    "UPGRADE_DESCRIPTION": "Switch between dark and light forms."
+    "DESCRIPTION": "Switch between Shadow and Light forms.",
+    "UPGRADE_DESCRIPTION": "Switch between Shadow and Light forms."
+  },
+  "spyr:iron_skin": {
+    "NAME": "Iron Skin",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Gain !D! Block.",
+      "Gain !B! Block !M! times."
+    ]
+  },
+  "spyr:light_ray": {
+    "NAME": "Light Ray",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Switch to Light Form. NL Light Charged: Apply 1 Vulnerable.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. Switch to Light Form. NL Light Charged: Apply 1 Weak and Vulnerable."
   },
   "spyr:masochism": {
     "NAME": "Masochism",
     "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage each time you lose HP in combat.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage each time you lose HP in combat."
+  },
+  "spyr:putrefy": {
+    "NAME": "Putrefy",
+    "DESCRIPTION": "Apply !M! Vulnerable. NL LightCharged: Apply !M! Weak.",
+    "UPGRADE_DESCRIPTION": ""
   },
   "spyr:revenge": {
     "NAME": "Revenge",
@@ -40,8 +58,8 @@
   },
   "spyr:shadow_slash": {
     "NAME": "Shadow Slash",
-    "DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in dark form.",
-    "UPGRADE_DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in dark form."
+    "DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in Shadow Form.",
+    "UPGRADE_DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in Shadow Form."
   },
   "spyr:staunch_bleeding": {
     "NAME": "Staunch Bleeding",

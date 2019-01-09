@@ -39,7 +39,7 @@ public class IronSkin extends SpyrCard {
 		this.magicNumber = this.baseMagicNumber = BLOCK_TIMES;
 		this.damage = this.baseDamage = this.block * this.magicNumber;
 		this.rawDescription = String.format(
-				"Dark Form: Gain %d block. NL Light Form: Gain %d block %d times.",
+				"Shadow Form: Gain %d block. NL Light Form: Gain %d block %d times.",
 				this.block * this.magicNumber, this.block, this.magicNumber);
 		this.initializeDescription();
 	}

@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import basemod.BaseMod;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
+import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import spyr.cards.gray.*;
@@ -26,7 +27,7 @@ import spyr.relics.SpyrRelics;
 
 @SpireInitializer
 public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
-		EditRelicsSubscriber, EditStringsSubscriber {
+		EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber {
 
 	public static final String ATK = "spyr/images/cardui/512/bg_attack_fractured.png";
 
@@ -85,8 +86,8 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
 		BaseMod.addCard(new Invert());
-    BaseMod.addCard(new IronSkin());
-    BaseMod.addCard(new LightRay());
+		BaseMod.addCard(new IronSkin());
+		BaseMod.addCard(new LightRay());
 		BaseMod.addCard(new Putrefy());
 		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
@@ -97,7 +98,21 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	public void receiveEditCharacters() {
 		System.out.println("[SPYR] Editting Characters");
 		BaseMod.addCharacter(new TheFractured(CardCrawlGame.playerName),
-				TheFractured.BUTTON, TheFractured.POTRAIT, CharacterEnum.FRACTURED_CLASS);
+				TheFractured.BUTTON, TheFractured.POTRAIT,
+				CharacterEnum.FRACTURED_CLASS);
+	}
+
+	@Override
+	public void receiveEditKeywords() {
+		System.out.println("[SPYR] Editting Keywords.");
+		String[] shadow = {"shadow"};
+		String[] light = {"light"};
+		String[] shadowCharged = {"shadowcharged"};
+		String[] lightCharged = {"lightcharged"};
+		BaseMod.addKeyword(shadow, "Grants additional effects to some cards.");
+		BaseMod.addKeyword(light, "Grants additional effects to some cards.");
+		BaseMod.addKeyword(shadowCharged, "An additional effect that only happens when you have dark eco.");
+		BaseMod.addKeyword(lightCharged, "An additional effect that only happens when you have light eco.");
 	}
 
 	@Override
