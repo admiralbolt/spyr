@@ -23,7 +23,7 @@ import spyr.powers.LightEcoPower;
  * auto-calculated as spyr/images/cards/[color]/[type]/[name].png.
  */
 public abstract class SpyrCard extends CustomCard {
-	
+
 	public CardStrings cardStrings;
 
 	public SpyrCard(String id, int cost, CardType type, CardColor color,
@@ -70,21 +70,25 @@ public abstract class SpyrCard extends CustomCard {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Helper function that applies powers to block values.
 	 */
 	public static int applyBlock(float baseBlock) {
 		float tmp = baseBlock;
-    for (AbstractPower p : AbstractDungeon.player.powers) {
-        tmp = p.modifyBlock(tmp);
-    }
-    if (tmp < 0.0f) {
-        tmp = 0.0f;
-    }
+		for (AbstractPower p : AbstractDungeon.player.powers) {
+			tmp = p.modifyBlock(tmp);
+		}
+		if (tmp < 0.0f) {
+			tmp = 0.0f;
+		}
 		return MathUtils.floor(tmp);
 	}
-	
+
+	/**
+	 * This is a helper function to be used to recalculate dual-card description
+	 * text during combat.
+	 */
 	public void loadDualCardDescription() {
 		StringBuilder description = new StringBuilder();
 		if (AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID)) {
@@ -93,6 +97,20 @@ public abstract class SpyrCard extends CustomCard {
 		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
 			description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
 		}
+		this.rawDescription = description.toString();
+		this.initializeDescription();
+	}
+
+	/**
+	 * This is a helper function to be used to calculate dual-card description
+	 * outside of combat. It includes the description of both card effects.
+	 */
+	public void initializeDualCardDescription() {
+		StringBuilder description = new StringBuilder();
+		description.append("ShadowForm: ");
+		description.append(this.cardStrings.EXTENDED_DESCRIPTION[0]);
+		description.append("LightForm: ");
+		description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
 		this.rawDescription = description.toString();
 		this.initializeDescription();
 	}

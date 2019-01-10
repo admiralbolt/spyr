@@ -34,7 +34,7 @@ public class ShadowSlash extends SpyrCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(
-				new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
+				new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
 	}

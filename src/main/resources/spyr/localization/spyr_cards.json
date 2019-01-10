@@ -4,6 +4,22 @@
     "DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times."
   },
+  "spyr:bitter_release": {
+    "NAME": "Bitter Release",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage to ALL enemies. NL ",
+      "Apply !M! Poison to ALL enemies. NL "
+    ]
+  },
+  "spyr:channel_power": {
+    "NAME": "Channel Power",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage. NL ",
+      "Apply !M! Vulnerable and Weak. NL "
+    ]
+  },
   "spyr:defend_fractured": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block.",
@@ -11,13 +27,12 @@
   },
   "spyr:dual_form": {
     "NAME": "Dual Form",
-    "DESCRIPTION": "Activate both Shadow and Light form.",
-    "UPGRADE_DESCRIPTION": "Activate both Shadow and Light form."
+    "DESCRIPTION": "Activate both ShadowForm and LightForm.",
+    "UPGRADE_DESCRIPTION": "Activate both ShadowForm and LightForm."
   },
   "spyr:energy_wave": {
     "NAME": "Energy Wave",
-    "DESCRIPTION": "Affected by Form. NL Exhaust",
-    "UPGRADE_DESCRIPTION": "Affected by Form. NL Exhaust",
+    "DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "Deal !D! damage to ALL characters. NL",
       "Heal ALL characters !M!. NL"
@@ -33,8 +48,8 @@
   },
   "spyr:invert": {
     "NAME": "Invert",
-    "DESCRIPTION": "Switch between Shadow and Light forms.",
-    "UPGRADE_DESCRIPTION": "Switch between Shadow and Light forms."
+    "DESCRIPTION": "Switch between ShadowForm and LightForm.",
+    "UPGRADE_DESCRIPTION": "Switch between ShadowForm and LightForm."
   },
   "spyr:iron_skin": {
     "NAME": "Iron Skin",
@@ -46,8 +61,8 @@
   },
   "spyr:light_ray": {
     "NAME": "Light Ray",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. Switch to Light Form. NL Light Charged: Apply 1 Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. Switch to Light Form. NL Light Charged: Apply 1 Weak and Vulnerable."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL LightForm: Apply 1 Vulnerable. NL Switch to LightForm.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL LightForm: Apply 1 Weak and Vulnerable. NL Switch to Light Form."
   },
   "spyr:masochism": {
     "NAME": "Masochism",
@@ -56,8 +71,12 @@
   },
   "spyr:putrefy": {
     "NAME": "Putrefy",
-    "DESCRIPTION": "Apply !M! Vulnerable. NL LightCharged: Apply !M! Weak.",
+    "DESCRIPTION": "Apply !M! Vulnerable. NL LightForm: Apply !M! Weak.",
     "UPGRADE_DESCRIPTION": ""
+  },
+  "spyr:quick_change": {
+    "NAME": "Quick Change",
+    "DESCRIPTION": "Draw !M! card. NL Switch between ShadowForm and LightForm."
   },
   "spyr:revenge": {
     "NAME": "Revenge",
@@ -66,8 +85,8 @@
   },
   "spyr:shadow_slash": {
     "NAME": "Shadow Slash",
-    "DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in Shadow Form.",
-    "UPGRADE_DESCRIPTION": "Deals !D! damage. NL Deals !M! more damage when in Shadow Form."
+    "DESCRIPTION": "Deals !D! damage. NL ShadowForm: Deal !M! more damage.",
+    "UPGRADE_DESCRIPTION": "Deals !D! damage. NL ShadowForm: Deal !M! more damage."
   },
   "spyr:staunch_bleeding": {
     "NAME": "Staunch Bleeding",

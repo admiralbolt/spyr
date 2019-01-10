@@ -38,10 +38,7 @@ public class IronSkin extends SpyrCard {
 		this.block = this.baseBlock = BLOCK;
 		this.magicNumber = this.baseMagicNumber = BLOCK_TIMES;
 		this.damage = this.baseDamage = this.block * this.magicNumber;
-		this.rawDescription = String.format(
-				"Shadow Form: Gain %d block. NL Light Form: Gain %d block %d times.",
-				this.block * this.magicNumber, this.block, this.magicNumber);
-		this.initializeDescription();
+		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -69,15 +66,7 @@ public class IronSkin extends SpyrCard {
 		if (this.block != this.baseBlock) {
 			this.isBlockModified = true;
 		}
-		StringBuilder description = new StringBuilder();
-		if (AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID)) {
-			description.append(this.cardStrings.EXTENDED_DESCRIPTION[0]);
-		}
-		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
-			description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
-		}
-		this.rawDescription = description.toString();
-		this.initializeDescription();
+		this.loadDualCardDescription();
 	}
 
 	@Override

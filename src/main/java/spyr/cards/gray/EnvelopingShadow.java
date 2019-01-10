@@ -34,6 +34,7 @@ public class EnvelopingShadow extends SpyrCard {
 				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = STRENGTH_REDUCTION;
+		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {

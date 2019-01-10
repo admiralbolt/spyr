@@ -36,6 +36,7 @@ public class EnergyWave extends SpyrCard {
 		this.isMultiDamage = true;
 		this.exhaust = true;
 		this.tags.add(CardTags.HEALING);
+		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {

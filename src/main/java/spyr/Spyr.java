@@ -82,6 +82,8 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 
 		// Fractured
 		// =========
+    BaseMod.addCard(new BitterRelease());
+    BaseMod.addCard(new ChannelPower());
 		BaseMod.addCard(new DefendFractured());
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
@@ -90,6 +92,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 		BaseMod.addCard(new IronSkin());
 		BaseMod.addCard(new LightRay());
 		BaseMod.addCard(new Putrefy());
+    BaseMod.addCard(new QuickChange());
 		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
 
@@ -106,14 +109,10 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	@Override
 	public void receiveEditKeywords() {
 		System.out.println("[SPYR] Editting Keywords.");
-		String[] shadow = {"shadow"};
-		String[] light = {"light"};
-		String[] shadowCharged = {"shadowcharged"};
-		String[] lightCharged = {"lightcharged"};
+		String[] shadow = {"shadowform"};
+		String[] light = {"lightform"};
 		BaseMod.addKeyword(shadow, "Grants additional effects to some cards.");
 		BaseMod.addKeyword(light, "Grants additional effects to some cards.");
-		BaseMod.addKeyword(shadowCharged, "An additional effect that only happens when you have dark eco.");
-		BaseMod.addKeyword(lightCharged, "An additional effect that only happens when you have light eco.");
 	}
 
 	@Override
