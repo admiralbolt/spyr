@@ -17,5 +17,12 @@
       "Upon losing HP from a card, gain #b",
       " #yRegen."
     ]
+  },
+  "spyr:unholy_fire": {
+    "NAME": "Unholy Fire",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose #b",
+      " HP, then increase #yUnholy Fire by #b1."
+    ]
   }
 }
