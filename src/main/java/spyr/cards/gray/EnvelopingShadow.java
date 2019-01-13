@@ -30,31 +30,24 @@ public class EnvelopingShadow extends SpyrCard {
 	private static final int UPGRADE_COST = 1;
 
 	public EnvelopingShadow() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
+		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.RARE,
+				AbstractCard.CardTarget.ENEMY, /* is_dual= */true);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = STRENGTH_REDUCTION;
-		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
 			for (int i = 0; i < 3; i++) {
-				AbstractDungeon.actionManager.addToBottom(
-						new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-								AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m,
+						new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 			}
 		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
-					new StrengthPower(m, -this.magicNumber), -this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(
+					new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
 		}
 
-	}
-
-	@Override
-	public void applyPowers() {
-		this.loadDualCardDescription();
 	}
 
 	@Override

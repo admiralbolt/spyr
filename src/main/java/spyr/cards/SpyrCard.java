@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
 import spyr.Spyr;
+import spyr.patches.SpyrTags;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
 
@@ -25,18 +26,29 @@ import spyr.powers.LightEcoPower;
 public abstract class SpyrCard extends CustomCard {
 
 	public CardStrings cardStrings;
+	private boolean isDual;
 
 	public SpyrCard(String id, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
-		this(id, CardCrawlGame.languagePack.getCardStrings(id), cost, type, color, rarity, target);
+		this(id, CardCrawlGame.languagePack.getCardStrings(id), cost, type, color, rarity, target, false);
+	}
+
+	public SpyrCard(String id, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target,
+			boolean isDual) {
+		this(id, CardCrawlGame.languagePack.getCardStrings(id), cost, type, color, rarity, target, isDual);
 	}
 
 	private SpyrCard(String id, CardStrings cardStrings, int cost, CardType type, CardColor color, CardRarity rarity,
-			CardTarget target) {
+			CardTarget target, boolean isDual) {
 		super(id, cardStrings.NAME,
 				String.format("spyr/images/cards/%s/%s/%s.png", Spyr.COLOR_MAP.get(color),
 						type.toString().toLowerCase(), id.split(":")[1]),
 				cost, cardStrings.DESCRIPTION, type, color, rarity, target);
 		this.cardStrings = cardStrings;
+		this.isDual = isDual;
+		if (this.isDual) {
+			this.tags.add(SpyrTags.IS_DUAL);
+			this.initializeDualCardDescription();
+		}
 	}
 
 	@Override
@@ -44,6 +56,14 @@ public abstract class SpyrCard extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.doUpgrade();
+		}
+	}
+
+	@Override
+	public void applyPowers() {
+		super.applyPowers();
+		if (this.isDual) {
+			this.loadDualCardDescription();
 		}
 	}
 
@@ -97,9 +117,9 @@ public abstract class SpyrCard extends CustomCard {
 	 */
 	public String getDualCardDescription(boolean hasShadow, boolean hasLight) {
 		StringBuilder description = new StringBuilder();
-		int shadowIndex = (this.upgraded && this.cardStrings.EXTENDED_DESCRIPTION[2] != null
+		int shadowIndex = (this.upgraded && this.cardStrings.EXTENDED_DESCRIPTION.length > 2
 				&& !this.cardStrings.EXTENDED_DESCRIPTION[2].isEmpty()) ? 2 : 0;
-		int lightIndex = (this.upgraded && this.cardStrings.EXTENDED_DESCRIPTION[3] != null
+		int lightIndex = (this.upgraded && this.cardStrings.EXTENDED_DESCRIPTION.length > 3
 				&& !this.cardStrings.EXTENDED_DESCRIPTION[3].isEmpty()) ? 3 : 1;
 		if (hasShadow) {
 			description.append("ShadowForm: ");

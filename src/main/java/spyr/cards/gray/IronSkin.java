@@ -28,29 +28,26 @@ public class IronSkin extends SpyrCard {
 	/**
 	 * Damage is used to encode what the block is for dark form. We are switching
 	 * between block once and block X times which is difficult to do by itself.
-	 * Since Dual Form is a card, we need to be able to support the case where
-	 * both modes are run, which means we cannot just modify block directly. This
-	 * also means we manually apply powers to the values of the block.
+	 * Since Dual Form is a card, we need to be able to support the case where both
+	 * modes are run, which means we cannot just modify block directly. This also
+	 * means we manually apply powers to the values of the block.
 	 */
 	public IronSkin() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
+		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.COMMON,
+				AbstractCard.CardTarget.SELF, /* is_dual= */true);
 		this.block = this.baseBlock = BLOCK;
 		this.magicNumber = this.baseMagicNumber = BLOCK_TIMES;
 		this.damage = this.baseDamage = this.block * this.magicNumber;
-		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		// Need to decide if we want to double the intraction with dual form or not.
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager
-					.addToBottom(new GainBlockAction(p, p, this.damage));
+			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.damage));
 		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
 			for (int i = 0; i < this.magicNumber; i++) {
-				AbstractDungeon.actionManager
-						.addToBottom(new GainBlockAction(p, p, this.block));
+				AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 			}
 		}
 	}

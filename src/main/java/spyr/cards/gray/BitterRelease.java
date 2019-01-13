@@ -28,18 +28,16 @@ public class BitterRelease extends SpyrCard {
 	private static final int UPGRADE_POISON = 3;
 
 	public BitterRelease() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ALL_ENEMY);
+		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
+				AbstractCard.CardTarget.ALL_ENEMY, /* is_dual= */true);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = POISON;
-		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager
-					.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
-							this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
+					this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
 			if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
@@ -47,17 +45,11 @@ public class BitterRelease extends SpyrCard {
 				for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
 					if (monster.isDead || monster.isDying)
 						continue;
-					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-							monster, p, new PoisonPower(monster, p, this.magicNumber),
-							this.magicNumber));
+					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, p,
+							new PoisonPower(monster, p, this.magicNumber), this.magicNumber));
 				}
 			}
 		}
-	}
-
-	@Override
-	public void applyPowers() {
-		this.loadDualCardDescription();
 	}
 
 	@Override

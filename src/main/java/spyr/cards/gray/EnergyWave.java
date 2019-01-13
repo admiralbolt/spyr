@@ -29,31 +29,27 @@ public class EnergyWave extends SpyrCard {
 	private static final int UPGRADE_BONUS = 6;
 
 	public EnergyWave() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY);
+		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.RARE,
+				AbstractCard.CardTarget.ALL_ENEMY, /* is_dual= */true);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = POWER;
 		this.isMultiDamage = true;
 		this.exhaust = true;
 		this.tags.add(CardTags.HEALING);
-		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		// This is done as two separate if statements to explicitly support
 		// DualForm.
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
+					this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 			AbstractDungeon.actionManager
-					.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
-							this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
-			AbstractDungeon.actionManager.addToBottom(new DamageAction(p,
-					new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+					.addToBottom(new DamageAction(p, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
 		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager
-					.addToBottom(new HealAllEnemiesAction(p, this.multiDamage));
-			AbstractDungeon.actionManager
-					.addToBottom(new HealAction(p, p, this.damage));
+			AbstractDungeon.actionManager.addToBottom(new HealAllEnemiesAction(p, this.multiDamage));
+			AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, this.damage));
 		}
 	}
 
@@ -61,21 +57,6 @@ public class EnergyWave extends SpyrCard {
 	public void doUpgrade() {
 		this.upgradeMagicNumber(UPGRADE_BONUS);
 		this.upgradeDamage(UPGRADE_BONUS);
-	}
-
-	@Override
-	public void applyPowers() {
-		super.applyPowers();
-		StringBuilder description = new StringBuilder();
-		if (AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID)) {
-			description.append(this.cardStrings.EXTENDED_DESCRIPTION[0]);
-		}
-		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
-			description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
-		}
-		description.append(this.cardStrings.DESCRIPTION);
-		this.rawDescription = description.toString();
-		this.initializeDescription();
 	}
 
 }

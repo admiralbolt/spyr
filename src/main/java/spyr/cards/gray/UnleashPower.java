@@ -31,11 +31,10 @@ public class UnleashPower extends SpyrCard {
 
 	public UnleashPower() {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.RARE,
-				AbstractCard.CardTarget.SELF);
+				AbstractCard.CardTarget.SELF, /* is_dual= */true);
 		this.block = this.baseBlock = BLOCK;
 		this.magicNumber = this.baseMagicNumber = FIRE_AMOUNT;
 		this.exhaust = true;
-		this.initializeDualCardDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -55,11 +54,6 @@ public class UnleashPower extends SpyrCard {
 				}
 			}
 		}
-	}
-
-	@Override
-	public void applyPowers() {
-		this.loadDualCardDescription();
 	}
 
 	@Override

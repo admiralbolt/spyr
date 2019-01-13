@@ -16,7 +16,7 @@ import spyr.patches.CardEnum;
 public class DefendFractured extends SpyrCard {
 
 	public static final String ID = "spyr:defend_fractured";
-	
+
 	private static final int COST = 1;
 	private static final int BLOCK = 5;
 	private static final int UPGRADE_BONUS = 3;
@@ -30,9 +30,8 @@ public class DefendFractured extends SpyrCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-
 	}
-	
+
 	@Override
 	public void doUpgrade() {
 		this.upgradeBlock(UPGRADE_BONUS);
