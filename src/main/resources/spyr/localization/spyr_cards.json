@@ -98,7 +98,7 @@
   },
   "spyr:unleash_power": {
     "NAME": "Unleash Power",
-    "DESCRIPTION": " NL Exhaust.",
+    "DESCRIPTION": "Exhaust.",
     "EXTENDED_DESCRIPTION": [
       "Gain !B! Block. NL Block is not removed at the start of your next turn.",
       "Apply !M! UnholyFire to ALL enemies.",
