@@ -73,6 +73,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 		// BaseMod.addCard(new Masochism());
 		// BaseMod.addCard(new Revenge());
 		// BaseMod.addCard(new StaunchBleeding());
+
 		// Silent
 		// ======
 
@@ -95,7 +96,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
     BaseMod.addCard(new QuickChange());
 		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
-
+		BaseMod.addCard(new UnleashPower());
 	}
 
 	@Override

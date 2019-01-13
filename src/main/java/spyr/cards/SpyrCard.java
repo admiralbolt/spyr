@@ -17,7 +17,7 @@ import spyr.powers.LightEcoPower;
 /**
  * Abstract base class for all cards. This provides little functionality except
  * removing some boilerplate and auto-calculating the image path.
- * 
+ *
  * The name and description are loaded from the card strings located in
  * src/main/resources/localization/spyr_cards.json. The image path is
  * auto-calculated as spyr/images/cards/[color]/[type]/[name].png.
@@ -111,6 +111,25 @@ public abstract class SpyrCard extends CustomCard {
 		description.append(this.cardStrings.EXTENDED_DESCRIPTION[0]);
 		description.append("LightForm: ");
 		description.append(this.cardStrings.EXTENDED_DESCRIPTION[1]);
+		if (this.cardStrings.DESCRIPTION != null && !this.cardStrings.DESCRIPTION.isEmpty()) {
+			description.append(this.cardStrings.DESCRIPTION);
+		}
+		this.rawDescription = description.toString();
+		this.initializeDescription();
+	}
+
+	/**
+   * A helper function that upgrades dual-card descriptions.
+	 */
+	public void upgradeDualCardDescription() {
+		StringBuilder description = new StringBuilder();
+		description.append("ShadowForm: ");
+		description.append(this.cardStrings.EXTENDED_DESCRIPTION[2]);
+		description.append("LightForm: ");
+		description.append(this.cardStrings.EXTENDED_DESCRIPTION[3]);
+		if (this.cardStrings.DESCRIPTION != null && !this.cardStrings.DESCRIPTION.isEmpty()) {
+			description.append(this.cardStrings.DESCRIPTION);
+		}
 		this.rawDescription = description.toString();
 		this.initializeDescription();
 	}

@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
@@ -41,12 +42,15 @@ public class UnholyFireLoseHPAction extends AbstractGameAction {
 		}
 		this.tickDuration();
 		if (this.isDone && this.target.hasPower(UnholyFirePower.POWER_ID)) {
-			// Custom logic for shit here.
 			if (target.currentHealth > 0) {
-				this.target.tint.color = Color.CHARTREUSE.cpy();
-				this.target.tint.changeColor(Color.BLACK.cpy());
+				this.target.tint.color = Color.BLACK.cpy();
+				this.target.tint.changeColor(Color.WHITE.cpy());
 				this.target.damage(new DamageInfo(this.source, this.amount,
 						DamageInfo.DamageType.HP_LOSS));
+				// Tick up fire instead of down.
+				AbstractPower firePower = this.target.getPower(UnholyFirePower.POWER_ID);
+				firePower.amount += 1;
+				firePower.updateDescription();
 			}
 		}
 	}

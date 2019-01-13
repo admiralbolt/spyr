@@ -22,7 +22,8 @@
     "NAME": "Unholy Fire",
     "DESCRIPTIONS": [
       "At the start of your turn, lose #b",
-      " HP, then increase #yUnholy Fire by #b1."
+      " HP, then increase #yUnholy Fire by #b",
+      "."
     ]
   }
 }

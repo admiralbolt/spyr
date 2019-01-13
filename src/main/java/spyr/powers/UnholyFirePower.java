@@ -10,12 +10,13 @@ import spyr.actions.UnholyFireLoseHPAction;
 public class UnholyFirePower extends SpyrPower {
 
 	public static final String POWER_ID = "spyr:unholy_fire";
-	
+
 	private AbstractCreature source;
 
 	public UnholyFirePower(AbstractCreature owner, AbstractCreature source, int strAmt) {
   		super(POWER_ID, owner, strAmt);
   		this.source = source;
+
   	}
 
 	@Override
@@ -26,6 +27,12 @@ public class UnholyFirePower extends SpyrPower {
 			AbstractDungeon.actionManager
 					.addToBottom(new UnholyFireLoseHPAction(owner, this.source, amount, AbstractGameAction.AttackEffect.POISON));
 		}
+	}
+
+	@Override
+	public void updateDescription() {
+		this.description = this.powerStrings.DESCRIPTIONS[0] + this.amount
+				+ this.powerStrings.DESCRIPTIONS[1] + this.amount + this.powerStrings.DESCRIPTIONS[2];
 	}
 
 }
