@@ -1,6 +1,6 @@
 #!/bin/bash
 
-java -jar cfr_0_132.jar \
+java -jar cfr_0_139.jar \
   --comments true \
   --showversion false \
   --caseinsensitivefs true \

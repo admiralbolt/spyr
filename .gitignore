@@ -13,4 +13,5 @@ lib/*
 !lib/run.sh
 !lib/decompile.sh
 !lib/copy_latest.sh
+!lib/cfr_0_139.jar
 twitchconfig.txt
