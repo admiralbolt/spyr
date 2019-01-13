@@ -47,9 +47,9 @@ public class UnholyFireLoseHPAction extends AbstractGameAction {
 				this.target.tint.changeColor(Color.WHITE.cpy());
 				this.target.damage(new DamageInfo(this.source, this.amount,
 						DamageInfo.DamageType.HP_LOSS));
-				// Tick up fire instead of down.
+				// Double the fire power.
 				AbstractPower firePower = this.target.getPower(UnholyFirePower.POWER_ID);
-				firePower.amount += 1;
+				firePower.amount *= 2;
 				firePower.updateDescription();
 			}
 		}
