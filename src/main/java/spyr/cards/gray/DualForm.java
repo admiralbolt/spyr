@@ -20,11 +20,11 @@ public class DualForm extends SpyrCard {
 	public static final String ID = "spyr:dual_form";
 
 	private static final int COST = 3;
-	private static final int UPGRADED_COST = 2;
 
 	public DualForm() {
 		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF);
+		this.isEthereal = true;
 	}
 
 	@Override
@@ -41,7 +41,8 @@ public class DualForm extends SpyrCard {
 
 	@Override
 	public void doUpgrade() {
-		this.upgradeBaseCost(UPGRADED_COST);
+		this.isEthereal = false;
+		this.rawDescription = this.cardStrings.UPGRADE_DESCRIPTION;
 	}
 
 }
