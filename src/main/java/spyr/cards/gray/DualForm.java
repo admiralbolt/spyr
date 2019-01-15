@@ -43,6 +43,7 @@ public class DualForm extends SpyrCard {
 	public void doUpgrade() {
 		this.isEthereal = false;
 		this.rawDescription = this.cardStrings.UPGRADE_DESCRIPTION;
+		this.initializeDescription();
 	}
 
 }
