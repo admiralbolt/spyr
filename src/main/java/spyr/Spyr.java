@@ -83,6 +83,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 
 		// Fractured
 		// =========
+		BaseMod.addCard(new AnnihilatorBeam());
     BaseMod.addCard(new BitterRelease());
     BaseMod.addCard(new ChannelPower());
 		BaseMod.addCard(new DefendFractured());

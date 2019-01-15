@@ -1,4 +1,8 @@
 {
+  "spyr:annihilator_beam": {
+    "NAME": "Annihilator Beam",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Lose all forms. Deal !M! bonus damage for each form lost."
+  },
   "spyr:beep_boop": {
     "NAME": "Beep Boop",
     "DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times.",
