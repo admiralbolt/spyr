@@ -8,6 +8,10 @@
     "DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Focus affects Beep Boop !M! times."
   },
+  "spyr:black_shield": {
+    "NAME": "Black Shield",
+    "DESCRIPTION": "Gain !B! Block. NL ShadowForm: Gain !M! Artifact."
+  },
   "spyr:bitter_release": {
     "NAME": "Bitter Release",
     "DESCRIPTION": "",

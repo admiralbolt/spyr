@@ -24,8 +24,8 @@ public class AnnihilatorBeam extends SpyrCard {
 	public static final String ID = "spyr:annihilator_beam";
 
 	private static final int COST = 2;
-	private static final int POWER = 20;
-	private static final int LOST_FORM_BONUS_DAMAGE = 10;
+	private static final int POWER = 10;
+	private static final int LOST_FORM_BONUS_DAMAGE = 15;
 
 	private static final int UPGRADE_LOST_FORM_DAMAGE = 10;
 
