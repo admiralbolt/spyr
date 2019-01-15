@@ -85,6 +85,10 @@
     "DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage each time you lose HP in combat.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Deals !M! more damage each time you lose HP in combat."
   },
+  "spyr:meditate": {
+    "NAME": "Meditate",
+    "DESCRIPTION": "Gain !B! block. NL Look at the top 3 cards of your deck. Keep 1 and discard the rest."
+  },
   "spyr:putrefy": {
     "NAME": "Putrefy",
     "DESCRIPTION": "Apply !M! Vulnerable. NL LightForm: Apply !M! Weak.",
