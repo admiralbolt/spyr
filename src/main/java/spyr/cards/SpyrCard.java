@@ -121,6 +121,9 @@ public abstract class SpyrCard extends CustomCard {
 				&& !this.cardStrings.EXTENDED_DESCRIPTION[2].isEmpty()) ? 2 : 0;
 		int lightIndex = (this.upgraded && this.cardStrings.EXTENDED_DESCRIPTION.length > 3
 				&& !this.cardStrings.EXTENDED_DESCRIPTION[3].isEmpty()) ? 3 : 1;
+		if (this.cardStrings.DESCRIPTION != null && !this.cardStrings.DESCRIPTION.isEmpty()) {
+			description.append(this.cardStrings.DESCRIPTION);
+		}
 		if (hasShadow) {
 			description.append("ShadowForm: ");
 			description.append(this.cardStrings.EXTENDED_DESCRIPTION[shadowIndex]);
@@ -130,9 +133,6 @@ public abstract class SpyrCard extends CustomCard {
 			description.append("LightForm: ");
 			description.append(this.cardStrings.EXTENDED_DESCRIPTION[lightIndex]);
 			description.append(" NL ");
-		}
-		if (this.cardStrings.DESCRIPTION != null && !this.cardStrings.DESCRIPTION.isEmpty()) {
-			description.append(this.cardStrings.DESCRIPTION);
 		}
 		return description.toString();
 	}

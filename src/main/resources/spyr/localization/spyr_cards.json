@@ -28,6 +28,14 @@
       "Apply !M! Vulnerable and Weak. NL "
     ]
   },
+  "spyr:charge_energy": {
+    "NAME": "Charge Energy",
+    "DESCRIPTION": "Gain !M! Strength and Dexterity. NL ",
+    "EXTENDED_DESCRIPTION": [
+      "Gain !M! Weak. NL ",
+      "Gain !M! Vulnerable. NL "
+    ]
+  },
   "spyr:defend_fractured": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block.",
