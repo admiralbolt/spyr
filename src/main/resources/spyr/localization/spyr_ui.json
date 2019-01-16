@@ -1,4 +1,9 @@
 {
+  "spyr:exhaust_cards_from_deck_action": {
+    "TEXT": [
+      "Choose two cards to exhaust."
+    ]
+  },
   "spyr:meditate_action": {
     "TEXT": [
       "Choose one card to add to your hand. Discard the rest."

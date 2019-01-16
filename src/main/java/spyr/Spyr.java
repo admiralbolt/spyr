@@ -25,6 +25,7 @@ import spyr.cards.gray.BitterRelease;
 import spyr.cards.gray.BlackShield;
 import spyr.cards.gray.ChannelPower;
 import spyr.cards.gray.ChargeEnergy;
+import spyr.cards.gray.DeepDream;
 import spyr.cards.gray.DefendFractured;
 import spyr.cards.gray.DualForm;
 import spyr.cards.gray.EnergyWave;
@@ -104,6 +105,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new BlackShield());
 		BaseMod.addCard(new ChannelPower());
 		BaseMod.addCard(new ChargeEnergy());
+		BaseMod.addCard(new DeepDream());
 		BaseMod.addCard(new DefendFractured());
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
