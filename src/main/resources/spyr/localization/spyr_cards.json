@@ -66,6 +66,10 @@
       "Enemy loses !M! Strength. NL"
     ]
   },
+  "spyr:growing_darkness": {
+    "NAME": "Growing Darkness",
+    "DESCRIPTION": "At the start of each turn, if you are in ShadowForm gain !M! Strength."
+  },
   "spyr:invert": {
     "NAME": "Invert",
     "DESCRIPTION": "Switch between ShadowForm and LightForm.",

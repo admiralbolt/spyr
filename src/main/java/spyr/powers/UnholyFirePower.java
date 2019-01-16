@@ -14,25 +14,25 @@ public class UnholyFirePower extends SpyrPower {
 	private AbstractCreature source;
 
 	public UnholyFirePower(AbstractCreature owner, AbstractCreature source, int strAmt) {
-  		super(POWER_ID, owner, strAmt);
-  		this.source = source;
+		super(POWER_ID, owner, strAmt);
+		this.source = source;
 
-  	}
+	}
 
 	@Override
 	public void atStartOfTurn() {
 		if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT
 				&& !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
 			flashWithoutSound();
-			AbstractDungeon.actionManager
-					.addToBottom(new UnholyFireLoseHPAction(owner, this.source, amount, AbstractGameAction.AttackEffect.POISON));
+			AbstractDungeon.actionManager.addToBottom(
+					new UnholyFireLoseHPAction(owner, this.source, amount, AbstractGameAction.AttackEffect.POISON));
 		}
 	}
 
 	@Override
 	public void updateDescription() {
-		this.description = this.powerStrings.DESCRIPTIONS[0] + this.amount
-				+ this.powerStrings.DESCRIPTIONS[1] + this.amount + this.powerStrings.DESCRIPTIONS[2];
+		this.description = this.powerStrings.DESCRIPTIONS[0] + this.amount + this.powerStrings.DESCRIPTIONS[1]
+				+ this.amount + this.powerStrings.DESCRIPTIONS[2];
 	}
 
 }

@@ -11,6 +11,13 @@
       "Light energy."
     ]
   },
+  "spyr:growing_darkness": {
+    "NAME": "Growing Darkness",
+    "DESCRIPTIONS": [
+      "At the start of your turn, if you are in ShadowForm gain #b",
+      " #yStrength."
+    ]
+  },
   "spyr:staunch_bleeding": {
     "NAME": "Staunch Bleeding",
     "DESCRIPTIONS": [

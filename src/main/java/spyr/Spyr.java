@@ -30,6 +30,7 @@ import spyr.cards.gray.DefendFractured;
 import spyr.cards.gray.DualForm;
 import spyr.cards.gray.EnergyWave;
 import spyr.cards.gray.EnvelopingShadow;
+import spyr.cards.gray.GrowingDarkness;
 import spyr.cards.gray.Invert;
 import spyr.cards.gray.IronSkin;
 import spyr.cards.gray.LightRay;
@@ -110,6 +111,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
 		BaseMod.addCard(new EnvelopingShadow());
+		BaseMod.addCard(new GrowingDarkness());
 		BaseMod.addCard(new Invert());
 		BaseMod.addCard(new IronSkin());
 		BaseMod.addCard(new LightRay());
