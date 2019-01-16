@@ -26,7 +26,18 @@ public class MeditateAction extends AbstractGameAction {
 	@Override
 	public void update() {
 		if (this.duration == Settings.ACTION_DUR_FAST) {
+			// If there aren't any cards too bad!
 			if (AbstractDungeon.player.drawPile.isEmpty()) {
+				this.isDone = true;
+				return;
+			}
+			// If there's only one card give them the card.
+			if (AbstractDungeon.player.drawPile.size() == 1) {
+				AbstractCard card = AbstractDungeon.player.drawPile.getTopCard();
+				AbstractDungeon.player.drawPile.removeCard(card);
+				AbstractDungeon.player.hand.addToTop(card);
+				AbstractDungeon.player.hand.refreshHandLayout();
+				AbstractDungeon.player.hand.applyPowers();
 				this.isDone = true;
 				return;
 			}
