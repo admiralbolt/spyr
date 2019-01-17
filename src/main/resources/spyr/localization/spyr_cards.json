@@ -62,6 +62,11 @@
       "Heal ALL characters !M!. NL"
     ]
   },
+  "spyr:entrance": {
+    "NAME": "Entrance",
+    "DESCRIPTION": "Apply Slow to an enemy.",
+    "UPGRADE_DESCRIPTION": "Apply Slow to all enemies."
+  },
   "spyr:enveloping_shadow": {
     "NAME": "Enveloping Shadow",
     "DESCRIPTION": "",
