@@ -103,8 +103,8 @@
   },
   "spyr:mind_flay": {
     "NAME": "Mind Flay",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust a random card from your deck. NL Switch to ShadowForm.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhaust a card from your deck. NL Switch to ShadowForm."
+    "DESCRIPTION": "Deal !D! damage. NL ShadowForm: Exhaust a random card from your deck. NL Switch to ShadowForm.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL ShadowForm: Exhaust a card from your deck. NL Switch to ShadowForm."
   },
   "spyr:putrefy": {
     "NAME": "Putrefy",
