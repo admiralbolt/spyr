@@ -32,7 +32,8 @@ public class DeepDream extends SpyrCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ExhaustCardsFromDeckAction(this.magicNumber));
+			AbstractDungeon.actionManager
+					.addToBottom(new ExhaustCardsFromDeckAction(this.magicNumber, /* random= */false));
 		} else {
 			if (p.hasPower(LightEcoPower.POWER_ID)) {
 				AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, 1));

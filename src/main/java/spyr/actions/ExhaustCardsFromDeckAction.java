@@ -10,13 +10,20 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class ExhaustCardsFromDeckAction extends AbstractGameAction {
 
+	private String tooltip;
+	private boolean random;
+
 	public static final UIStrings UI_STRINGS = CardCrawlGame.languagePack
 			.getUIString("spyr:exhaust_cards_from_deck_action");
 
-	public ExhaustCardsFromDeckAction(int numCardsToExhaust) {
+	public ExhaustCardsFromDeckAction(int numCardsToExhaust, boolean random) {
 		this.amount = numCardsToExhaust;
+		this.random = random;
 		this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FAST;
+		// This is just to handle exhausting '1 card' vs. '2 cards'.
+		int baseDescIndex = (numCardsToExhaust > 1) ? 2 : 0;
+		this.tooltip = UI_STRINGS.TEXT[baseDescIndex] + numCardsToExhaust + UI_STRINGS.TEXT[baseDescIndex + 1];
 	}
 
 	@Override
@@ -41,7 +48,14 @@ public class ExhaustCardsFromDeckAction extends AbstractGameAction {
 			for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
 				tmp.addToRandomSpot(c);
 			}
-			AbstractDungeon.gridSelectScreen.open(tmp, this.amount, UI_STRINGS.TEXT[0], /* forUpgrade= */false);
+			if (this.random) {
+				for (int i = 0; i < this.amount; i++) {
+					AbstractDungeon.player.drawPile.moveToExhaustPile(tmp.getRandomCard(AbstractDungeon.cardRandomRng));
+				}
+				this.isDone = true;
+				return;
+			}
+			AbstractDungeon.gridSelectScreen.open(tmp, this.amount, this.tooltip, /* forUpgrade= */false);
 			this.tickDuration();
 			return;
 		}

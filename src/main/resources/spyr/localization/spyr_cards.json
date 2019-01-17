@@ -101,6 +101,11 @@
     "NAME": "Meditate",
     "DESCRIPTION": "Gain !B! block. NL Look at the top 3 cards of your deck. Keep 1 and discard the rest."
   },
+  "spyr:mind_flay": {
+    "NAME": "Mind Flay",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust a random card from your deck. NL Switch to ShadowForm.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhaust a card from your deck. NL Switch to ShadowForm."
+  },
   "spyr:putrefy": {
     "NAME": "Putrefy",
     "DESCRIPTION": "Apply !M! Vulnerable. NL LightForm: Apply !M! Weak.",

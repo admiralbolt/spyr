@@ -1,7 +1,8 @@
 {
   "spyr:exhaust_cards_from_deck_action": {
     "TEXT": [
-      "Choose two cards to exhaust."
+      "Choose ", " card to exhaust.",
+      "Choose ", " cards to exhaust."
     ]
   },
   "spyr:meditate_action": {
