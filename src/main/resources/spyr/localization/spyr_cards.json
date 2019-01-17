@@ -45,6 +45,10 @@
     "DESCRIPTION": "Gain !B! Block.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block."
   },
+  "spyr:dream_tendril": {
+    "NAME": "Dream Tendril",
+    "DESCRIPTION": "Deal !D! damage. ShadowForm: Apply !M! Drowsy."
+  },
   "spyr:dual_form": {
     "NAME": "Dual Form",
     "DESCRIPTION": "Ethereal. NL Activate both ShadowForm and LightForm.",

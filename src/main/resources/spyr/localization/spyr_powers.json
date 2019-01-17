@@ -11,11 +11,23 @@
       "Light energy."
     ]
   },
+  "spyr:drowsy": {
+    "NAME": "Drowsy",
+    "DESCRIPTIONS": [
+      "Fall asleep after #b"
+    ]
+  },
   "spyr:growing_darkness": {
     "NAME": "Growing Darkness",
     "DESCRIPTIONS": [
       "At the start of your turn, if you are in ShadowForm gain #b",
       " #yStrength."
+    ]
+  },
+  "spyr:sleep": {
+    "NAME": "Sleep",
+    "DESCRIPTIONS": [
+      "That's one sleepy boi."
     ]
   },
   "spyr:staunch_bleeding": {
