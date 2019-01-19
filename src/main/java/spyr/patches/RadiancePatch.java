@@ -20,8 +20,16 @@ public class RadiancePatch {
 	@SpireInsertPatch(rloc = 13)
 	public static void Insert(ApplyPowerAction action, AbstractCreature target, AbstractCreature source,
 			AbstractPower powerToApply, int stackAmount, boolean isFast, AbstractGameAction.AttackEffect effect) {
-		if (source.hasPower(spyr.powers.RadiancePower.POWER_ID)) {
+		// SporeCloud power has a null source, so double check the source first.
+		if (source != null && source.hasPower(spyr.powers.RadiancePower.POWER_ID)) {
 			int radianceAmount = source.getPower(spyr.powers.RadiancePower.POWER_ID).amount;
+			System.out.println(String.format("radianceAmount: %s, powerToApply.amount: %s, action.amount: %s",
+					radianceAmount, powerToApply.amount, action.amount));
+			// If we are applying a debuff we should invert the radianceAmount. Otherwise we
+			// will do the opposite effect of the debuff.
+			if (powerToApply.amount < 0) {
+				radianceAmount *= -1;
+			}
 			powerToApply.amount += radianceAmount;
 			action.amount += radianceAmount;
 		}
