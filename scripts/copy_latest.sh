@@ -8,5 +8,5 @@ else
   BASEPATH=$LINUX_BASEPATH
 fi
 
-cp "${BASEPATH}/desktop-1.0.jar" .
-cp -r "${BASEPATH}/preferences" .
+cp "${BASEPATH}/desktop-1.0.jar" ../../lib/
+cp -r "${BASEPATH}/preferences" ../../lib/

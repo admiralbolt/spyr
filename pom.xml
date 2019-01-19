@@ -44,7 +44,7 @@
             <phase>package</phase>
             <configuration>
               <target>
-                <copy file="target/spyr.jar" tofile="lib/mods/spyr.jar" />
+                <copy file="target/spyr.jar" tofile="../lib/mods/spyr.jar" />
               </target>
             </configuration>
             <goals>
@@ -59,28 +59,26 @@
 
   <!-- Jar files from the lib/ folder -->
   <dependencies>
-    <!--
     <dependency>
       <groupId>com.megacrit.cardcrawl</groupId>
       <artifactId>slaythespire</artifactId>
       <version>017</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/desktop-1.0.jar</systemPath>
+      <systemPath>${project.basedir}/../lib/desktop-1.0.jar</systemPath>
     </dependency>
-    -->
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>ModTheSpire</artifactId>
       <version>3.1.1</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/ModTheSpire.jar</systemPath>
+      <systemPath>${project.basedir}/../lib/ModTheSpire.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.evacipated.cardcrawl</groupId>
       <artifactId>BaseMod</artifactId>
       <version>3.1.1</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/mods/BaseMod.jar</systemPath>
+      <systemPath>${project.basedir}/../lib/mods/BaseMod.jar</systemPath>
     </dependency>
       <dependency>
         <groupId>org.javatuples</groupId>
