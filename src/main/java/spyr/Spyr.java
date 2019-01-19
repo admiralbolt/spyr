@@ -30,6 +30,7 @@ import spyr.cards.gray.DefendFractured;
 import spyr.cards.gray.DreamTendril;
 import spyr.cards.gray.DualForm;
 import spyr.cards.gray.EnergyWave;
+import spyr.cards.gray.Enlighten;
 import spyr.cards.gray.Entrance;
 import spyr.cards.gray.EnvelopingShadow;
 import spyr.cards.gray.GrowingDarkness;
@@ -50,8 +51,8 @@ import spyr.patches.CharacterEnum;
 import spyr.relics.SpyrRelics;
 
 @SpireInitializer
-public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
-		EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber {
+public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber,
+		EditRelicsSubscriber, EditStringsSubscriber {
 
 	public static final String ATK = "spyr/images/cardui/512/bg_attack_fractured.png";
 
@@ -68,12 +69,10 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	public Spyr() {
 		BaseMod.subscribe(this);
 
-		BaseMod.addColor(CardEnum.FRACTURED_GRAY, Color.LIGHT_GRAY,
-				get512("bg_attack_fractured.png"), get512("bg_skill_fractured.png"),
-				get512("bg_power_fractured.png"), get512("card_fractured_orb.png"),
+		BaseMod.addColor(CardEnum.FRACTURED_GRAY, Color.LIGHT_GRAY, get512("bg_attack_fractured.png"),
+				get512("bg_skill_fractured.png"), get512("bg_power_fractured.png"), get512("card_fractured_orb.png"),
 				get1024("bg_attack_fractured.png"), get1024("bg_skill_fractured.png"),
-				get1024("bg_power_fractured.png"), get1024("card_fractured_orb.png"),
-				get512("card_fractured_orb.png"));
+				get1024("bg_power_fractured.png"), get1024("card_fractured_orb.png"), get512("card_fractured_orb.png"));
 	}
 
 	public static String get512(String cardName) {
@@ -117,6 +116,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 		BaseMod.addCard(new DreamTendril());
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
+		BaseMod.addCard(new Enlighten());
 		BaseMod.addCard(new Entrance());
 		BaseMod.addCard(new EnvelopingShadow());
 		BaseMod.addCard(new GrowingDarkness());
@@ -136,8 +136,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 	@Override
 	public void receiveEditCharacters() {
 		System.out.println("[SPYR] Editting Characters");
-		BaseMod.addCharacter(new TheFractured(CardCrawlGame.playerName),
-				TheFractured.BUTTON, TheFractured.POTRAIT,
+		BaseMod.addCharacter(new TheFractured(CardCrawlGame.playerName), TheFractured.BUTTON, TheFractured.POTRAIT,
 				CharacterEnum.FRACTURED_CLASS);
 	}
 
@@ -163,18 +162,15 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
-		String characterStrings = Gdx.files
-				.internal("spyr/localization/spyr_characters.json")
+		String characterStrings = Gdx.files.internal("spyr/localization/spyr_characters.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
 
-		String powerStrings = Gdx.files
-				.internal("spyr/localization/spyr_powers.json")
+		String powerStrings = Gdx.files.internal("spyr/localization/spyr_powers.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 
-		String relicStrings = Gdx.files
-				.internal("spyr/localization/spyr_relics.json")
+		String relicStrings = Gdx.files.internal("spyr/localization/spyr_relics.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 

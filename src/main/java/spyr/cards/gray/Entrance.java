@@ -21,21 +21,19 @@ public class Entrance extends SpyrCard {
 	private static final int COST = 2;
 
 	public Entrance() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
+		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
+				AbstractCard.CardTarget.ENEMY);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
 			if (this.upgraded) {
-				for (AbstractMonster monster : AbstractDungeon
-						.getCurrRoom().monsters.monsters) {
-					AbstractDungeon.actionManager.addToBottom(
-							new ApplyPowerAction(monster, p, new SlowPower(monster, 1), 1));
+				for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
+					AbstractDungeon.actionManager
+							.addToBottom(new ApplyPowerAction(monster, p, new SlowPower(monster, 1), 1));
 				}
 			} else {
-				AbstractDungeon.actionManager
-						.addToBottom(new ApplyPowerAction(m, p, new SlowPower(m, 1), 1));
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new SlowPower(m, 1), 1));
 			}
 		}
 	}

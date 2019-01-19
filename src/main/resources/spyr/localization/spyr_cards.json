@@ -62,6 +62,10 @@
       "Heal ALL characters !M!. NL"
     ]
   },
+  "spyr:enlighten": {
+    "NAME": "Enlighten",
+    "DESCRIPTION": "Switch to LightForm. LightForm: Draw !M! cards."
+  },
   "spyr:entrance": {
     "NAME": "Entrance",
     "DESCRIPTION": "Apply Slow to an enemy.",
