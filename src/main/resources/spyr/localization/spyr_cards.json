@@ -36,6 +36,10 @@
       "Gain !M! Vulnerable. NL "
     ]
   },
+  "spyr:cleanse": {
+    "NAME": "Cleanse",
+    "DESCRIPTION": "Remove all powers from an enemy."
+  },
   "spyr:deep_dream": {
     "NAME": "Deep Dream",
     "DESCRIPTION": "Switch to ShadowForm. NL ShadowForm: Exhaust !M! cards from your deck."
