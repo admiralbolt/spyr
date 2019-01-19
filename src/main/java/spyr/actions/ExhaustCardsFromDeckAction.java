@@ -37,7 +37,9 @@ public class ExhaustCardsFromDeckAction extends AbstractGameAction {
 			// If there are less cards left in the deck than the number of cards to
 			// exhaust, exhaust the rest of the deck.
 			if (AbstractDungeon.player.drawPile.size() <= this.amount) {
-				for (int i = 0; i < AbstractDungeon.player.drawPile.size(); i++) {
+				// Don't want to recalculate loop size as we go.
+				int deckSize = AbstractDungeon.player.drawPile.size();
+				for (int i = 0; i < deckSize; i++) {
 					AbstractCard card = AbstractDungeon.player.drawPile.getTopCard();
 					AbstractDungeon.player.drawPile.moveToExhaustPile(card);
 				}

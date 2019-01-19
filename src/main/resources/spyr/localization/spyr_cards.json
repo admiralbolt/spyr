@@ -1,4 +1,8 @@
 {
+  "spyr:amnesia": {
+    "NAME": "Amnesia",
+    "DESCRIPTION": "Exhaust your deck. NL Exhaust."
+  },
   "spyr:annihilator_beam": {
     "NAME": "Annihilator Beam",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Lose all forms. Deal !M! bonus damage for each form lost."

@@ -20,6 +20,7 @@ import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import spyr.cards.gray.Amnesia;
 import spyr.cards.gray.AnnihilatorBeam;
 import spyr.cards.gray.BitterRelease;
 import spyr.cards.gray.BlackShield;
@@ -107,6 +108,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 
 		// Fractured
 		// =========
+		BaseMod.addCard(new Amnesia());
 		BaseMod.addCard(new AnnihilatorBeam());
 		BaseMod.addCard(new BitterRelease());
 		BaseMod.addCard(new BlackShield());
