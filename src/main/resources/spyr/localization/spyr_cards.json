@@ -38,7 +38,7 @@
   },
   "spyr:cleanse": {
     "NAME": "Cleanse",
-    "DESCRIPTION": "Remove all powers from an enemy."
+    "DESCRIPTION": "Remove all powers from an enemy. NL Exhaust."
   },
   "spyr:deep_dream": {
     "NAME": "Deep Dream",
