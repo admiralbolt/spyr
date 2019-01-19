@@ -24,6 +24,12 @@
       " #yStrength."
     ]
   },
+  "spyr:radiance": {
+    "NAME": "Radiance",
+    "DESCRIPTIONS": [
+      "Apply ALL powers an additional #b"
+    ]
+  },
   "spyr:sleep": {
     "NAME": "Sleep",
     "DESCRIPTIONS": [

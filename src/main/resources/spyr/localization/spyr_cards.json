@@ -120,6 +120,10 @@
     "NAME": "Quick Change",
     "DESCRIPTION": "Draw !M! card. NL Switch between ShadowForm and LightForm."
   },
+  "spyr:radiate": {
+    "NAME": "Radiate",
+    "DESCRIPTION": "Gain !M! Radiance."
+  },
   "spyr:revenge": {
     "NAME": "Revenge",
     "DESCRIPTION": "Deal damage equal to your missing HP.",

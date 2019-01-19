@@ -125,12 +125,13 @@ public abstract class SpyrCard extends CustomCard {
 			description.append(this.cardStrings.DESCRIPTION);
 		}
 		if (hasShadow) {
-			description.append("ShadowForm: ");
+			description.append("[#999999]ShadowForm: ");
 			description.append(this.cardStrings.EXTENDED_DESCRIPTION[shadowIndex]);
+			description.append("[]");
 			description.append(" NL ");
 		}
 		if (hasLight) {
-			description.append("LightForm: ");
+			description.append("[#ffcccc]LightForm[]: ");
 			description.append(this.cardStrings.EXTENDED_DESCRIPTION[lightIndex]);
 			description.append(" NL ");
 		}
@@ -140,6 +141,10 @@ public abstract class SpyrCard extends CustomCard {
 	public void initializeDualCardDescription() {
 		this.rawDescription = this.getDualCardDescription(true, true);
 		this.initializeDescription();
+		// So, the keyword parsing does splitting by space, so if we want custom colors
+		// we have to manually had keywords.
+		this.keywords.add("shadowform");
+		this.keywords.add("lightform");
 	}
 
 	/**
