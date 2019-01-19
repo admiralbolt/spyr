@@ -15,32 +15,16 @@ public class RadiancePatch {
 	/**
 	 * More black magic. We are live editing the ApplyPowerAction() constructor. In
 	 * this case we need to apply extra powers if the source has the radiance power.
-	 * Exciting.
-   * Maybe rloc = 6 is correct?
+	 * Exciting. Also incredibly flaky.
 	 */
-	@SpireInsertPatch(rloc = 4, localvars = { "amount" })
+	@SpireInsertPatch(rloc = 13)
 	public static void Insert(ApplyPowerAction action, AbstractCreature target, AbstractCreature source,
-			AbstractPower powerToApply, int stackAmount, boolean isFast, AbstractGameAction.AttackEffect effect,
-			int amount) {
-		System.out.println("AYYYY");
+			AbstractPower powerToApply, int stackAmount, boolean isFast, AbstractGameAction.AttackEffect effect) {
 		if (source.hasPower(spyr.powers.RadiancePower.POWER_ID)) {
 			int radianceAmount = source.getPower(spyr.powers.RadiancePower.POWER_ID).amount;
 			powerToApply.amount += radianceAmount;
-			amount += radianceAmount;
+			action.amount += radianceAmount;
 		}
 	}
-
-	// public static ExprEditor Instrument() {
-	// return new ExprEditor() {
-	// @Override
-	// public void edit(MethodCall m) throws CannotCompileException {
-	// System.out.println("HEY: " + m.getMethodName());
-	// if (m.getClassName().equals(Constants.APPLY_POWER_ACTION_CLASS)
-	// && m.getMethodName().equals("ApplyPowerAction")) {
-	// m.replace(NEW_APPLY_POWER_ACTION_CODE);
-	// }
-	// }
-	// };
-	// }
 
 }
