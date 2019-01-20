@@ -10,20 +10,11 @@ public class BurnPower extends SpyrPower {
 
 	public static final String POWER_ID = "spyr:burn";
 
-	private AbstractCreature source;
+	public AbstractCreature source;
 
 	public BurnPower(AbstractCreature owner, AbstractCreature source, int strAmt) {
 		super(POWER_ID, owner, strAmt);
 		this.source = source;
-	}
-
-	@Override
-	public void atStartOfTurn() {
-		if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT
-				&& !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-			flashWithoutSound();
-			AbstractDungeon.actionManager.addToBottom(new BurnDamageAction(owner, this.source, amount));
-		}
 	}
 
 	@Override
