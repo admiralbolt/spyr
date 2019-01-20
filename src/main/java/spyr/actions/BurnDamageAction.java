@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import spyr.powers.BurnPower;
+import spyr.powers.NeverEndingBlazePower;
 
 /**
  * Damage action for burn. Effectively just duplicates DamageAction since burn
@@ -40,16 +41,19 @@ public class BurnDamageAction extends AbstractGameAction {
 		if (!this.isDone || !this.target.hasPower(BurnPower.POWER_ID) || target.currentHealth <= 0) {
 			return;
 		}
-				this.target.tint.color = Color.RED.cpy();
-				this.target.tint.changeColor(Color.WHITE.cpy());
-				this.target.damage(new DamageInfo(this.source, this.amount, DamageInfo.DamageType.NORMAL));
-				// Halve the burn.
-				int reductionAmount = BurnPower.getReductionAmount(this.amount);
-				AbstractPower burnPower = this.target.getPower(BurnPower.POWER_ID);
-				burnPower.amount -= reductionAmount;
-				if (burnPower.amount <= 0) {
-					this.target.powers.remove(burnPower);
-				}
-				burnPower.updateDescription();
+		this.target.tint.color = Color.RED.cpy();
+		this.target.tint.changeColor(Color.WHITE.cpy());
+		this.target.damage(new DamageInfo(this.source, this.amount, DamageInfo.DamageType.NORMAL));
+		// Halve the burn, unless NeverEndingBlaze is active.
+		if (this.source.hasPower(NeverEndingBlazePower.POWER_ID)) {
+			return;
+		}
+		int reductionAmount = BurnPower.getReductionAmount(this.amount);
+		AbstractPower burnPower = this.target.getPower(BurnPower.POWER_ID);
+		burnPower.amount -= reductionAmount;
+		if (burnPower.amount <= 0) {
+			this.target.powers.remove(burnPower);
+		}
+		burnPower.updateDescription();
 	}
 }

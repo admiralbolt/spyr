@@ -41,6 +41,7 @@ import spyr.cards.gray.IronSkin;
 import spyr.cards.gray.LightRay;
 import spyr.cards.gray.Meditate;
 import spyr.cards.gray.MindFlay;
+import spyr.cards.gray.NeverEndingBlaze;
 import spyr.cards.gray.Putrefy;
 import spyr.cards.gray.QuickChange;
 import spyr.cards.gray.Radiate;
@@ -129,6 +130,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new LightRay());
 		BaseMod.addCard(new Meditate());
 		BaseMod.addCard(new MindFlay());
+		BaseMod.addCard(new NeverEndingBlaze());
 		BaseMod.addCard(new Putrefy());
 		BaseMod.addCard(new QuickChange());
 		BaseMod.addCard(new Radiate());
@@ -152,7 +154,8 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		String[] burn = { "burn" };
 		BaseMod.addKeyword(shadow, "Grants additional effects to some cards.");
 		BaseMod.addKeyword(light, "Grants additional effects to some cards.");
-		BaseMod.addKeyword(burn, "Creatures on fire take damage at the start of their turn. Each turn, Burn is reduced by half.");
+		BaseMod.addKeyword(burn,
+				"Creatures on fire take damage at the start of their turn. Each turn, Burn is reduced by half.");
 	}
 
 	@Override

@@ -32,6 +32,12 @@
       " #yStrength."
     ]
   },
+  "spyr:never_ending_blaze": {
+    "NAME": "Never Ending Blaze",
+    "DESCRIPTIONS": [
+      "While in LightForm, Burn stacks don't decrease."
+    ]
+  },
   "spyr:radiance": {
     "NAME": "Radiance",
     "DESCRIPTIONS": [
