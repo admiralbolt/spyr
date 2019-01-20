@@ -149,8 +149,10 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		System.out.println("[SPYR] Editting Keywords.");
 		String[] shadow = { "shadowform" };
 		String[] light = { "lightform" };
+		String[] burn = { "burn" };
 		BaseMod.addKeyword(shadow, "Grants additional effects to some cards.");
 		BaseMod.addKeyword(light, "Grants additional effects to some cards.");
+		BaseMod.addKeyword(burn, "Creatures on fire take damage at the start of their turn. Each turn, Burn is reduced by half.");
 	}
 
 	@Override

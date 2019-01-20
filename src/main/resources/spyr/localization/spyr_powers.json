@@ -1,4 +1,12 @@
 {
+  "spyr:burn": {
+    "NAME": "Burn",
+    "DESCRIPTIONS": [
+      "At the start of your turn, take #b",
+      " damage, then reduce #yBurn by #b",
+      "."
+    ]
+  },
   "spyr:eco_dark": {
     "NAME": "Dark Eco",
     "DESCRIPTIONS": [

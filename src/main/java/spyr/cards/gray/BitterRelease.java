@@ -7,10 +7,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.powers.BurnPower;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
 
@@ -24,14 +24,14 @@ public class BitterRelease extends SpyrCard {
 	private static final int COST = 1;
 	private static final int POWER = 9;
 	private static final int UPGRADE_POWER = 5;
-	private static final int POISON = 5;
-	private static final int UPGRADE_POISON = 3;
+	private static final int BURN = 6;
+	private static final int UPGRADE_BURN = 4;
 
 	public BitterRelease() {
 		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.ALL_ENEMY, /* is_dual= */true);
 		this.damage = this.baseDamage = POWER;
-		this.magicNumber = this.baseMagicNumber = POISON;
+		this.magicNumber = this.baseMagicNumber = BURN;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -46,7 +46,7 @@ public class BitterRelease extends SpyrCard {
 					if (monster.isDead || monster.isDying)
 						continue;
 					AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, p,
-							new PoisonPower(monster, p, this.magicNumber), this.magicNumber));
+							new BurnPower(monster, p, this.magicNumber), this.magicNumber));
 				}
 			}
 		}
@@ -55,7 +55,7 @@ public class BitterRelease extends SpyrCard {
 	@Override
 	public void doUpgrade() {
 		this.upgradeDamage(UPGRADE_POWER);
-		this.upgradeMagicNumber(UPGRADE_POISON);
+		this.upgradeMagicNumber(UPGRADE_BURN);
 	}
 
 }

@@ -21,7 +21,7 @@
     "DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
       "Deal !D! damage to ALL enemies. NL ",
-      "Apply !M! Poison to ALL enemies. NL "
+      "Apply !M! Burn to ALL enemies. NL "
     ]
   },
   "spyr:channel_power": {
