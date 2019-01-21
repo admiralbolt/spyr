@@ -64,5 +64,11 @@
       " HP, then increase #yUnholy Fire by #b",
       "."
     ]
+  },
+  "spyr:whispering_madness": {
+    "NAME": "Whispering Madness",
+    "DESCRIPTIONS": [
+      "At the end of your turn, if you are in ShadowForm add Madness+ to the top of your deck and discard piles."
+    ]
   }
 }

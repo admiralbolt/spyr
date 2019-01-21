@@ -48,6 +48,7 @@ import spyr.cards.gray.Radiate;
 import spyr.cards.gray.ShadowSlash;
 import spyr.cards.gray.StrikeFractured;
 import spyr.cards.gray.UnleashPower;
+import spyr.cards.gray.WhisperingMadness;
 import spyr.characters.TheFractured;
 import spyr.patches.CardEnum;
 import spyr.patches.CharacterEnum;
@@ -137,6 +138,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
 		BaseMod.addCard(new UnleashPower());
+		BaseMod.addCard(new WhisperingMadness());
 	}
 
 	@Override
