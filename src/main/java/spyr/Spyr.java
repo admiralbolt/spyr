@@ -32,6 +32,7 @@ import spyr.cards.gray.DefendFractured;
 import spyr.cards.gray.DreamTendril;
 import spyr.cards.gray.DualForm;
 import spyr.cards.gray.EnergyWave;
+import spyr.cards.gray.EnflameMind;
 import spyr.cards.gray.Enlighten;
 import spyr.cards.gray.Entrance;
 import spyr.cards.gray.EnvelopingShadow;
@@ -123,6 +124,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new DreamTendril());
 		BaseMod.addCard(new DualForm());
 		BaseMod.addCard(new EnergyWave());
+		BaseMod.addCard(new EnflameMind());
 		BaseMod.addCard(new Enlighten());
 		BaseMod.addCard(new Entrance());
 		BaseMod.addCard(new EnvelopingShadow());

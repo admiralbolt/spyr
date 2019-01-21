@@ -70,6 +70,10 @@
       "Heal ALL characters !M!. NL"
     ]
   },
+  "spyr:enflame_mind": {
+    "NAME": "Enflame Mind",
+    "DESCRIPTION": "Switch to LightForm. LightForm: Apply !D! Burn. Draw !M! cards."
+  },
   "spyr:enlighten": {
     "NAME": "Enlighten",
     "DESCRIPTION": "Switch to LightForm. LightForm: Draw !M! cards."
