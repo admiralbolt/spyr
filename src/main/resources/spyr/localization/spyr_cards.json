@@ -145,6 +145,16 @@
     "DESCRIPTION": "Deal damage equal to your missing HP.",
     "UPGRADE_DESCRIPTION": " NL (Deals !D! damage.)"
   },
+  "spyr:shadow_play": {
+    "NAME": "Shadow Play",
+    "DESCRIPTION": "Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Reduce the cost of a card in your hand by 1 this combat.",
+      "Gain !M! Energy.",
+      "Reduce the cost of ALL cards in your hand by 1 this combat.",
+      "Gain !M! Energy."
+    ]
+  },
   "spyr:shadow_slash": {
     "NAME": "Shadow Slash",
     "DESCRIPTION": "Deals !D! damage. NL ShadowForm: Deal !M! more damage.",

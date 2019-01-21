@@ -9,5 +9,10 @@
     "TEXT": [
       "Choose one card to add to your hand. Discard the rest."
     ]
+  },
+  "spyr:reduce_hand_cost_action": {
+    "TEXT": [
+      "Choose one card to reduce the cost of by 1."
+    ]
   }
 }

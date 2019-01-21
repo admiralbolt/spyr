@@ -45,6 +45,7 @@ import spyr.cards.gray.NeverEndingBlaze;
 import spyr.cards.gray.Putrefy;
 import spyr.cards.gray.QuickChange;
 import spyr.cards.gray.Radiate;
+import spyr.cards.gray.ShadowPlay;
 import spyr.cards.gray.ShadowSlash;
 import spyr.cards.gray.StrikeFractured;
 import spyr.cards.gray.UnleashPower;
@@ -135,6 +136,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new Putrefy());
 		BaseMod.addCard(new QuickChange());
 		BaseMod.addCard(new Radiate());
+		BaseMod.addCard(new ShadowPlay());
 		BaseMod.addCard(new ShadowSlash());
 		BaseMod.addCard(new StrikeFractured());
 		BaseMod.addCard(new UnleashPower());
