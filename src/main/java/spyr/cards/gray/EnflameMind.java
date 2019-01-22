@@ -2,7 +2,6 @@ package spyr.cards.gray;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,8 +10,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.BurnPower;
-import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Deals damage to all in dark form. Applies poison to all in light form.
@@ -46,12 +45,8 @@ public class EnflameMind extends SpyrCard {
 			AbstractDungeon.actionManager
 					.addToBottom(new ApplyPowerAction(m, p, new BurnPower(m, p, this.damage), this.damage));
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
-		} else {
-			if (p.hasPower(DarkEcoPower.POWER_ID)) {
-				AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, 1));
-			}
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, 1), 1));
 		}
+		FormHelper.maybeSwitchToLightForm(p);
 	}
 
 	@Override

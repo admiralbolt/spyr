@@ -2,9 +2,7 @@
 package spyr.cards.gray;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,6 +14,7 @@ import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Attack card that exhausts cards from your deck in Shadow form. Switches you
@@ -51,13 +50,8 @@ public class MindFlay extends SpyrCard {
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
 			AbstractDungeon.actionManager.addToBottom(new ExhaustCardsFromDeckAction(1, /* random= */!this.upgraded));
-		} else {
-			if (p.hasPower(LightEcoPower.POWER_ID)) {
-				AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, 1));
-			}
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, 1), 1));
 		}
-
+		FormHelper.maybeSwitchToShadowForm(p);
 	}
 
 	@Override
