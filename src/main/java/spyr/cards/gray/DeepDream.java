@@ -10,8 +10,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import spyr.actions.ExhaustCardsFromDeckAction;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Switch to dark form. Exhaust 2 cards from your deck if already in dark form.
@@ -28,18 +30,15 @@ public class DeepDream extends SpyrCard {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = NUM_CARDS_EXHAUST;
+		this.tags.add(SpyrTags.SHADOW);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ExhaustCardsFromDeckAction(this.magicNumber, /* random= */false));
-		} else {
-			if (p.hasPower(LightEcoPower.POWER_ID)) {
-				AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, 1));
-			}
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, 1), 1));
 		}
+		FormHelper.maybeSwitchToShadowForm(p);
 	}
 
 	@Override

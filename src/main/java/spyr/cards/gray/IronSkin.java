@@ -10,6 +10,7 @@ import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * A block card that either defends a large amount one time in dark form, or a
@@ -42,10 +43,10 @@ public class IronSkin extends SpyrCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		// Need to decide if we want to double the intraction with dual form or not.
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.damage));
 		}
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			for (int i = 0; i < this.magicNumber; i++) {
 				AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 			}

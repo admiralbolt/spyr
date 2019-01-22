@@ -8,8 +8,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.GrowingDarknessPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Gain Strength at the start of each turn if in shadow form.
@@ -25,12 +27,14 @@ public class GrowingDarkness extends SpyrCard {
 		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.RARE,
 				AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = 1;
+		// This is really a shadow card since the downside comes from being in light form.
+		this.tags.add(SpyrTags.SHADOW);
 	}
 
 	@Override
 	public void applyPowers() {
 		super.applyPowers();
-		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(AbstractDungeon.player)) {
 			this.costForTurn = this.cost + 3;
 		} else {
 			this.costForTurn = this.cost;

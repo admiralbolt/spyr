@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.DrowsyPower;
+import spyr.utils.FormHelper;
 
 /**
  * Attack card that applies Drowsy when in dark form.
@@ -32,13 +34,14 @@ public class DreamTendril extends SpyrCard {
 				AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = DROWSY_DURATION;
+		this.tags.add(SpyrTags.SHADOW);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager
 				.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ApplyPowerAction(m, p, new DrowsyPower(m, this.magicNumber), this.magicNumber));
 		}

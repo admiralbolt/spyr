@@ -46,7 +46,8 @@ public abstract class SpyrCard extends CustomCard {
 		this.cardStrings = cardStrings;
 		this.isDual = isDual;
 		if (this.isDual) {
-			this.tags.add(SpyrTags.IS_DUAL);
+			this.tags.add(SpyrTags.LIGHT);
+			this.tags.add(SpyrTags.SHADOW);
 			this.initializeDualCardDescription();
 		}
 	}

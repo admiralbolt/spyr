@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.BurnPower;
 import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
@@ -37,11 +38,12 @@ public class EnflameMind extends SpyrCard {
 				AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = BURN;
 		this.magicNumber = this.baseMagicNumber = CARD_DRAW;
+		this.tags.add(SpyrTags.LIGHT);
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ApplyPowerAction(m, p, new BurnPower(m, p, this.damage), this.damage));
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));

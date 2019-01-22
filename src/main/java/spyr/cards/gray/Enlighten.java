@@ -1,8 +1,6 @@
 package spyr.cards.gray;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,8 +8,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
-import spyr.powers.DarkEcoPower;
+import spyr.patches.SpyrTags;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Block a small amount. Look at top 3 cards of deck. Draw 1 and discard the
@@ -29,16 +28,14 @@ public class Enlighten extends SpyrCard {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = NUM_CARDS;
+		this.tags.add(SpyrTags.LIGHT);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
-		} else if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, 1));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, 1), 1));
 		}
-
+		FormHelper.maybeSwitchToLightForm(p);
 	}
 
 	@Override

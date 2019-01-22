@@ -14,6 +14,7 @@ import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * High attack card in shadow form, strength reduction card in light form.
@@ -37,13 +38,13 @@ public class EnvelopingShadow extends SpyrCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			for (int i = 0; i < 3; i++) {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(m,
 						new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 			}
 		}
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(
 					new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
 		}

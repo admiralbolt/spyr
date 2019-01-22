@@ -15,6 +15,7 @@ import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Deals damage to all characters in dark form, heals all characters in light
@@ -41,13 +42,13 @@ public class EnergyWave extends SpyrCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		// This is done as two separate if statements to explicitly support
 		// DualForm.
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
 					this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 			AbstractDungeon.actionManager
 					.addToBottom(new DamageAction(p, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
 		}
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new HealAllEnemiesAction(p, this.multiDamage));
 			AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, this.damage));
 		}

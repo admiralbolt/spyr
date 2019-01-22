@@ -12,6 +12,8 @@ import spyr.cards.gray.Invert;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.FlickerPower;
 import spyr.powers.LightEcoPower;
+import spyr.powers.TemporaryDarkEcoPower;
+import spyr.powers.TemporaryLightEcoPower;
 
 /**
  * Utils for dealing with Shadow / Light form nonsense.
@@ -86,6 +88,14 @@ public class FormHelper {
 			return true;
 		}
 		return false;
+	}
+
+	public static boolean shadowFormIsActive(AbstractPlayer p) {
+		return p.hasPower(DarkEcoPower.POWER_ID) || p.hasPower(TemporaryDarkEcoPower.POWER_ID);
+	}
+
+	public static boolean lightFormIsActive(AbstractPlayer p) {
+		return p.hasPower(LightEcoPower.POWER_ID) || p.hasPower(TemporaryLightEcoPower.POWER_ID);
 	}
 
 }

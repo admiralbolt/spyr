@@ -63,6 +63,18 @@
       " #yRegen."
     ]
   },
+  "spyr:temporary_eco_dark": {
+    "NAME": "Temporary Dark Eco",
+    "DESCRIPTIONS": [
+      "Dark energy that fades at the end of turn OR when a card is played."
+    ]
+  },
+  "spyr:temporary_eco_light": {
+    "NAME": "Temporary Light Eco",
+    "DESCRIPTIONS": [
+      "Light energy that fades at the end of turn OR when a card is played."
+    ]
+  },
   "spyr:unholy_fire": {
     "NAME": "Unholy Fire",
     "DESCRIPTIONS": [

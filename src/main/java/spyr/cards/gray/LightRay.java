@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.vfx.combat.SweepingBeamEffect;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
@@ -37,6 +38,7 @@ public class LightRay extends SpyrCard {
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = STATUS_DURATION;
 		this.isMultiDamage = true;
+		this.tags.add(SpyrTags.LIGHT);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -46,7 +48,7 @@ public class LightRay extends SpyrCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
 				this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
 				AbstractDungeon.actionManager
 						.addToBottom(new ApplyPowerAction(mo, p, new VulnerablePower(mo, this.magicNumber, false),

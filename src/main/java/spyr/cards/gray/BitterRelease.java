@@ -13,6 +13,7 @@ import spyr.patches.CardEnum;
 import spyr.powers.BurnPower;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Deals damage to all in dark form. Applies poison to all in light form.
@@ -35,11 +36,11 @@ public class BitterRelease extends SpyrCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage,
 					this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 		}
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
 				this.flash();
 				for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {

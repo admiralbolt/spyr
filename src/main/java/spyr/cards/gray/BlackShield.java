@@ -10,7 +10,9 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.DarkEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Blocks for more than a block. If in ShadowForm gain an artifact.
@@ -30,11 +32,12 @@ public class BlackShield extends SpyrCard {
 				AbstractCard.CardTarget.SELF);
 		this.block = this.baseBlock = BLOCK;
 		this.magicNumber = this.baseMagicNumber = NUMBER_OF_ARTIFACTS;
+		this.tags.add(SpyrTags.SHADOW);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
 		}

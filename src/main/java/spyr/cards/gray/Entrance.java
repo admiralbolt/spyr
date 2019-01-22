@@ -9,7 +9,9 @@ import com.megacrit.cardcrawl.powers.SlowPower;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Applies slow.
@@ -23,10 +25,11 @@ public class Entrance extends SpyrCard {
 	public Entrance() {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.ENEMY);
+	  this.tags.add(SpyrTags.LIGHT);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			if (this.upgraded) {
 				for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
 					AbstractDungeon.actionManager

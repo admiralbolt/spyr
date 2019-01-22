@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import spyr.actions.ExhaustCardsFromDeckAction;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
@@ -32,12 +33,13 @@ public class MindFlay extends SpyrCard {
 		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
+		this.tags.add(SpyrTags.SHADOW);
 	}
 
 	@Override
 	public void applyPowers() {
 		super.applyPowers();
-		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(AbstractDungeon.player)) {
 			this.costForTurn = this.cost + 1;
 		} else {
 			this.costForTurn = this.cost;
@@ -48,7 +50,7 @@ public class MindFlay extends SpyrCard {
 		AbstractDungeon.actionManager
 				.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new ExhaustCardsFromDeckAction(1, /* random= */!this.upgraded));
 		}
 		FormHelper.maybeSwitchToShadowForm(p);

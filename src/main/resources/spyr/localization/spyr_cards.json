@@ -44,6 +44,11 @@
     "NAME": "Cleanse",
     "DESCRIPTION": "Remove all powers from an enemy. NL Exhaust."
   },
+  "spyr:contradict": {
+    "NAME": "Contradict",
+    "DESCRIPTION": "This turn, your next card is affected by both LightForm AND ShadowForm.",
+    "UPGRADE_DESCRIPTION": "This turn, your next !M! cards are affected by both LightForm AND ShadowForm."
+  },
   "spyr:deep_dream": {
     "NAME": "Deep Dream",
     "DESCRIPTION": "Switch to ShadowForm. NL ShadowForm: Exhaust !M! cards from your deck."

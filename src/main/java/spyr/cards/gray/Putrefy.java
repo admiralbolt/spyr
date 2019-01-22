@@ -10,7 +10,9 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
+import spyr.patches.SpyrTags;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Applies vulnerable to an enemy. Also applies weak when in light form.
@@ -27,12 +29,13 @@ public class Putrefy extends SpyrCard {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.magicNumber = this.baseMagicNumber = DURATION;
+		this.tags.add(SpyrTags.LIGHT);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
 				new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(p)) {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
 					new WeakPower(m, this.magicNumber, false), this.magicNumber));
 		}
