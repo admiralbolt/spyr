@@ -36,8 +36,9 @@ public class RadiancePatch {
 		LoseDexterityPower.POWER_ID,
 		// Powers from spyr.
 		spyr.powers.BurnPower.POWER_ID,
-		spyr.powers.RadiancePower.POWER_ID,
-		spyr.powers.DrowsyPower.POWER_ID
+		spyr.powers.DrowsyPower.POWER_ID,
+		spyr.powers.FlickerPower.POWER_ID,
+		spyr.powers.RadiancePower.POWER_ID
 	};
 	public static final HashSet<String> POWERS_TO_ENHANCE = new HashSet<>(Arrays.asList(POWER_IDS));
 

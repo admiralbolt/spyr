@@ -25,6 +25,12 @@
       "Fall asleep after #b"
     ]
   },
+  "spyr:flicker": {
+    "NAME": "Flicker",
+    "DESCRIPTIONS": [
+      "Can't gain shadow or light form. At the end of turn OR when you gain a form reduce Flicker by 1."
+    ]
+  },
   "spyr:growing_darkness": {
     "NAME": "Growing Darkness",
     "DESCRIPTIONS": [

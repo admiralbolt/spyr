@@ -36,6 +36,7 @@ import spyr.cards.gray.EnflameMind;
 import spyr.cards.gray.Enlighten;
 import spyr.cards.gray.Entrance;
 import spyr.cards.gray.EnvelopingShadow;
+import spyr.cards.gray.FlareUp;
 import spyr.cards.gray.GrowingDarkness;
 import spyr.cards.gray.Invert;
 import spyr.cards.gray.IronSkin;
@@ -128,6 +129,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new Enlighten());
 		BaseMod.addCard(new Entrance());
 		BaseMod.addCard(new EnvelopingShadow());
+		BaseMod.addCard(new FlareUp());
 		BaseMod.addCard(new GrowingDarkness());
 		BaseMod.addCard(new Invert());
 		BaseMod.addCard(new IronSkin());
