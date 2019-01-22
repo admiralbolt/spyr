@@ -1,13 +1,18 @@
 package spyr.actions;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.screens.CardRewardScreen;
+import com.megacrit.cardcrawl.ui.buttons.SingingBowlButton;
+import com.megacrit.cardcrawl.ui.buttons.SkipCardButton;
+
+import basemod.ReflectionHacks;
 
 /**
  * Shows a screen allowing the player to choose from different actions.
@@ -19,7 +24,7 @@ public class ChooseAction extends AbstractGameAction {
 
 	AbstractCard baseCard;
 	AbstractMonster target;
-	CardGroup choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+	ArrayList<AbstractCard> choices = new ArrayList<>();
 	ArrayList<Runnable> actions = new ArrayList<>();
 	String message;
 
@@ -34,14 +39,14 @@ public class ChooseAction extends AbstractGameAction {
 
 	// Adds a new option for selection. Card art is used from the base card.
 	public void add(String name, String description, Runnable action) {
-    AbstractCard choice = baseCard.makeStatEquivalentCopy();
-    choice.name = name;
-    choice.rawDescription = description;
-    choice.initializeDescription();
-    choice.applyPowers();
-    choices.addToTop(choice);
-    actions.add(action);
-  }
+		AbstractCard choice = baseCard.makeStatEquivalentCopy();
+		choice.name = name;
+		choice.rawDescription = description;
+		choice.initializeDescription();
+		choice.applyPowers();
+		choices.add(choice);
+		actions.add(action);
+	}
 
 	@Override
 	public void update() {
@@ -55,19 +60,55 @@ public class ChooseAction extends AbstractGameAction {
 				this.isDone = true;
 				return;
 			}
-			AbstractDungeon.gridSelectScreen.open(this.choices, 1, message, /* forUpgrade= */false,
-					/* forTransform= */false, /* canCancel= */false, /* forPurge= */false);
-      this.tickDuration();
+			// Use card reward screen to make it look pretty.
+			openChooseScreen(this.choices, this.message, /* allowSkip= */false);
+			this.tickDuration();
 			return;
 		}
-		if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-			AbstractCard pick = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-			AbstractDungeon.gridSelectScreen.selectedCards.clear();
-			int i = choices.group.indexOf(pick);
+		// We immitate Nilry's Codex for selecting options to make it pretty and
+		// centered. So we interact with the "codexCard" as the selected option.
+		if (AbstractDungeon.cardRewardScreen.codexCard != null) {
+			int i = choices.indexOf(AbstractDungeon.cardRewardScreen.codexCard);
 			actions.get(i).run();
-      this.isDone = true;
+			AbstractDungeon.cardRewardScreen.codexCard = null;
+			this.isDone = true;
 		}
 		this.tickDuration();
+	}
+
+	/**
+	 * This is basically a direct copy of the codexOpen() method from
+	 * CardRewardScreen.java.
+	 */
+	public static void openChooseScreen(ArrayList<AbstractCard> cards, String banner, boolean allowSkip) {
+		CardRewardScreen crs = AbstractDungeon.cardRewardScreen;
+		crs.rItem = null;
+		// This is pretty silly, but since we set codex = true, clicking on a card
+		// assigns it into the AbstractDungeon.cardRewardsScreen.codexCard variable.
+		ReflectionHacks.setPrivate(crs, CardRewardScreen.class, "codex", true);
+		ReflectionHacks.setPrivate(crs, CardRewardScreen.class, "draft", false);
+		crs.codexCard = null;
+		((SingingBowlButton) ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "bowlButton")).hide();
+		if (allowSkip) {
+			((SkipCardButton) ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "skipButton")).show();
+		} else {
+			((SkipCardButton) ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "skipButton")).hide();
+		}
+		crs.onCardSelect = true;
+		AbstractDungeon.topPanel.unhoverHitboxes();
+		crs.rewardGroup = cards;
+		AbstractDungeon.isScreenUp = true;
+		AbstractDungeon.screen = AbstractDungeon.CurrentScreen.CARD_REWARD;
+		AbstractDungeon.dynamicBanner.appear(banner);
+		AbstractDungeon.overlayMenu.showBlackScreen();
+		final float CARD_TARGET_Y = (float) Settings.HEIGHT * 0.45f;
+		try {
+			Method method = CardRewardScreen.class.getDeclaredMethod("placeCards", float.class, float.class);
+			method.setAccessible(true);
+			method.invoke(crs, (float) Settings.WIDTH / 2.0f, CARD_TARGET_Y);
+		} catch (Exception ex) {
+			System.out.println("Fuck");
+		}
 	}
 
 }
