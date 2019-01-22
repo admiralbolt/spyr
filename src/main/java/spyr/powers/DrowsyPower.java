@@ -1,6 +1,7 @@
 package spyr.powers;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -20,9 +21,9 @@ public class DrowsyPower extends SpyrPower {
 		if (this.amount <= 0) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ApplyPowerAction(this.owner, this.owner, new SleepPower(this.owner, 1), 1));
-			this.owner.powers.remove(this);
+			AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
 		} else {
-		  this.updateDescription();
+			this.updateDescription();
 		}
 	}
 
