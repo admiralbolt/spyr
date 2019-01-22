@@ -11,6 +11,7 @@ import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
 import spyr.powers.LightEcoPower;
+import spyr.utils.FormHelper;
 
 /**
  * Switches between dark & light forms.
@@ -29,21 +30,7 @@ public class Invert extends SpyrCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (p.hasPower(LightEcoPower.POWER_ID)
-				&& p.hasPower(DarkEcoPower.POWER_ID)) {
-			return;
-		}
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, 1));
-			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, 1), 1));
-		} else if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, 1));
-			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, 1), 1));
-		}
+		FormHelper.swapOrChooseForm(p);
 	}
 
 	@Override
