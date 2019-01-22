@@ -107,7 +107,7 @@
   "spyr:invert": {
     "NAME": "Invert",
     "DESCRIPTION": "Switch between ShadowForm and LightForm.",
-    "UPGRADE_DESCRIPTION": "Switch between ShadowForm and LightForm."
+    "UPGRADE_DESCRIPTION": "Retain. NL Switch between ShadowForm and LightForm."
   },
   "spyr:iron_skin": {
     "NAME": "Iron Skin",

@@ -1,16 +1,11 @@
 package spyr.cards.gray;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
-import spyr.powers.DarkEcoPower;
-import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
 /**
@@ -20,8 +15,7 @@ public class Invert extends SpyrCard {
 
 	public static final String ID = "spyr:invert";
 
-	private static final int COST = 1;
-	private static final int UPGRADED_COST = 0;
+	private static final int COST = 0;
 
 	public Invert() {
 		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
@@ -35,7 +29,18 @@ public class Invert extends SpyrCard {
 
 	@Override
 	public void doUpgrade() {
-		this.upgradeBaseCost(UPGRADED_COST);
+		this.retain = true;
+		this.rawDescription = this.cardStrings.UPGRADE_DESCRIPTION;
+		this.initializeDescription();
+	}
+
+	/**
+	 * Retain gets reset by the RestoreRetainedCardsAction, which happens every
+	 * turn. So at the start of turn we just re-override it.
+	 */
+	@Override
+	public void atTurnStart() {
+		this.retain = this.upgraded;
 	}
 
 }
