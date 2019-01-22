@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.patches.SpyrTags;
-import spyr.powers.DarkEcoPower;
 import spyr.utils.FormHelper;
 
 /**
@@ -29,7 +28,7 @@ public class ShadowSlash extends SpyrCard {
 
 	public ShadowSlash() {
 		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY);
+				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = DARK_FORM_SCALING;
 		this.tags.add(SpyrTags.SHADOW);
