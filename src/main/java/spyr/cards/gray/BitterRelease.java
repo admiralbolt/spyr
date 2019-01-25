@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.powers.BurnPower;
-import spyr.powers.DarkEcoPower;
-import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
 /**

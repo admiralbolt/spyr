@@ -44,6 +44,7 @@ import spyr.cards.gray.IronSkin;
 import spyr.cards.gray.LightRay;
 import spyr.cards.gray.Meditate;
 import spyr.cards.gray.MindFlay;
+import spyr.cards.gray.MultiStrike;
 import spyr.cards.gray.NeverEndingBlaze;
 import spyr.cards.gray.Putrefy;
 import spyr.cards.gray.QuickChange;
@@ -138,6 +139,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 		BaseMod.addCard(new LightRay());
 		BaseMod.addCard(new Meditate());
 		BaseMod.addCard(new MindFlay());
+    BaseMod.addCard(new MultiStrike());
 		BaseMod.addCard(new NeverEndingBlaze());
 		BaseMod.addCard(new Putrefy());
 		BaseMod.addCard(new QuickChange());

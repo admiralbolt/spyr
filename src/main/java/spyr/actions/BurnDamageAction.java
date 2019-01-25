@@ -19,7 +19,8 @@ import spyr.powers.NeverEndingBlazePower;
 public class BurnDamageAction extends AbstractGameAction {
 	private static final float DURATION = 0.33f;
 
-	public BurnDamageAction(AbstractCreature target, AbstractCreature source, int amount) {
+	public BurnDamageAction(AbstractCreature target, AbstractCreature source,
+			int amount) {
 		this.setValues(target, source, amount);
 		this.actionType = AbstractGameAction.ActionType.DAMAGE;
 		this.attackEffect = AbstractGameAction.AttackEffect.FIRE;
@@ -35,15 +36,20 @@ public class BurnDamageAction extends AbstractGameAction {
 		if (duration == DURATION && target.currentHealth > 0) {
 			target.damageFlash = true;
 			target.damageFlashFrames = 4;
-			AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, attackEffect));
+			AbstractDungeon.effectList
+					.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, attackEffect));
 		}
 		this.tickDuration();
-		if (!this.isDone || !this.target.hasPower(BurnPower.POWER_ID) || target.currentHealth <= 0) {
+		if (!this.isDone || !this.target.hasPower(BurnPower.POWER_ID)
+				|| target.currentHealth <= 0) {
 			return;
 		}
 		this.target.tint.color = Color.RED.cpy();
 		this.target.tint.changeColor(Color.WHITE.cpy());
-		this.target.damage(new DamageInfo(this.source, this.amount, DamageInfo.DamageType.NORMAL));
+		// So as it turns out, the damage type dealt by orbs is "THORNS". I guess
+		// functionally they are both the same, but it's still a little weird.
+		this.target.damage(
+				new DamageInfo(this.source, this.amount, DamageInfo.DamageType.THORNS));
 		// Halve the burn, unless NeverEndingBlaze is active.
 		if (this.source.hasPower(NeverEndingBlazePower.POWER_ID)) {
 			return;

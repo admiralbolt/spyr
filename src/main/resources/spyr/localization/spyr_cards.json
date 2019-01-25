@@ -136,6 +136,14 @@
     "DESCRIPTION": "Deal !D! damage. NL ShadowForm: Exhaust a random card from your deck. NL Switch to ShadowForm.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL ShadowForm: Exhaust a card from your deck. NL Switch to ShadowForm."
   },
+  "spyr:multi_strike": {
+    "NAME": "Multi Strike",
+    "DESCRIPTION": "Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage !M! times.",
+      "Apply BURNAMT Burn !M! times."
+    ]
+  },
   "spyr:never_ending_blaze": {
     "NAME": "Never Ending Blaze",
     "DESCRIPTION": "While in LightForm, Burn stacks don't decrease."
