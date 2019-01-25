@@ -13,8 +13,6 @@ import spyr.actions.ExhaustCardsFromDeckAction;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.patches.SpyrTags;
-import spyr.powers.DarkEcoPower;
-import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
 /**

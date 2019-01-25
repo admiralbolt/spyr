@@ -13,8 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import spyr.actions.HealAllEnemiesAction;
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
-import spyr.powers.DarkEcoPower;
-import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
 /**

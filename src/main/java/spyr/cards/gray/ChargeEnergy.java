@@ -12,8 +12,6 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
-import spyr.powers.DarkEcoPower;
-import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
 /**
