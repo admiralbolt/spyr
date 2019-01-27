@@ -15,7 +15,6 @@ public class DrowsyPower extends SpyrPower {
 
 	@Override
 	public void atEndOfTurn(boolean isPlayer) {
-		System.out.println("Highly suspicious.");
 		this.flash();
 		this.reducePower(1);
 		if (this.amount <= 0) {

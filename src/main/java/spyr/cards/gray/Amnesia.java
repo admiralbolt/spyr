@@ -30,7 +30,6 @@ public class Amnesia extends SpyrCard {
 
   @Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		System.out.println("drawSize: " + p.drawPile.size());
 		AbstractDungeon.actionManager.addToBottom(
 				new ExhaustCardsFromDeckAction(p.drawPile.size(), /* random= */false));
 	}

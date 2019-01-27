@@ -124,11 +124,9 @@ public abstract class FormAffectedCard extends SpyrCard {
 	}
 
 	public static String parseBracket(String word) {
-		System.out.println("Word: " + word);
 		if (!word.startsWith("[") || word.equals("[e]")) {
 			return word;
 		}
-		System.out.println("wut");
 		// Regex to extract everything between ']' and '['.
 		final Matcher matcher = stripColorTag.matcher(word);
 		matcher.find();
@@ -142,7 +140,7 @@ public abstract class FormAffectedCard extends SpyrCard {
 		String retVal = GameDictionary.parentWord.get(keyword);
 		return (retVal == null) ? keyword : retVal;
 	}
-	
+
 	public static String stripPunctuation(String keyword) {
 		if (keyword.length() > 0 && !Character.isLetterOrDigit(keyword.charAt(keyword.length() - 1))) {
 			return keyword.substring(0, keyword.length() - 1);

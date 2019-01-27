@@ -1,31 +1,24 @@
 package spyr.relics;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-import basemod.abstracts.CustomRelic;
 import basemod.helpers.RelicType;
 
-public class AmericanSpirit extends CustomRelic {
+public class AmericanSpirit extends SpyrRelic {
 
 	public static final String ID = "spyr:american_spirit";
-	private static final String IMG = "spyr/images/relics/american_spirit.png";
-	private static final String OUTLINE = "spyr/images/relics/outlines/american_spirit.png";
 
 	private static final int HP_PER_EXHAUST = 1;
 	private static final int STR_PER_EXHAUST = 1;
-	
+
 	public RelicType type = RelicType.SHARED;
 
 	public AmericanSpirit() {
-		super(ID, new Texture(Gdx.files.internal(IMG)),
-				new Texture(Gdx.files.internal(OUTLINE)), RelicTier.COMMON,
-				LandingSound.HEAVY);
+		super(ID, RelicTier.COMMON, AbstractRelic.LandingSound.HEAVY);
 	}
 
 	@Override
@@ -41,11 +34,6 @@ public class AmericanSpirit extends CustomRelic {
 		AbstractDungeon.actionManager.addToTop(
 				new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
 						new StrengthPower(AbstractDungeon.player, 1), 1));
-	}
-
-	@Override
-	public AbstractRelic makeCopy() {
-		return new AmericanSpirit();
 	}
 
 }

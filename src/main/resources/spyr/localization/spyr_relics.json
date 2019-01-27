@@ -14,5 +14,12 @@
     "DESCRIPTIONS": [
       "Start each combat in light mode."
     ]
+  },
+  "spyr:pamphlet": {
+    "NAME": "Pamphlet",
+    "FLAVOR": "I don't actually get this one.",
+    "DESCRIPTIONS": [
+      "Whenever you switch forms gain 6 block."
+    ]
   }
 }
