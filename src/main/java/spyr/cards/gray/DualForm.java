@@ -18,12 +18,16 @@ import spyr.powers.LightEcoPower;
 public class DualForm extends SpyrCard {
 
 	public static final String ID = "spyr:dual_form";
+	public static final String NAME = "Dual Form";
+	public static final String DESCRIPTION = "Ethereal. NL Activate both ShadowForm and LightForm.";
+	public static final String UPGRADE_DESCRIPTION = "Activate both ShadowForm and LightForm.";
 
 	private static final int COST = 3;
 
 	public DualForm() {
-		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF);
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.POWER,
+				CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.RARE,
+				AbstractCard.CardTarget.SELF);
 		this.isEthereal = true;
 	}
 
@@ -42,7 +46,7 @@ public class DualForm extends SpyrCard {
 	@Override
 	public void doUpgrade() {
 		this.isEthereal = false;
-		this.rawDescription = this.cardStrings.UPGRADE_DESCRIPTION;
+		this.rawDescription = UPGRADE_DESCRIPTION;
 		this.initializeDescription();
 	}
 

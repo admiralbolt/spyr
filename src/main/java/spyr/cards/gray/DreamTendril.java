@@ -9,19 +9,18 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.patches.SpyrTags;
-import spyr.powers.DarkEcoPower;
 import spyr.powers.DrowsyPower;
 import spyr.utils.FormHelper;
 
 /**
  * Attack card that applies Drowsy when in dark form.
  */
-public class DreamTendril extends SpyrCard {
+public class DreamTendril extends FormAffectedCard {
 
 	public static final String ID = "spyr:dream_tendril";
+	public static final String NAME = "Dream Tendril";
 
 	private static final int COST = 1;
 	private static final int POWER = 8;
@@ -30,20 +29,31 @@ public class DreamTendril extends SpyrCard {
 	private static final int UPGRADE_DROWSY_DURATION = -1;
 
 	public DreamTendril() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
-				AbstractCard.CardTarget.ENEMY);
+		super(ID, NAME, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
+				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = DROWSY_DURATION;
 		this.tags.add(SpyrTags.SHADOW);
 	}
 
+	@Override
+	public String getPrefix() {
+		return "Deal !D! damage.";
+	}
+
+	@Override
+	public String getShadow() {
+		return "Apply !M! Drowsy.";
+	}
+
+	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager
-				.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m,
+				new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		if (FormHelper.shadowFormIsActive(p)) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(m, p, new DrowsyPower(m, this.magicNumber), this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
+					new DrowsyPower(m, this.magicNumber), this.magicNumber));
 		}
 	}
 

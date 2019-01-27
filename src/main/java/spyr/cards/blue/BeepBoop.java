@@ -15,14 +15,17 @@ import spyr.cards.SpyrCard;
 public class BeepBoop extends SpyrCard {
 
 	public static final String ID = "spyr:beep_boop";
+	public static final String NAME = "Beep Boop";
+	public static final String DESCRIPTION = "Deal !D! damage. NL Focus affects Beep Boop !M! times.";
 
 	private static final int COST = 3;
 	private static final int ATTACK_DMG = 14;
 	private static final int STAT_SCALING = 3;
 
 	public BeepBoop() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, AbstractCard.CardColor.BLUE,
-				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY);
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.ATTACK,
+				AbstractCard.CardColor.BLUE, AbstractCard.CardRarity.RARE,
+				AbstractCard.CardTarget.ALL_ENEMY);
 
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = 3;

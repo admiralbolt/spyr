@@ -14,12 +14,16 @@ import spyr.utils.FormHelper;
 public class Invert extends SpyrCard {
 
 	public static final String ID = "spyr:invert";
+	public static final String NAME = "Invert";
+	public static final String DESCRIPTION = "Switch between ShadowForm and LightForm.";
+	public static final String UPGRADE_DESCRIPTION = "Retain. NL Switch between ShadowForm and LightForm.";
 
 	private static final int COST = 0;
 
 	public Invert() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF);
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.SKILL,
+				CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.BASIC,
+				AbstractCard.CardTarget.SELF);
 	}
 
 	@Override
@@ -30,7 +34,7 @@ public class Invert extends SpyrCard {
 	@Override
 	public void doUpgrade() {
 		this.retain = true;
-		this.rawDescription = this.cardStrings.UPGRADE_DESCRIPTION;
+		this.rawDescription = UPGRADE_DESCRIPTION;
 		this.initializeDescription();
 	}
 

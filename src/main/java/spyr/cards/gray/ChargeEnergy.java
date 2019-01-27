@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
-import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.utils.FormHelper;
 
@@ -18,32 +17,49 @@ import spyr.utils.FormHelper;
  * Gain Strength & Dexterity. If in shadow form gain weaken, if in light form
  * gain vulnerable.
  */
-public class ChargeEnergy extends SpyrCard {
+public class ChargeEnergy extends FormAffectedCard {
 
 	public static final String ID = "spyr:charge_energy";
+	public static final String NAME = "Charge Energy";
+
 	public static final int COST = 1;
 	public static final int BUFF_AMOUNT = 1;
 	public static final int UPGRADE_BUFF_AMOUNT = 1;
 
 	public ChargeEnergy() {
-		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
-				AbstractCard.CardTarget.SELF, /* is_dual= */true);
+		super(ID, NAME, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY,
+				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = 1;
 	}
 
 	@Override
+	public String getPrefix() {
+		return "Gain !M! Strength and Dexterity.";
+	}
+
+	@Override
+	public String getShadow() {
+		return "Gain !M! Weak.";
+	}
+
+	@Override
+	public String getLight() {
+		return "Gain !M! Vulnerable.";
+	}
+
+	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager
-				.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
-		AbstractDungeon.actionManager
-				.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+				new StrengthPower(p, this.magicNumber), this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+				new DexterityPower(p, this.magicNumber), this.magicNumber));
 		if (FormHelper.shadowFormIsActive(p)) {
-			AbstractDungeon.actionManager.addToBottom(
-					new ApplyPowerAction(p, p, new WeakPower(p, this.magicNumber, false), this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+					new WeakPower(p, this.magicNumber, false), this.magicNumber));
 		}
 		if (FormHelper.lightFormIsActive(p)) {
-			AbstractDungeon.actionManager.addToBottom(
-					new ApplyPowerAction(p, p, new VulnerablePower(p, this.magicNumber, false), this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+					new VulnerablePower(p, this.magicNumber, false), this.magicNumber));
 		}
 	}
 

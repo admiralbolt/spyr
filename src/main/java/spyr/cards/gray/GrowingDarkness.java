@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.patches.SpyrTags;
 import spyr.powers.GrowingDarknessPower;
@@ -15,19 +14,32 @@ import spyr.utils.FormHelper;
 /**
  * Gain Strength at the start of each turn if in shadow form.
  */
-public class GrowingDarkness extends SpyrCard {
+public class GrowingDarkness extends FormAffectedCard {
 
 	public static final String ID = "spyr:growing_darkness";
+	public static final String NAME = "Growing Darkness";
+
 	public static final int COST = 2;
 	public static final int BUFF_AMOUNT = 1;
 	public static final int UPGRADE_BUFF_AMOUNT = 1;
 
 	public GrowingDarkness() {
-		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.RARE,
-				AbstractCard.CardTarget.SELF);
+		super(ID, NAME, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY,
+				AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = 1;
-		// This is really a shadow card since the downside comes from being in light form.
+		// This is really a shadow card since the downside comes from being in light
+		// form.
 		this.tags.add(SpyrTags.SHADOW);
+	}
+
+	@Override
+	public String getPrefix() {
+		return "At the start of each turn, if you are in ShadowForm gain !M! Strength.";
+	}
+
+	@Override
+	public String getLight() {
+		return "Costs 3 more [E]";
 	}
 
 	@Override
@@ -42,8 +54,8 @@ public class GrowingDarkness extends SpyrCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(
-				new ApplyPowerAction(p, p, new GrowingDarknessPower(p, this.magicNumber), this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+				new GrowingDarknessPower(p, this.magicNumber), this.magicNumber));
 	}
 
 	@Override

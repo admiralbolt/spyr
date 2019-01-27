@@ -16,20 +16,24 @@ import spyr.powers.RadiancePower;
 public class Radiate extends SpyrCard {
 
 	public static final String ID = "spyr:radiate";
+	public static final String NAME = "Radiate";
+	public static final String DESCRIPTION = "Gain !M! Radiance.";
+
 	public static final int COST = 1;
 	public static final int BUFF_AMOUNT = 1;
 	public static final int UPGRADE_BUFF_AMOUNT = 1;
 
 	public Radiate() {
-		super(ID, COST, AbstractCard.CardType.POWER, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.POWER,
+				CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = 1;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager
-				.addToBottom(new ApplyPowerAction(p, p, new RadiancePower(p, this.magicNumber), this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+				new RadiancePower(p, this.magicNumber), this.magicNumber));
 	}
 
 	@Override

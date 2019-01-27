@@ -16,20 +16,24 @@ import spyr.utils.FormHelper;
 public class QuickChange extends SpyrCard {
 
 	public static final String ID = "spyr:quick_change";
+	public static final String NAME = "Quick Change";
+	public static final String DESCRIPTION = "Draw !M! card. NL Switch between ShadowForm and LightForm.";
 
 	private static final int COST = 1;
 	private static final int UPGRADED_COST = 0;
 	private static final int CARD_DRAW = 1;
 
 	public QuickChange() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.COMMON,
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.SKILL,
+				CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = CARD_DRAW;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
+		AbstractDungeon.actionManager
+				.addToBottom(new DrawCardAction(p, this.magicNumber));
 		FormHelper.swapOrChooseForm(p);
 	}
 

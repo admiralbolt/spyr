@@ -15,19 +15,24 @@ import spyr.patches.CardEnum;
 public class Amnesia extends SpyrCard {
 
 	public static final String ID = "spyr:amnesia";
+	public static final String NAME = "Amnesia";
+	public static final String DESCRIPTION = "Exhaust your deck. NL Exhaust.";
+
 	private static final int COST = 2;
 	private static final int UPGRADED_COST = 1;
 
 	public Amnesia() {
-		super(ID, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.SKILL,
+				CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.SELF);
 		this.exhaust = true;
 	}
 
+  @Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		System.out.println("drawSize: " + p.drawPile.size());
-		AbstractDungeon.actionManager
-				.addToBottom(new ExhaustCardsFromDeckAction(p.drawPile.size(), /* random= */false));
+		AbstractDungeon.actionManager.addToBottom(
+				new ExhaustCardsFromDeckAction(p.drawPile.size(), /* random= */false));
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.patches.SpyrTags;
 import spyr.utils.FormHelper;
@@ -16,9 +15,10 @@ import spyr.utils.FormHelper;
 /**
  * Attack card that deals more damage in dark form.
  */
-public class ShadowSlash extends SpyrCard {
+public class ShadowSlash extends FormAffectedCard {
 
 	public static final String ID = "spyr:shadow_slash";
+	public static final String NAME = "Shadow Slash";
 
 	private static final int COST = 1;
 	private static final int POWER = 7;
@@ -27,17 +27,28 @@ public class ShadowSlash extends SpyrCard {
 	private static final int UPGRADE_SCALING = 3;
 
 	public ShadowSlash() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
+		super(ID, NAME, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = DARK_FORM_SCALING;
 		this.tags.add(SpyrTags.SHADOW);
 	}
 
+	@Override
+	public String getPrefix() {
+		return "Deal !D! damage.";
+	}
+
+	@Override
+	public String getShadow() {
+		return "Deal !M! additional damage.";
+	}
+
+	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(
-				new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m,
+				new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
 	}
 
@@ -53,7 +64,6 @@ public class ShadowSlash extends SpyrCard {
 	@Override
 	public void calculateCardDamage(AbstractMonster mo) {
 		super.calculateCardDamage(mo);
-		this.rawDescription = this.cardStrings.DESCRIPTION;
 		this.initializeDescription();
 	}
 

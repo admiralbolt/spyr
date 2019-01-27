@@ -15,6 +15,8 @@ import spyr.cards.SpyrCard;
 public class Masochism extends SpyrCard {
 
 	public static final String ID = "spyr:masochism";
+	public static final String NAME = "Masochism";
+	public static final String DESCRIPTION = "Deal !D! damage. Deals !M! more damage each time you lose HP in combat.";
 
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 5;
@@ -24,8 +26,9 @@ public class Masochism extends SpyrCard {
 
 	public Masochism() {
 
-		super(ID, COST, AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
-				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.ATTACK,
+				AbstractCard.CardColor.RED, AbstractCard.CardRarity.UNCOMMON,
+				AbstractCard.CardTarget.ENEMY);
 
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = HP_LOSS_SCALING;

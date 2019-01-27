@@ -14,15 +14,16 @@ import spyr.cards.SpyrCard;
 public class Revenge extends SpyrCard {
 
 	public static final String ID = "spyr:revenge";
+	public static final String NAME = "Revenge";
+	public static final String DESCRIPTION = "Deal damage equal to your missing HP. NL Deals !D! damage.";
 
 	private static final int COST = 3;
 	private static final int UPGRADED_COST = 2;
 
 	public Revenge() {
-
-		super(ID, COST, AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
-				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
-
+		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.ATTACK,
+				AbstractCard.CardColor.RED, AbstractCard.CardRarity.UNCOMMON,
+				AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = 0;
 	}
 
@@ -34,8 +35,6 @@ public class Revenge extends SpyrCard {
 				.addToBottom(new DamageAction((AbstractCreature) m,
 						new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL),
 						AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-		this.rawDescription = this.cardStrings.DESCRIPTION;
-		this.initializeDescription();
 	}
 
 	@Override
@@ -43,10 +42,6 @@ public class Revenge extends SpyrCard {
 		this.baseDamage = AbstractDungeon.player.maxHealth
 				- AbstractDungeon.player.currentHealth;
 		super.applyPowers();
-		this.rawDescription = this.cardStrings.DESCRIPTION;
-		this.rawDescription = this.rawDescription
-				+ this.cardStrings.UPGRADE_DESCRIPTION;
-		this.initializeDescription();
 	}
 
 	@Override

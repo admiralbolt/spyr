@@ -7,19 +7,18 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import spyr.cards.SpyrCard;
 import spyr.patches.CardEnum;
 import spyr.patches.SpyrTags;
 import spyr.powers.BurnPower;
-import spyr.powers.LightEcoPower;
 import spyr.utils.FormHelper;
 
 /**
- * Deals damage to all in dark form. Applies poison to all in light form.
+ * Applies burn and draws cards in light form. Switches to light form.
  */
-public class EnflameMind extends SpyrCard {
+public class EnflameMind extends FormAffectedCard {
 
 	public static final String ID = "spyr:enflame_mind";
+	public static final String NAME = "Enflame Mind";
 
 	private static final int COST = 1;
 	private static final int CARD_DRAW = 1;
@@ -34,19 +33,30 @@ public class EnflameMind extends SpyrCard {
 	 * cards, or apply multiple separate durations of statuses.
 	 */
 	public EnflameMind() {
-		super(ID, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.UNCOMMON,
-				AbstractCard.CardTarget.ENEMY);
+		super(ID, NAME, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
+				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = BURN;
 		this.magicNumber = this.baseMagicNumber = CARD_DRAW;
 		this.tags.add(SpyrTags.LIGHT);
 	}
 
 	@Override
+	public String getLight() {
+		return "Apply !D! Burn. Draw !M! cards.";
+	}
+
+	@Override
+	public String getSuffix() {
+		return "Switch to LightForm.";
+	}
+
+	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (FormHelper.lightFormIsActive(p)) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p,
+					new BurnPower(m, p, this.damage), this.damage));
 			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(m, p, new BurnPower(m, p, this.damage), this.damage));
-			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
+					.addToBottom(new DrawCardAction(p, this.magicNumber));
 		}
 		FormHelper.maybeSwitchToLightForm(p);
 	}
@@ -54,7 +64,7 @@ public class EnflameMind extends SpyrCard {
 	@Override
 	public void applyPowers() {
 		// Our target type switches depending on form.
-		if (AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID)) {
+		if (FormHelper.lightFormIsActive(AbstractDungeon.player)) {
 			this.target = AbstractCard.CardTarget.ENEMY;
 		} else {
 			this.target = AbstractCard.CardTarget.SELF;
