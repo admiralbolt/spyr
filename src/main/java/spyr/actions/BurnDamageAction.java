@@ -17,6 +17,7 @@ import spyr.powers.NeverEndingBlazePower;
  * can be blocked.
  */
 public class BurnDamageAction extends AbstractGameAction {
+  
 	private static final float DURATION = 0.33f;
 
 	public BurnDamageAction(AbstractCreature target, AbstractCreature source,

@@ -9,22 +9,22 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
-import spyr.powers.UnholyFirePower;
+import spyr.powers.HolyFirePower;
 
 /**
- * This is basically a direct copy of the PoisonLoseHPAction from the core
- * game. Not entirely sure why a separate action is needed for this, but in case
- * we decide we want interactions it's probably easier to have it separate.
+ * This is basically a direct copy of the PoisonLoseHPAction from the core game.
+ * Not entirely sure why a separate action is needed for this, but in case we
+ * decide we want interactions it's probably easier to have it separate.
  */
-public class UnholyFireLoseHPAction extends AbstractGameAction {
+public class HolyFireDamageAction extends AbstractGameAction {
+
 	private static final float DURATION = 0.33f;
 
-	public UnholyFireLoseHPAction(AbstractCreature target,
-			AbstractCreature source, int amount,
-			AbstractGameAction.AttackEffect effect) {
+	public HolyFireDamageAction(AbstractCreature target, AbstractCreature source,
+			int amount) {
 		this.setValues(target, source, amount);
 		this.actionType = AbstractGameAction.ActionType.DAMAGE;
-		this.attackEffect = effect;
+		this.attackEffect = AbstractGameAction.AttackEffect.FIRE;
 		this.duration = DURATION;
 	}
 
@@ -41,14 +41,16 @@ public class UnholyFireLoseHPAction extends AbstractGameAction {
 					.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, attackEffect));
 		}
 		this.tickDuration();
-		if (this.isDone && this.target.hasPower(UnholyFirePower.POWER_ID)) {
+		if (this.isDone && this.target.hasPower(HolyFirePower.POWER_ID)) {
 			if (target.currentHealth > 0) {
-				this.target.tint.color = Color.BLACK.cpy();
+				this.target.tint.color = Color.CORAL.cpy();
 				this.target.tint.changeColor(Color.WHITE.cpy());
+				// Damage type is set to "THORNS" to avoid triggering things like the
+				// Louse curl up.
 				this.target.damage(new DamageInfo(this.source, this.amount,
-						DamageInfo.DamageType.HP_LOSS));
+						DamageInfo.DamageType.THORNS));
 				// Double the fire power.
-				AbstractPower firePower = this.target.getPower(UnholyFirePower.POWER_ID);
+				AbstractPower firePower = this.target.getPower(HolyFirePower.POWER_ID);
 				firePower.amount *= 2;
 				firePower.updateDescription();
 			}

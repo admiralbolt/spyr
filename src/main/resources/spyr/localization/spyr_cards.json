@@ -194,9 +194,9 @@
     "DESCRIPTION": "Exhaust.",
     "EXTENDED_DESCRIPTION": [
       "Gain !B! Block. NL Block is not removed at the start of your next turn.",
-      "Apply !M! UnholyFire to ALL enemies.",
+      "Apply !M! HolyFire to ALL enemies.",
       "Gain !B! Block. NL Block is not removed at the start of your next turn.",
-      "Apply !M! UnholyFire and Slow to ALL enemies.",
+      "Apply !M! HolyFire and Slow to ALL enemies.",
     ]
   },
   "spyr:whispering_madness": {

@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.powers.SlowPower;
 
 import spyr.patches.CardEnum;
 import spyr.powers.DarkEcoPower;
+import spyr.powers.HolyFirePower;
 import spyr.powers.LightEcoPower;
-import spyr.powers.UnholyFirePower;
 
 /**
  * Gives a large amount of block in shadow form. Aplies statuses to all enemies
@@ -44,9 +44,9 @@ public class UnleashPower extends FormAffectedCard {
 	@Override
 	public String getLight() {
 		if (this.upgraded) {
-			return "Apply !M! UnholyFire and Slow to ALL enemies.";
+			return "Apply !M! HolyFire and Slow to ALL enemies.";
 		}
-		return "Apply !M! UnholyFire to All enemies.";
+		return "Apply !M! HolyFire to All enemies.";
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class UnleashPower extends FormAffectedCard {
 				if (monster.isDead || monster.isDying)
 					continue;
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster,
-						p, new UnholyFirePower(monster, p, this.magicNumber),
+						p, new HolyFirePower(monster, p, this.magicNumber),
 						this.magicNumber));
 				if (this.upgraded) {
 					AbstractDungeon.actionManager.addToBottom(

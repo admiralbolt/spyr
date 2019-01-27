@@ -38,6 +38,14 @@
       " #yStrength."
     ]
   },
+  "spyr:holy_fire": {
+    "NAME": "Holy Fire",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose #b",
+      " HP, then increase #yUnholy Fire by #b",
+      "."
+    ]
+  },
   "spyr:never_ending_blaze": {
     "NAME": "Never Ending Blaze",
     "DESCRIPTIONS": [
@@ -73,14 +81,6 @@
     "NAME": "Temporary Light Eco",
     "DESCRIPTIONS": [
       "Light energy that fades at the end of turn OR when a card is played."
-    ]
-  },
-  "spyr:unholy_fire": {
-    "NAME": "Unholy Fire",
-    "DESCRIPTIONS": [
-      "At the start of your turn, lose #b",
-      " HP, then increase #yUnholy Fire by #b",
-      "."
     ]
   },
   "spyr:whispering_madness": {
