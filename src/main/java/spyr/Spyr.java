@@ -84,7 +84,7 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber,
 				get512("bg_power_fractured.png"), get512("card_fractured_orb.png"),
 				get1024("bg_attack_fractured.png"), get1024("bg_skill_fractured.png"),
 				get1024("bg_power_fractured.png"), get1024("card_fractured_orb.png"),
-				get512("card_fractured_orb.png"));
+				TheFractured.SMALL_ENERGY);
 	}
 
 	public static String get512(String cardName) {

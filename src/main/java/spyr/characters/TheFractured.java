@@ -60,7 +60,7 @@ public class TheFractured extends CustomPlayer {
 			"spyr/images/characters/the_fractured/orb/layer5d.png" };
 
 	public static final String ORB_VFX = "spyr/images/characters/the_fractured/orb/vfx.png";
-
+	public static final String SMALL_ENERGY = "spyr/images/characters/the_fractured/orb/small_energy.png";
 	public static final String IDLE_ANIMATION = "spyr/images/characters/the_fractured/spriter/the_fractured.scml";
 
 	public TheFractured(String name) {
