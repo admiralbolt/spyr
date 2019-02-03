@@ -28,6 +28,7 @@ public class ShadowPlay extends FormAffectedCard {
 		super(ID, NAME, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = ENERGY;
+    this.exhaust = true;
 	}
 
 	@Override
