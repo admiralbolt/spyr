@@ -38,6 +38,21 @@ public class EnergyWave extends FormAffectedCard {
 	}
 
 	@Override
+	public String getShadow() {
+		return "Deal !D! damage to ALL characters.";
+	}
+
+	@Override
+	public String getLight() {
+		return "Heal ALL characters !D! HP.";
+	}
+
+	@Override
+	public String getSuffix() {
+		return "Exhaust.";
+	}
+
+	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (FormHelper.shadowFormIsActive(p)) {
 			AbstractDungeon.actionManager

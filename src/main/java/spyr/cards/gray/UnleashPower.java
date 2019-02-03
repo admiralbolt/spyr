@@ -75,6 +75,7 @@ public class UnleashPower extends FormAffectedCard {
 	@Override
 	public void doUpgrade() {
 		this.upgradeBlock(UPGRADE_BLOCK);
+    this.initializeFormDescriptions();
 	}
 
 }

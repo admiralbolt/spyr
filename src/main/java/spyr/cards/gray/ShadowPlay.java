@@ -63,6 +63,7 @@ public class ShadowPlay extends FormAffectedCard {
 	@Override
 	public void doUpgrade() {
 		this.upgradeMagicNumber(UPGRADE_ENERGY);
+		this.initializeFormDescriptions();
 	}
 
 }

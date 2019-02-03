@@ -19,12 +19,19 @@ public abstract class FormAffectedCard extends SpyrCard {
 
 	public static final Pattern stripColorTag = Pattern.compile("](.+?)\\[");
 
+	// Fast load form descriptions.
+	private String noFormDesc;
+	private String shadowFormOnlyDesc;
+	private String lightFormOnlyDesc;
+	private String dualFormDesc;
+
 	/**
 	 * No need for description text to be passed in, it is dynamically loaded.
 	 */
 	public FormAffectedCard(String id, String name, int cost, CardType type,
 			CardColor color, CardRarity rarity, CardTarget target) {
 		super(id, name, "", cost, type, color, rarity, target);
+		this.initializeFormDescriptions();
 		this.loadCardDescription();
 	}
 
@@ -53,6 +60,67 @@ public abstract class FormAffectedCard extends SpyrCard {
 	}
 
 	/**
+	 * Rebuilding the same strings over and over is costly. Instead, we initialize
+	 * descriptions for all possible combinations of powers for fast loading.
+	 */
+	public void initializeFormDescriptions() {
+		StringBuilder noFormBuilder = new StringBuilder();
+		StringBuilder shadowFormBuilder = new StringBuilder();
+		StringBuilder lightFormBuilder = new StringBuilder();
+		StringBuilder dualFormBuilder = new StringBuilder();
+		// Load all parts of the description.
+		String prefix = getPrefix();
+		String shadow = getShadow();
+		String light = getLight();
+		String suffix = getSuffix();
+		if (!prefix.isEmpty()) {
+			for (StringBuilder builder : new StringBuilder[] { noFormBuilder,
+					shadowFormBuilder, lightFormBuilder, dualFormBuilder }) {
+				builder.append(prefix);
+				builder.append(" NL ");
+			}
+		}
+		// For shadow and light, if they aren't active we need to gray out the
+		// description text.
+		if (!shadow.isEmpty()) {
+			for (StringBuilder builder : new StringBuilder[] { noFormBuilder,
+					lightFormBuilder }) {
+				builder.append("ShadowForm: ");
+				this.addFormText(builder, shadow, /* hasShadow= */false);
+			}
+			for (StringBuilder builder : new StringBuilder[] { shadowFormBuilder,
+					dualFormBuilder }) {
+				builder.append("ShadowForm: ");
+				this.addFormText(builder, shadow, /* hasShadow= */true);
+			}
+		}
+
+		if (!light.isEmpty()) {
+			for (StringBuilder builder : new StringBuilder[] { noFormBuilder,
+					shadowFormBuilder }) {
+				builder.append("LightForm: ");
+				this.addFormText(builder, light, /* hasLight= */false);
+			}
+			for (StringBuilder builder : new StringBuilder[] { lightFormBuilder,
+					dualFormBuilder }) {
+				builder.append("LightForm: ");
+				this.addFormText(builder, light, /* hasLight= */true);
+			}
+		}
+		if (!suffix.isEmpty()) {
+			for (StringBuilder builder : new StringBuilder[] { noFormBuilder,
+					shadowFormBuilder, lightFormBuilder, dualFormBuilder }) {
+				builder.append(suffix);
+				builder.append(" NL ");
+			}
+		}
+		this.noFormDesc = noFormBuilder.toString();
+		this.shadowFormOnlyDesc = shadowFormBuilder.toString();
+		this.lightFormOnlyDesc = lightFormBuilder.toString();
+		this.dualFormDesc = dualFormBuilder.toString();
+	}
+
+	/**
 	 * Loads the description for a card. This will gray out text depending on
 	 * which form is active. If you are not in combat, no description text will be
 	 * grayed out.
@@ -66,31 +134,16 @@ public abstract class FormAffectedCard extends SpyrCard {
 			hasShadow = AbstractDungeon.player.hasPower(DarkEcoPower.POWER_ID);
 			hasLight = AbstractDungeon.player.hasPower(LightEcoPower.POWER_ID);
 		}
-		StringBuilder description = new StringBuilder();
-		// Load all parts of the description.
-		String prefix = getPrefix();
-		String shadow = getShadow();
-		String light = getLight();
-		String suffix = getSuffix();
-		if (!prefix.isEmpty()) {
-			description.append(prefix);
-			description.append(" NL ");
+		if (hasShadow && hasLight) {
+			return this.dualFormDesc;
 		}
-		// For shadow and light, if they aren't active we need to gray out the
-		// description text.
-		if (!shadow.isEmpty()) {
-			description.append("ShadowForm: ");
-			this.addFormText(description, shadow, hasShadow);
+		if (hasShadow) {
+			return this.shadowFormOnlyDesc;
 		}
-		if (!light.isEmpty()) {
-			description.append("LightForm: ");
-			this.addFormText(description, light, hasLight);
+		if (hasLight) {
+			return this.lightFormOnlyDesc;
 		}
-		if (!suffix.isEmpty()) {
-			description.append(suffix);
-			description.append(" NL ");
-		}
-		return description.toString();
+		return this.noFormDesc;
 	}
 
 	@Override
@@ -142,7 +195,8 @@ public abstract class FormAffectedCard extends SpyrCard {
 	}
 
 	public static String stripPunctuation(String keyword) {
-		if (keyword.length() > 0 && !Character.isLetterOrDigit(keyword.charAt(keyword.length() - 1))) {
+		if (keyword.length() > 0
+				&& !Character.isLetterOrDigit(keyword.charAt(keyword.length() - 1))) {
 			return keyword.substring(0, keyword.length() - 1);
 		}
 		return keyword;

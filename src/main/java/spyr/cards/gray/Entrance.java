@@ -54,7 +54,7 @@ public class Entrance extends FormAffectedCard {
 	@Override
 	public void doUpgrade() {
 		this.target = AbstractCard.CardTarget.ALL_ENEMY;
-		this.initializeDescription();
+		this.initializeFormDescriptions();
 	}
 
 }

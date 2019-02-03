@@ -77,7 +77,7 @@ public class MindFlay extends FormAffectedCard {
 	@Override
 	public void doUpgrade() {
 		this.upgradeDamage(UPGRADE_POWER);
-		this.initializeDescription();
+		this.initializeFormDescriptions();
 	}
 
 }
