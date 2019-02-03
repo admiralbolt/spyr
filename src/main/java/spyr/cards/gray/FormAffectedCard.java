@@ -231,9 +231,11 @@ public abstract class FormAffectedCard extends SpyrCard {
 		// hand.
 		for (String word : textToAdd.split("\\s+")) {
 			if (word.startsWith("!")) {
-				word = getDynamicVariableText(word);
-			}
-			description.append(String.format("[#999999]%s[] ", word));
+        description.append(String.format("%s ", word));
+				//word = getDynamicVariableText(word);
+			} else {
+			  description.append(String.format("[#999999]%s[] ", word));
+      }
 		}
 		description.append(" NL ");
 	}
