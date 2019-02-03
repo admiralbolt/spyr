@@ -17,7 +17,7 @@ import spyr.utils.FormHelper;
 public class Entrance extends FormAffectedCard {
 
 	public static final String ID = "spyr:entrance";
-	public static final String NAME = "ENTRANCE";
+	public static final String NAME = "Entrance";
 
 	private static final int COST = 2;
 

@@ -63,6 +63,7 @@ public class EnflameMind extends FormAffectedCard {
 
 	@Override
 	public void applyPowers() {
+    super.applyPowers();
 		// Our target type switches depending on form.
 		if (FormHelper.lightFormIsActive(AbstractDungeon.player)) {
 			this.target = AbstractCard.CardTarget.ENEMY;
