@@ -53,6 +53,11 @@ public class MindFlay extends FormAffectedCard {
 	}
 
 	@Override
+	public String getSuffix() {
+		return "Switch to ShadowForm.";
+	}
+
+	@Override
 	public void applyPowers() {
 		super.applyPowers();
 		if (FormHelper.lightFormIsActive(AbstractDungeon.player)) {

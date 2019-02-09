@@ -32,7 +32,6 @@ public abstract class FormAffectedCard extends SpyrCard {
 			CardColor color, CardRarity rarity, CardTarget target) {
 		super(id, name, "", cost, type, color, rarity, target);
 		this.initializeFormDescriptions();
-		this.loadCardDescription();
 	}
 
 	/**
@@ -118,6 +117,7 @@ public abstract class FormAffectedCard extends SpyrCard {
 		this.shadowFormOnlyDesc = shadowFormBuilder.toString();
 		this.lightFormOnlyDesc = lightFormBuilder.toString();
 		this.dualFormDesc = dualFormBuilder.toString();
+		this.loadCardDescription();
 	}
 
 	/**
@@ -152,6 +152,9 @@ public abstract class FormAffectedCard extends SpyrCard {
 		this.loadCardDescription();
 	}
 
+	/**
+	 * Recalculates the card description based on current powers / room location.
+	 */
 	public void loadCardDescription() {
 		this.rawDescription = getDescription();
 		this.initializeDescription();
@@ -230,7 +233,7 @@ public abstract class FormAffectedCard extends SpyrCard {
 		// color. So we need to mimic the dynamic color setting / calculation by
 		// hand.
 		for (String word : textToAdd.split("\\s+")) {
-			if (word.startsWith("!")) {
+			if (word.startsWith("!") || word.equals("[E]")) {
         description.append(String.format("%s ", word));
 				//word = getDynamicVariableText(word);
 			} else {
