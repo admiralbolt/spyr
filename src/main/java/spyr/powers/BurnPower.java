@@ -1,10 +1,11 @@
 package spyr.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 /**
  * Deals damage every turn and halves its power.
- * 
+ *
  * The actual functionality is in patches/BurnPatch.java since it requires some
  * base code modifying.
  */
@@ -14,17 +15,16 @@ public class BurnPower extends SpyrPower {
 
 	public AbstractCreature source;
 
-	public BurnPower(AbstractCreature owner, AbstractCreature source,
-			int strAmt) {
+	public BurnPower(AbstractCreature owner, AbstractCreature source, int strAmt) {
 		super(POWER_ID, owner, strAmt);
 		this.source = source;
+		this.type = AbstractPower.PowerType.DEBUFF;
 	}
 
 	@Override
 	public void updateDescription() {
-		this.description = this.powerStrings.DESCRIPTIONS[0] + this.amount
-				+ this.powerStrings.DESCRIPTIONS[1] + getReductionAmount(this.amount)
-				+ this.powerStrings.DESCRIPTIONS[2];
+		this.description = this.powerStrings.DESCRIPTIONS[0] + this.amount + this.powerStrings.DESCRIPTIONS[1]
+				+ getReductionAmount(this.amount) + this.powerStrings.DESCRIPTIONS[2];
 	}
 
 	/**
