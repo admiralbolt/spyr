@@ -34,9 +34,9 @@ public class ShadowPlay extends FormAffectedCard {
 	@Override
 	public String getShadow() {
 		if (this.upgraded) {
-			return "Reduce the cost of a card in your hand by 1 this combat.";
-		}
-		return "Reduce the cost of ALL cards in your hand by 1 this combat.";
+      return "Reduce the cost of ALL cards in your hand by 1 this combat.";
+    }
+		return "Reduce the cost of a card in your hand by 1 this combat.";
 	}
 
 	@Override

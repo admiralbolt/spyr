@@ -25,6 +25,7 @@ public class Entrance extends FormAffectedCard {
 		super(ID, NAME, COST, AbstractCard.CardType.SKILL, CardEnum.FRACTURED_GRAY,
 				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.tags.add(SpyrTags.LIGHT);
+    this.exhaust = true;
 	}
 
 	@Override
@@ -34,6 +35,11 @@ public class Entrance extends FormAffectedCard {
 		}
 		return "Apply Slow to an enemy.";
 	}
+
+  @Override
+  public String getSuffix() {
+    return "Exhaust.";
+  }
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
