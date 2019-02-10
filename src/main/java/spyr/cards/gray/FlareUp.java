@@ -20,7 +20,7 @@ public class FlareUp extends SpyrCard {
 	public static final String NAME = "Flare Up";
 	public static final String DESCRIPTION = "Gain 1 Flicker. NL Gain !M! Radiance.";
 
-	private static final int COST = 2;
+	private static final int COST = 1;
 	private static final int RADIANCE_AMOUNT = 2;
 	private static final int UPGRADE_RADIANCE = 1;
 	private static final int FLICKER_AMOUNT = 1;

@@ -20,8 +20,7 @@ public class WhisperingMadness extends SpyrCard {
 	public static final String DESCRIPTION = "At the end of your turn, if you are in ShadowForm add Maddness+ to the top of your deck and discard piles.";
 	public static final String UPGRADE_DESCRIPTION = "Innate. NL At the end of your turn, if you are in ShadowForm add Maddness+ to the top of your deck and discard piles.";
 
-	public static final int COST = 3;
-	public static final int UPGRADED_COST = 2;
+	public static final int COST = 2;
 
 	public WhisperingMadness() {
 		super(ID, NAME, DESCRIPTION, COST, AbstractCard.CardType.POWER,
@@ -37,7 +36,6 @@ public class WhisperingMadness extends SpyrCard {
 
 	@Override
 	public void doUpgrade() {
-		this.upgradeBaseCost(UPGRADED_COST);
 		this.isInnate = true;
 		this.rawDescription = UPGRADE_DESCRIPTION;
 		this.initializeDescription();

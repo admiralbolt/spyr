@@ -33,6 +33,7 @@ public class MultiStrike extends FormAffectedCard {
 				AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.magicNumber = this.baseMagicNumber = TIMES;
+    this.exhaust = true;
 		// Amusingly this will work with perfect strike.
 		this.tags.add(CardTags.STRIKE);
 	}
@@ -46,6 +47,11 @@ public class MultiStrike extends FormAffectedCard {
 	public String getLight() {
 		return String.format("Apply %d Burn !M! times.", BURN);
 	}
+
+  @Override
+  public String getSuffix() {
+    return "Exhaust.";
+  }
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {

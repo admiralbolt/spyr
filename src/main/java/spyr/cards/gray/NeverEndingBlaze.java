@@ -17,7 +17,7 @@ public class NeverEndingBlaze extends SpyrCard {
 
 	public static final String ID = "spyr:never_ending_blaze";
 	public static final String NAME = "Never Ending Blaze";
-	public static final String DESCRIPTION = "Whihle in LightForm, Burn stacks don't decrease.";
+	public static final String DESCRIPTION = "While in LightForm, Burn stacks don't decrease.";
 
 	public static final int COST = 3;
 	public static final int UPGRADED_COST = 2;
