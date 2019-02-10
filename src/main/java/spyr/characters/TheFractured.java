@@ -85,6 +85,7 @@ public class TheFractured extends CustomPlayer {
 		startingDeck.add(StrikeFractured.ID);
 		startingDeck.add(StrikeFractured.ID);
 		startingDeck.add(StrikeFractured.ID);
+    startingDeck.add(StrikeFractured.ID);
 		startingDeck.add(ShadowSlash.ID);
 		startingDeck.add(DefendFractured.ID);
 		startingDeck.add(DefendFractured.ID);
