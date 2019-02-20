@@ -18,9 +18,9 @@ public class QuickChange extends SpyrCard {
 	public static final String ID = "spyr:quick_change";
 	public static final String NAME = "Quick Change";
 	public static final String DESCRIPTION = "Draw !M! card. NL Switch between ShadowForm and LightForm.";
+  public static final String UPGRADED_DESCRIPTION = "Retain. NL Draw !M! card. NL Switch between ShadowForm and LightForm.";
 
-	private static final int COST = 1;
-	private static final int UPGRADED_COST = 0;
+	private static final int COST = 0;
 	private static final int CARD_DRAW = 1;
 
 	public QuickChange() {
@@ -39,7 +39,18 @@ public class QuickChange extends SpyrCard {
 
 	@Override
 	public void doUpgrade() {
-		this.upgradeBaseCost(UPGRADED_COST);
+    this.retain = true;
+    this.rawDescription = this.UPGRADED_DESCRIPTION;
+    this.initializeDescription();
+	}
+
+  /**
+	 * Retain gets reset by the RestoreRetainedCardsAction, which happens every
+	 * turn. So at the start of turn we just re-override it.
+	 */
+	@Override
+	public void atTurnStart() {
+		this.retain = this.upgraded;
 	}
 
 }
