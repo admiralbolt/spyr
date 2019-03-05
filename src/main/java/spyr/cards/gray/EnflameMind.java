@@ -58,7 +58,7 @@ public class EnflameMind extends FormAffectedCard {
 			AbstractDungeon.actionManager
 					.addToBottom(new DrawCardAction(p, this.magicNumber));
 		}
-		FormHelper.applyLightForm(p);
+		FormHelper.applyLightStacks(p);
 	}
 
 	@Override

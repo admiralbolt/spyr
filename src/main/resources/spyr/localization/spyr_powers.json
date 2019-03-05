@@ -25,6 +25,12 @@
       "Fall asleep after #b"
     ]
   },
+  "spyr:dual_form": {
+    "NAME": "Dual Form",
+    "DESCRIPTIONS": [
+      "Allows you to stack Light & Shadow energy."
+    ]
+  },
   "spyr:flicker": {
     "NAME": "Flicker",
     "DESCRIPTIONS": [

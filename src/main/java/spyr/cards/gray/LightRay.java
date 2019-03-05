@@ -84,7 +84,7 @@ public class LightRay extends FormAffectedCard {
 				}
 			}
 		}
-		FormHelper.applyLightForm(p);
+		FormHelper.applyLightStacks(p);
 	}
 
 	@Override

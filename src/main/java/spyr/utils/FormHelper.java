@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import spyr.actions.ChooseAction;
 import spyr.cards.gray.Invert;
 import spyr.powers.DarkEcoPower;
+import spyr.powers.DualFormPower;
 import spyr.powers.FlickerPower;
 import spyr.powers.LightEcoPower;
 import spyr.powers.TemporaryDarkEcoPower;
@@ -38,54 +39,82 @@ public class FormHelper {
 	 * Swap shadow and light stacks.
 	 */
 	public static void invertStacks(AbstractPlayer p) {
-		int powerAmount;
+		applyPamphlet(p);
+		// Handle dual form specially.
+		if (p.hasPower(DarkEcoPower.POWER_ID) && p.hasPower(LightEcoPower.POWER_ID)) {
+			int lightAmount = p.getPower(LightEcoPower.POWER_ID).amount;
+			int darkAmount = p.getPower(DarkEcoPower.POWER_ID).amount;
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+					new LightEcoPower(p, darkAmount - lightAmount), darkAmount - lightAmount));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+					new DarkEcoPower(p, lightAmount - darkAmount), lightAmount - darkAmount));
+			return;
+		}
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			powerAmount = p.getPower(DarkEcoPower.POWER_ID).amount;
-			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, powerAmount));
+			int darkAmount = p.getPower(DarkEcoPower.POWER_ID).amount;
+			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, darkAmount));
 			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, powerAmount), powerAmount));
+					.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, darkAmount), darkAmount));
 		} else if (p.hasPower(LightEcoPower.POWER_ID)) {
-			powerAmount = p.getPower(LightEcoPower.POWER_ID).amount;
-			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, powerAmount));
+			int lightAmount = p.getPower(LightEcoPower.POWER_ID).amount;
+			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, lightAmount));
 			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, powerAmount), powerAmount));
+					.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, lightAmount), lightAmount));
 		}
 	}
 
-	public static void applyLightForm(AbstractPlayer p) {
+	public static void applyLightStacks(AbstractPlayer p) {
+		applyLightStacks(p, 1);
+	}
+
+	public static void applyLightStacks(AbstractPlayer p, int amount) {
 		// Consume flicker stacks instead of applying form.
 		if (maybeReduceFlicker(p)) {
 			return;
 		}
 		// If we already have light form stacks, increment them.
-		if (p.hasPower(LightEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, 1), 1));
+		if (p.hasPower(LightEcoPower.POWER_ID) || p.hasPower(DualFormPower.POWER_ID)) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, amount), amount));
 			return;
 		}
 		if (p.hasPower(DarkEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, 1));
-			return;
+			int darkAmount = p.getPower(DarkEcoPower.POWER_ID).amount;
+			if (darkAmount >= amount) {
+				AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, amount));
+			} else {
+				AbstractDungeon.actionManager
+						.addToBottom(new ReducePowerAction(p, p, DarkEcoPower.POWER_ID, darkAmount));
+				AbstractDungeon.actionManager.addToBottom(
+						new ApplyPowerAction(p, p, new LightEcoPower(p, amount - darkAmount), amount - darkAmount));
+			}
 		}
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LightEcoPower(p, 1), 1));
-		applyPamphlet(p);
 	}
 
-	public static void applyShadowForm(AbstractPlayer p) {
+	public static void applyShadowStacks(AbstractPlayer p) {
+		applyShadowStacks(p, 1);
+	}
+
+	public static void applyShadowStacks(AbstractPlayer p, int amount) {
 		// Consume flicker stacks instead of applying form.
 		if (maybeReduceFlicker(p)) {
 			return;
 		}
 		// If we already have shado form stacks, increment them.
-		if (p.hasPower(DarkEcoPower.POWER_ID)) {
+		if (p.hasPower(DarkEcoPower.POWER_ID) || p.hasPower(DualFormPower.POWER_ID)) {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, 1), 1));
 			return;
 		}
 		if (p.hasPower(LightEcoPower.POWER_ID)) {
-			AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, 1));
-			return;
+			int lightAmount = p.getPower(LightEcoPower.POWER_ID).amount;
+			if (lightAmount >= amount) {
+				AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, amount));
+			} else {
+				AbstractDungeon.actionManager
+						.addToBottom(new ReducePowerAction(p, p, LightEcoPower.POWER_ID, lightAmount));
+				AbstractDungeon.actionManager.addToBottom(
+						new ApplyPowerAction(p, p, new DarkEcoPower(p, amount - lightAmount), amount - lightAmount));
+			}
 		}
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DarkEcoPower(p, 1), 1));
-		applyPamphlet(p);
 	}
 
 	public static void applyPamphlet(AbstractPlayer p) {
