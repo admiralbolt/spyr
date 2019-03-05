@@ -20,7 +20,7 @@ public class Eco extends SpyrRelic {
 	@Override
 	public void atBattleStart() {
 		this.flash();
-		FormHelper.swapOrChooseForm(AbstractDungeon.player);
+		FormHelper.chooseForm(AbstractDungeon.player);
 	}
 
 }

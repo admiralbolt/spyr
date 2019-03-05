@@ -84,7 +84,7 @@ public class LightRay extends FormAffectedCard {
 				}
 			}
 		}
-		FormHelper.maybeSwitchToLightForm(p);
+		FormHelper.applyLightForm(p);
 	}
 
 	@Override

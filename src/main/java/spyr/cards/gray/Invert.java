@@ -28,7 +28,7 @@ public class Invert extends SpyrCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		FormHelper.swapOrChooseForm(p);
+		FormHelper.invertStacks(p);
 	}
 
 	@Override

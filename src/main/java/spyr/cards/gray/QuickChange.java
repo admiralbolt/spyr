@@ -34,7 +34,7 @@ public class QuickChange extends SpyrCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager
 				.addToBottom(new DrawCardAction(p, this.magicNumber));
-		FormHelper.swapOrChooseForm(p);
+		FormHelper.invertStacks(p);
 	}
 
 	@Override

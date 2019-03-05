@@ -76,7 +76,7 @@ public class MindFlay extends FormAffectedCard {
 			AbstractDungeon.actionManager.addToBottom(
 					new ExhaustCardsFromDeckAction(1, /* random= */!this.upgraded));
 		}
-		FormHelper.maybeSwitchToShadowForm(p);
+		FormHelper.applyShadowForm(p);
 	}
 
 	@Override

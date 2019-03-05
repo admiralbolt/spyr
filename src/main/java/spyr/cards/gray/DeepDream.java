@@ -45,7 +45,7 @@ public class DeepDream extends FormAffectedCard {
 			AbstractDungeon.actionManager.addToBottom(
 					new ExhaustCardsFromDeckAction(this.magicNumber, /* random= */false));
 		}
-		FormHelper.maybeSwitchToShadowForm(p);
+		FormHelper.applyShadowForm(p);
 	}
 
 	@Override
