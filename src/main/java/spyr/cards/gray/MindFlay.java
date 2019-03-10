@@ -54,7 +54,7 @@ public class MindFlay extends FormAffectedCard {
 
 	@Override
 	public String getSuffix() {
-		return "Switch to ShadowForm.";
+		return "Gain 1 ShadowEnergy.";
 	}
 
 	@Override

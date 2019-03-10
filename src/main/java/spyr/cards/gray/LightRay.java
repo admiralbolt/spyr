@@ -55,7 +55,7 @@ public class LightRay extends FormAffectedCard {
 
 	@Override
 	public String getSuffix() {
-		return "Switch to LightForm.";
+		return "Gain 1 LightEnergy.";
 	}
 
 	@Override

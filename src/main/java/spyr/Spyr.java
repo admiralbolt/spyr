@@ -162,8 +162,8 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 	@Override
 	public void receiveEditKeywords() {
 		System.out.println("[SPYR] Editting Keywords.");
-		String[] shadow = { "shadowform" };
-		String[] light = { "lightform" };
+		String[] shadow = { "shadowenergy" };
+		String[] light = { "lightenergy" };
 		String[] burn = { "burn" };
 		BaseMod.addKeyword(shadow, "Grants additional effects to some cards.");
 		BaseMod.addKeyword(light, "Grants additional effects to some cards.");
@@ -185,9 +185,6 @@ public class Spyr implements EditCardsSubscriber, EditCharactersSubscriber, Edit
 	@Override
 	public void receiveEditStrings() {
 		System.out.println("[SPYR] Editting Strings");
-		String cardStrings = Gdx.files.internal("spyr/localization/spyr_cards.json")
-				.readString(String.valueOf(StandardCharsets.UTF_8));
-		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
 		String characterStrings = Gdx.files.internal("spyr/localization/spyr_characters.json")
 				.readString(String.valueOf(StandardCharsets.UTF_8));
