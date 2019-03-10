@@ -25,11 +25,11 @@ public class MindFlay extends FormAffectedCard {
 
 	private static final int COST = 0;
 	private static final int POWER = 5;
-	private static final int UPGRADE_POWER = 2;
+	private static final int UPGRADE_POWER = 3;
 
 	public MindFlay() {
-		super(ID, NAME, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY,
-				AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY);
+		super(ID, NAME, COST, AbstractCard.CardType.ATTACK, CardEnum.FRACTURED_GRAY, AbstractCard.CardRarity.COMMON,
+				AbstractCard.CardTarget.ENEMY);
 		this.damage = this.baseDamage = POWER;
 		this.tags.add(SpyrTags.SHADOW);
 	}
@@ -41,10 +41,7 @@ public class MindFlay extends FormAffectedCard {
 
 	@Override
 	public String getShadow() {
-		if (this.upgraded) {
-			return "Exhaust a card from your deck.";
-		}
-		return "Exhaust a random card from your deck.";
+		return "Exhaust a card from your deck.";
 	}
 
 	@Override
@@ -69,12 +66,11 @@ public class MindFlay extends FormAffectedCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m,
-				new DamageInfo(p, this.damage, this.damageTypeForTurn),
-				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager
+				.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+						AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		if (FormHelper.shadowFormIsActive(p)) {
-			AbstractDungeon.actionManager.addToBottom(
-					new ExhaustCardsFromDeckAction(1, /* random= */!this.upgraded));
+			AbstractDungeon.actionManager.addToBottom(new ExhaustCardsFromDeckAction(1, /* random= */false));
 		}
 		FormHelper.applyShadowStacks(p);
 	}
