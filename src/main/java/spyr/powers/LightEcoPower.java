@@ -26,6 +26,9 @@ public class LightEcoPower extends SpyrPower {
 		if (!isPlayer) {
 			return;
 		}
+		if (AbstractDungeon.player.hasPower(NirvannaPower.POWER_ID)) {
+			return;
+		}
 		AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player,
 				LightEcoPower.POWER_ID, AbstractDungeon.player.getPower(LightEcoPower.POWER_ID).amount));
 	}

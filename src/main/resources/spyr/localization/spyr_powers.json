@@ -58,6 +58,12 @@
       "While in LightForm, Burn stacks don't decrease."
     ]
   },
+  "spyr:nirvanna": {
+    "NAME": "Nirvanna",
+    "DESCRIPTIONS": [
+      "Energy stacks no longer decay."
+    ]
+  },
   "spyr:radiance": {
     "NAME": "Radiance",
     "DESCRIPTIONS": [
